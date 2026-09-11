@@ -38,9 +38,9 @@
 #                            no data: URIs are used anywhere on the site.
 #   font-src 'self'          fonts/ — self-hosted (see style.css), no
 #                            request to Google Fonts or any other origin.
-#   connect-src / form-action 'self' https://formsubmit.co
+#   connect-src / form-action 'self' https://api.web3forms.com
 #                            the contact form's only network call
-#                            (index.html, fetch() to FormSubmit's AJAX
+#                            (index.html, fetch() to Web3Forms' submit
 #                            endpoint) — form-action is its own directive,
 #                            separate from connect-src, kept as defense in
 #                            depth even though the form is intercepted by
@@ -63,4 +63,4 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; upgrade-insecure-requests

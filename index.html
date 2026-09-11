@@ -550,8 +550,10 @@
 </div>
 </div>
 <form class="contact-form reveal" id="contactForm" style="transition-delay:0.15s;">
-<input name="_subject" type="hidden" value="Nouveau message — BDE Dauphine"/>
-<input name="_captcha" type="hidden" value="false"/>
+<input type="hidden" name="access_key" value="6bfaf7ce-3f65-45e5-938c-07af353e833b">
+<input type="hidden" name="subject" value="Nouveau message — BDE Dauphine">
+<input type="hidden" name="from_name" value="Site BDE Dauphine">
+<input type="checkbox" name="botcheck" class="hidden" style="display:none;">
 <div class="form-row-2">
 <div class="form-field"><label data-en="First name" data-fr="Prénom">Prénom</label><input name="prenom" placeholder="Marie" required="" type="text"/></div>
 <div class="form-field"><label data-en="Last name" data-fr="Nom">Nom</label><input name="nom" placeholder="Dupont" required="" type="text"/></div>
@@ -674,7 +676,7 @@
     function closeModalOnBg(e) { if(e.target===modal) closeModal(); }
     document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
-    // Form — envoi réel via FormSubmit AJAX
+    // Form — envoi réel via Web3Forms API
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('formBtn');
@@ -683,12 +685,13 @@
       btn.textContent = isEn ? 'Sending…' : 'Envoi en cours…';
       btn.disabled = true;
       try {
-        const resp = await fetch('https://formsubmit.co/ajax/bdedauphine@gmail.com', {
+        const resp = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: new FormData(form)
         });
-        if (resp.ok) {
+        const data = await resp.json();
+        if (resp.ok && data.success) {
           btn.textContent = isEn ? 'Sent ✓' : 'Message envoyé ✓';
           btn.style.background = '#1a7a3c'; btn.style.borderColor = '#1a7a3c';
           form.reset();
