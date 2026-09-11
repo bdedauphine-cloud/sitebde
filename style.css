@@ -499,6 +499,10 @@ body.affiche-open { overflow: hidden; }
   font-weight: 900; line-height: 1; letter-spacing: -0.035em; margin-bottom: 16px;
 }
 .affiche-text { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 22px; }
+.affiche-eligibility {
+  margin: -8px 0 22px; color: var(--white); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
 /* Le lieu ressort de la ligne d'info : c'est l'information que les gens
    cherchent en premier une fois la date connue. */
 .affiche-venue { color: var(--red); font-size: 1.1em; font-weight: 500; }
@@ -508,16 +512,22 @@ body.affiche-open { overflow: hidden; }
   color: var(--red); border: 1px solid rgba(200, 16, 46, 0.45);
   padding: 7px 13px; margin-bottom: 30px;
 }
-.affiche-cta {
+.affiche-actions { display: grid; gap: 10px; }
+.affiche-cta,
+.affiche-dossier-cta {
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
-  padding: 18px 22px; background: var(--red); color: var(--white);
+  padding: 18px 22px; color: var(--white);
   text-decoration: none; font-family: var(--font-title);
   font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
-  transition: background 200ms;
+  transition: background 200ms, border-color 200ms;
 }
+.affiche-cta { background: var(--red); }
 .affiche-cta:hover { background: #a50d26; }
+.affiche-dossier-cta { border: 1px solid rgba(244,242,238,0.55); background: rgba(244,242,238,0.04); }
+.affiche-dossier-cta:hover { border-color: var(--white); background: rgba(244,242,238,0.12); }
 .affiche-cta-arrow { font-size: 18px; transition: transform 200ms var(--affiche-in); }
-.affiche-cta:hover .affiche-cta-arrow { transform: translateX(5px); }
+.affiche-cta:hover .affiche-cta-arrow,
+.affiche-dossier-cta:hover .affiche-cta-arrow { transform: translateX(5px); }
 .affiche-dismiss {
   display: block; margin-top: 18px; padding: 0;
   background: none; border: none; color: var(--muted);
@@ -588,8 +598,18 @@ body.affiche-open { overflow: hidden; }
   .affiche-panel { padding: 26px 24px 34px; }
   .affiche-title { font-size: clamp(26px, 7vw, 34px); }
   .affiche-countdown { margin-bottom: 22px; }
-  .affiche-close { top: 6px; right: 6px; font-size: 24px; }
+  .affiche-close {
+    top: 6px; right: 6px; color: #fff; font-size: 28px; font-weight: 700;
+    background: rgba(8,8,8,0.32); border: 1px solid rgba(255,255,255,0.72);
+    border-radius: 50%; text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    animation: affiche-close-pulse 2.4s ease-in-out infinite;
+  }
   .affiche-cursor { display: none; }
+}
+
+@keyframes affiche-close-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.26); }
+  50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
 }
 
 /* ── Mouvement réduit ────────────────────────────────── */
@@ -607,6 +627,7 @@ body.affiche-open { overflow: hidden; }
   .affiche-panel > * { opacity: 1; transform: none; }
   .affiche-sheen { display: none; }
   .affiche-cursor { transition: none !important; }
+  .affiche-close { animation: none !important; }
 
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

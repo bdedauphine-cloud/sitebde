@@ -122,9 +122,9 @@ Puis ouvrir `http://localhost:8000`
 
 ---
 
-## Affiche du prochain événement
+## Pop-ups événementiels
 
-À l'arrivée sur le site, l'affiche de l'événement à venir est présentée par-dessus la page, avec le lien Shotgun en dessous. Elle apparaît **seule 14 jours avant la date de l'événement** et s'éteint le lendemain. Une seule fois par visite.
+À l'arrivée sur le site, un pop-up peut présenter l'événement à venir. Plusieurs événements peuvent être prêts en même temps : les lignes en `AUTO` restent indépendantes et le prochain événement dans sa fenêtre d'affichage est choisi. Le pop-up s'affiche une fois par visite, **14 jours avant l'événement** par défaut, puis s'éteint le lendemain.
 
 **Mettre une nouvelle affiche :**
 
@@ -136,12 +136,14 @@ Le script génère les versions légères (AVIF + WebP en 640, 960 et 1536 px) d
 
 | Colonne | Valeur |
 |---|---|
-| `AFFICHE IMAGE` | `uploads/affiche-croisette.jpg` |
+| `AFFICHE IMAGE` | Chemin de l'image dans `uploads/` |
 | `AFFICHE RATIO` | `1179/1462` (dimensions réelles en pixels) |
 | `AFFICHE IMAGES RESPONSIVES` | `OUI` |
 | `AFFICHE` | `AUTO` |
 
-Tout le reste peut rester vide : le titre reprend le nom de l'événement, la ligne d'info sa date et sa salle, le bouton le lien Shotgun.
+Le titre, la ligne d'information et le bouton principal ont des valeurs automatiques. Le bouton principal utilise `AFFICHE CTA URL`, puis `TICKET URL`, puis le lien Shotgun général.
+
+Pour un WEI ou un autre événement avec un dossier, renseigner aussi `AFFICHE DOSSIER CTA FR` et `AFFICHE DOSSIER CTA EN` : le second bouton est affiché uniquement si `DOSSIER URL` existe. `AFFICHE NOTE ÉLIGIBILITÉ FR/EN` permet d'afficher une mention telle que « Exclusif aux Dauphinois ». Les textes doivent toujours être renseignés dans les deux langues ; ils restent lisibles par les visiteurs et compréhensibles par les moteurs de recherche et les assistants IA.
 
 **Les interrupteurs :**
 
@@ -151,7 +153,13 @@ Tout le reste peut rester vide : le titre reprend le nom de l'événement, la li
 | `OUI` | Affichée tout de suite, quelle que soit la date |
 | `NON` | Jamais affichée pour cet événement |
 
+Pour préparer le WEI sans le lancer maintenant, le laisser en `AUTO`. Ne pas modifier La Croisette : elle reste en `AUTO` elle aussi. `OUI` est réservé à une demande explicite d'affichage immédiat.
+
+Le WEI est déjà préconfiguré avec son image, le bouton billets, le téléchargement du dossier, « Exclusif aux Dauphinois » et « Lieu tenu secret ». Il deviendra automatiquement candidat à la date prévue ; remplacer son image par une affiche officielle plus tard ne change pas ce fonctionnement.
+
 Réglages généraux dans `csv/config.csv` : `affiche_active` (interrupteur général), `affiche_joursAvant` (14), `affiche_frequence` (`session` / `evenement` / `toujours`), `affiche_pages` (`toutes` / `home`), `affiche_delaiMs` (700).
+
+La croix de fermeture est blanche et contrastée ; sur mobile elle pulse légèrement, sauf si le visiteur a demandé de réduire les animations. Cette règle s'applique à tous les pop-ups d'événement.
 
 Prérequis du script : `pip install pillow`.
 
