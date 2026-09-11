@@ -220,13 +220,18 @@
     const e=afficheEvent();
     if(!e) return '';
     const a=e.affiche||{}, site=window.BDE_SITE||{}, t=site.ticket||{};
-    const titleI=i18nObj(a.title), textI=i18nObj(a.text), ctaI=i18nObj(a.ctaLabel);
+    const titleI=i18nObj(a.title), textI=i18nObj(a.text), ctaI=i18nObj(a.ctaLabel), dossierCtaI=i18nObj(a.dossierCtaLabel), eligibilityI=i18nObj(a.eligibilityNote);
     const titleFr=titleI.fr||e.title, titleEn=titleI.en||e.title;
     const textFr=textI.fr?esc(textI.fr):afficheSubtitleHtml(e,'fr');
     const textEn=textI.en?esc(textI.en):afficheSubtitleHtml(e,'en');
     const ctaFr=ctaI.fr||t.buttonLabel||'Réserver sur Shotgun';
     const ctaEn=ctaI.en||t.buttonLabelEn||'Book on Shotgun';
     const url=a.ctaUrl||e.ticketUrl||t.url||site.defaultTicketUrl||'#';
+    const dossierUrl=e.dossierUrl||'';
+    const dossierCtaFr=dossierCtaI.fr||'Télécharger le dossier';
+    const dossierCtaEn=dossierCtaI.en||'Download the form';
+    const eligibilityFr=eligibilityI.fr||'';
+    const eligibilityEn=eligibilityI.en||'';
     const cdFr=afficheCountdown(e,'fr'), cdEn=afficheCountdown(e,'en');
     const ratio=a.ratio||'2/3';
     return `<div class="affiche-veil" aria-hidden="true"></div><span class="affiche-cursor" data-affiche-cursor aria-hidden="true"></span><div class="affiche-sheet" role="document">
@@ -237,8 +242,12 @@
           <div class="affiche-overline" data-fr="Prochain événement" data-en="Next event">Prochain événement</div>
           <h2 class="affiche-title" id="afficheTitle"${attrI18n(titleFr,titleEn)}>${esc(titleFr)}</h2>
           <div class="affiche-text"${attrI18n(textFr,textEn)}>${textFr}</div>
+          ${eligibilityFr?`<p class="affiche-eligibility"${attrI18n(eligibilityFr,eligibilityEn)}>${esc(eligibilityFr)}</p>`:''}
           ${cdFr?`<div class="affiche-countdown"${attrI18n(cdFr,cdEn)}>${esc(cdFr)}</div>`:''}
-          <a class="affiche-cta" href="${esc(url)}" target="_blank" rel="noopener"><span${attrI18n(ctaFr,ctaEn)}>${esc(ctaFr)}</span><span class="affiche-cta-arrow" aria-hidden="true">→</span></a>
+          <div class="affiche-actions">
+            <a class="affiche-cta" href="${esc(url)}" target="_blank" rel="noopener"><span${attrI18n(ctaFr,ctaEn)}>${esc(ctaFr)}</span><span class="affiche-cta-arrow" aria-hidden="true">→</span></a>
+            ${dossierUrl?`<a class="affiche-dossier-cta" href="${esc(dossierUrl)}"${e.dossierDownload!==false?' download':''}><span${attrI18n(dossierCtaFr,dossierCtaEn)}>${esc(dossierCtaFr)}</span><span class="affiche-cta-arrow" aria-hidden="true">↓</span></a>`:''}
+          </div>
           <button type="button" class="affiche-dismiss" data-affiche-close data-fr="Continuer vers le site" data-en="Continue to the site">Continuer vers le site</button>
         </div>
       </div>

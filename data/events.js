@@ -123,7 +123,7 @@ window.BDE_EVENTS = [
     "artists": [],
     "reverse": false,
     "affiche": {
-      "mode": "AUTO",
+      "mode": "NON",
       "image": "uploads/affiche-croisette.jpg",
       "alt": "Affiche de La Croisette — mardi 15 septembre, croisière 21h, River's King, 16€",
       "ratio": "1179/1462",
@@ -419,25 +419,33 @@ window.BDE_EVENTS = [
     "artists": [],
     "reverse": true,
     "affiche": {
-      "mode": "AUTO",
-      "image": "",
-      "alt": "",
-      "ratio": "",
+      "mode": "OUI",
+      "image": "uploads/DSC06115-scaled.jpg",
+      "alt": "Étudiants au WEI du BDE Dauphine",
+      "ratio": "2560/1707",
       "responsive": false,
       "daysBefore": 0,
       "title": {
-        "fr": "",
-        "en": ""
+        "fr": "WEI — Weekend d'Intégration",
+        "en": "WEI — Integration Weekend"
       },
       "text": {
-        "fr": "",
-        "en": ""
+        "fr": "9–11 octobre 2026 · Lieu tenu secret",
+        "en": "October 9–11, 2026 · Location undisclosed"
       },
       "ctaLabel": {
-        "fr": "",
-        "en": ""
+        "fr": "Prendre ses billets",
+        "en": "Get tickets"
       },
-      "ctaUrl": ""
+      "ctaUrl": "",
+      "dossierCtaLabel": {
+        "fr": "Télécharger le dossier",
+        "en": "Download the form"
+      },
+      "eligibilityNote": {
+        "fr": "Exclusif aux Dauphinois",
+        "en": "Exclusively for Dauphine students"
+      }
     }
   },
   {
