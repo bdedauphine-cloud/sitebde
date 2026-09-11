@@ -123,7 +123,7 @@ window.BDE_EVENTS = [
     "artists": [],
     "reverse": false,
     "affiche": {
-      "mode": "NON",
+      "mode": "AUTO",
       "image": "uploads/affiche-croisette.jpg",
       "alt": "Affiche de La Croisette — mardi 15 septembre, croisière 21h, River's King, 16€",
       "ratio": "1179/1462",
@@ -419,7 +419,7 @@ window.BDE_EVENTS = [
     "artists": [],
     "reverse": true,
     "affiche": {
-      "mode": "OUI",
+      "mode": "AUTO",
       "image": "uploads/DSC06115-scaled.jpg",
       "alt": "Étudiants au WEI du BDE Dauphine",
       "ratio": "2560/1707",

@@ -40,6 +40,10 @@ Ouvrir dans Excel ou Google Sheets, modifier, sauvegarder, pousser sur GitHub �
 
 Il n'y a rien à lancer manuellement depuis GitHub. Tout est automatique.
 
+Les colonnes sont documentées dans la deuxième ligne de chaque CSV. Ne les
+renommez pas et ne les réordonnez pas : elles correspondent au script de
+synchronisation.
+
 ### Sur Windows en local (sans GitHub)
 
 | Fichier | Action |
@@ -438,7 +442,26 @@ Méthode simple :
 
 ---
 
-# 13. Vérification après modification
+# 13. Gérer les pop-ups d'événements
+
+Les colonnes `AFFICHE *` du fichier `csv/events.csv` préparent le pop-up affiché à l'arrivée sur le site. Plusieurs événements peuvent être prêts à la fois : laissez-les en `AUTO`. Le site choisit automatiquement le prochain événement dans sa fenêtre d'affichage ; ne désactivez jamais un pop-up existant pour en préparer un futur.
+
+| Colonne | Utilisation |
+|---|---|
+| `AFFICHE` | `AUTO` pour le déclenchement automatique ; `OUI` seulement pour l'afficher maintenant ; `NON` pour ne jamais l'afficher. |
+| `AFFICHE IMAGE`, `ALT`, `RATIO` | Image dans `uploads/`, description accessible et dimensions réelles largeur/hauteur. |
+| `AFFICHE TITRE FR/EN`, `TEXTE FR/EN` | Titre et ligne d'information visibles, dans les deux langues. |
+| `AFFICHE CTA LABEL FR/EN`, `CTA URL` | Bouton billets. Si l'URL est vide, le site utilise `TICKET URL`, puis le lien Shotgun général. |
+| `AFFICHE DOSSIER CTA FR/EN` | Second bouton de téléchargement ; il apparaît seulement si `DOSSIER URL` est renseigné. |
+| `AFFICHE NOTE ÉLIGIBILITÉ FR/EN` | Mention courte, par exemple « Exclusif aux Dauphinois ». |
+
+Pour le WEI, les deux boutons, la mention d'éligibilité et la formule « Lieu tenu secret » sont déjà préparés en `AUTO`. La Croisette reste elle aussi en `AUTO`, sans modification. La croix de fermeture est volontairement commune à tous les pop-ups : blanche et contrastée, avec une légère pulsation sur mobile (respectant le réglage de réduction des animations du visiteur).
+
+Lorsqu'une image doit devenir une vraie affiche optimisée, placez le fichier dans `uploads/`, lancez `make_affiche.py`, puis reportez ses dimensions et mettez `AFFICHE IMAGES RESPONSIVES` à `OUI`. Pour une image simple déjà adaptée, laissez cette dernière colonne à `NON` et renseignez quand même le ratio.
+
+---
+
+# 14. Vérification après modification
 
 Après chaque modification :
 
@@ -452,7 +475,7 @@ Après chaque modification :
 
 ---
 
-# 14. À ne pas faire
+# 15. À ne pas faire
 
 Éviter de modifier directement :
 

@@ -127,6 +127,8 @@ def main():
         "AFFICHE IMAGES RESPONSIVES (OUI/NON)", "AFFICHE JOURS AVANT",
         "AFFICHE TITRE FR", "AFFICHE TITRE EN", "AFFICHE TEXTE FR", "AFFICHE TEXTE EN",
         "AFFICHE CTA LABEL FR", "AFFICHE CTA LABEL EN", "AFFICHE CTA URL",
+        "AFFICHE DOSSIER CTA FR", "AFFICHE DOSSIER CTA EN",
+        "AFFICHE NOTE ÉLIGIBILITÉ FR", "AFFICHE NOTE ÉLIGIBILITÉ EN",
     ]]
     rows.append([
         "## Identifiant unique interne (ne jamais modifier)",
@@ -179,6 +181,10 @@ def main():
         "Texte du bouton billetterie en français — vide = Réserver sur Shotgun",
         "Texte du bouton billetterie en anglais — vide = Book on Shotgun",
         "Lien billetterie de l'affiche — vide = TICKET URL de l'événement, puis lien global",
+        "Texte du second bouton vers le dossier en français — vide = aucun second bouton",
+        "Texte du second bouton vers le dossier en anglais — vide = aucun second bouton",
+        "Mention d'éligibilité affichée sous l'affiche en français — vide = aucune mention",
+        "Mention d'éligibilité affichée sous l'affiche en anglais — vide = aucune mention",
     ])
     for ev in events:
         dl   = ev.get("dateLabel")          or {}
@@ -191,6 +197,8 @@ def main():
         atit = aff.get("title")             or {}
         atxt = aff.get("text")              or {}
         acta = aff.get("ctaLabel")          or {}
+        adossier = aff.get("dossierCtaLabel") or {}
+        anote = aff.get("eligibilityNote")    or {}
         main = s(ev.get("image"))
         supp = " ; ".join(img for img in imgs if img != main)
         rows.append([
@@ -212,6 +220,8 @@ def main():
             b(aff.get("responsive")), (aff.get("daysBefore") or ""),
             s(atit.get("fr")), s(atit.get("en")), s(atxt.get("fr")), s(atxt.get("en")),
             s(acta.get("fr")), s(acta.get("en")), s(aff.get("ctaUrl")),
+            s(adossier.get("fr")), s(adossier.get("en")),
+            s(anote.get("fr")), s(anote.get("en")),
         ])
     write_csv("events.csv", rows)
 

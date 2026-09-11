@@ -23,6 +23,12 @@ Ce site dispose de **deux sources de données synchronisées automatiquement** :
 Ne touche jamais aux fichiers `csv/` (réservés à l'humain via Excel/Google Sheets).  
 Ne touche jamais à `sync_init.py`, `sync.py`, `.github/workflows/sync.yml` sauf si la demande porte explicitement sur le système de synchronisation.
 
+**Exception — évolution de structure :** lorsqu'une fonctionnalité ajoute un
+nouveau champ, faire évoluer ensemble `data/events.js`, `csv/events.csv`,
+`sync.py` et `sync_init.py`. Sans cela, une synchronisation ultérieure peut
+supprimer les nouvelles données. Ce cas est une modification du système de
+synchronisation, pas une simple mise à jour de contenu.
+
 **Photos et images :**
 - Les photos physiques sont dans `uploads/` (ou `uploads/partners/` pour les logos sponsors)
 - Les chemins sont référencés dans `data/galleries.js` et `data/events.js`
@@ -137,7 +143,7 @@ galerie-*.html                                 → pages galerie, ne modifier qu
 | Ajouter les photos après un événement | `data/galleries.js` → slug correspondant |
 | Masquer un événement | `data/events.js` → `showOnHome: false` ou `showOnEventsPage: false` |
 | Masquer un partenaire | `data/sponsors.js` → `active: false` |
-| Mettre l'affiche du prochain événement | `data/events.js` → bloc `affiche` (voir WORKFLOW M) |
+| Préparer une affiche future sans toucher à l'actuelle | `data/events.js` → bloc `affiche`, `mode: "AUTO"` (voir WORKFLOW M) |
 | Retirer / cacher l'affiche tout de suite | `data/events.js` → `affiche.mode: "NON"` |
 | Désactiver l'affiche sur tout le site | `data/site.js` → `affiche.active: false` |
 | Changer le délai d'apparition de l'affiche | `data/site.js` → `affiche.daysBefore` |
@@ -396,7 +402,9 @@ window.BDE_SITE = {
     "title":    { "fr": "", "en": "" },  // Vide = titre de l'événement.
     "text":     { "fr": "", "en": "" },  // Vide = date et salle de l'événement.
     "ctaLabel": { "fr": "", "en": "" },  // Vide = "Réserver sur Shotgun".
-    "ctaUrl": ""               // Vide = ticketUrl de l'événement, puis lien global.
+    "ctaUrl": "",              // Vide = ticketUrl de l'événement, puis lien global.
+    "dossierCtaLabel": { "fr": "", "en": "" }, // Second bouton, si dossierUrl existe.
+    "eligibilityNote": { "fr": "", "en": "" }  // Mention facultative sous les boutons.
   }
 }
 ```
@@ -826,11 +834,12 @@ Si une nouvelle page HTML est nécessaire :
 
 ### WORKFLOW M — Mettre l'affiche du prochain événement
 
-L'affiche est l'image de l'événement, présentée par-dessus le site quand
-quelqu'un arrive, avec le lien Shotgun juste en dessous. Elle apparaît
-**toute seule 14 jours avant la date de l'événement** et disparaît le
-lendemain de l'événement. Il n'y a rien à programmer et rien à retirer
-après coup.
+Une affiche est l'image d'un événement, présentée par-dessus le site à
+l'arrivée. Plusieurs affiches peuvent être prêtes simultanément : parmi les
+événements en mode `AUTO` dans leur fenêtre d'affichage, le plus proche est
+choisi. Elle apparaît **toute seule 14 jours avant la date de l'événement**
+et disparaît le lendemain. Il n'y a rien à programmer ni à retirer après
+coup.
 
 **Étape 1 — préparer l'image.**
 
@@ -869,14 +878,24 @@ Dans `data/events.js`, trouver l'événement concerné et remplir son bloc
   "title":    { "fr": "", "en": "" },
   "text":     { "fr": "", "en": "" },
   "ctaLabel": { "fr": "", "en": "" },
-  "ctaUrl": ""
+  "ctaUrl": "",
+  "dossierCtaLabel": { "fr": "", "en": "" },
+  "eligibilityNote": { "fr": "", "en": "" }
 }
 ```
 
-C'est terminé. Tout ce qui est laissé vide se remplit tout seul : le
-titre reprend le nom de l'événement, la ligne d'info reprend sa date et
-sa salle, le bouton reprend le lien Shotgun. Le compte à rebours
-(« Dans 6 jours ») est calculé automatiquement.
+C'est terminé. Tout ce qui est laissé vide se remplit tout seul : le titre
+reprend le nom de l'événement, la ligne d'info reprend sa date et sa salle,
+et le bouton principal utilise `ctaUrl`, puis `ticketUrl`, puis le lien
+Shotgun général. Le compte à rebours (« Dans 6 jours ») est calculé
+automatiquement.
+
+Pour un second bouton **Télécharger le dossier**, renseigner aussi
+`dossierCtaLabel` dans les deux langues ; il n'apparaît que si l'événement
+a un `dossierUrl`. Pour une consigne telle que « Exclusif aux Dauphinois »
+ou un lieu tenu secret, renseigner `eligibilityNote` et le champ `text` dans
+les deux langues. Ces textes sont visibles par les personnes et indexables
+par les moteurs de recherche.
 
 **Sans passer par le script** (image simple, non optimisée — à éviter
 pour une vraie affiche) : renseigner `image` et `alt`, laisser
@@ -897,8 +916,10 @@ servie lourde.
 
 **Cas particuliers :**
 
-- **Deux événements rapprochés** : le plus proche gagne. Un `"OUI"` forcé
-  passe devant tout le reste.
+- **Deux événements rapprochés** : les deux restent en `"AUTO"` ; le plus
+  proche gagne. Ne passez pas une affiche existante à `"NON"` pour préparer
+  une affiche future. Un `"OUI"` forcé passe devant tout le reste et ne doit
+  être utilisé que pour une demande explicite d'affichage immédiat.
 - **Fenêtre différente pour un événement** : mettre `"daysBefore": 21`
   sur cet événement (au lieu de `0`, qui suit la valeur globale).
 - **Texte personnalisé** : remplir `title`, `text` ou `ctaLabel`. Ce qui
@@ -909,6 +930,11 @@ servie lourde.
 
 - Ne pas retirer l'affiche à la main après l'événement — elle s'arrête
   seule le lendemain.
+- Ne pas désactiver La Croisette (ou toute autre affiche active) pour
+  préparer le WEI : configurer les deux en `"AUTO"`.
+- Ne pas ajouter un champ d'affiche uniquement dans `data/events.js` : lors
+  d'une évolution de structure, mettre à jour aussi le CSV et les scripts de
+  synchronisation.
 - Ne pas remplir `image` sans avoir mis le fichier dans `uploads/` :
   sans image, aucune affiche n'est montrée (c'est voulu, pas une panne).
 - Ne pas supprimer l'ancienne affiche d'`uploads/` en changeant la

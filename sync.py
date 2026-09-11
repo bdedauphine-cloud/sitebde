@@ -178,7 +178,7 @@ def build_events():
 
     events = []
     for row in read_csv("events.csv"):
-        row = pad(row, 50)
+        row = pad(row, 54)
         slug = sv(row[0])
         if not slug: continue
 
@@ -256,6 +256,8 @@ def build_events():
                 "text":     {"fr": sv(row[45]), "en": sv(row[46])},
                 "ctaLabel": {"fr": sv(row[47]), "en": sv(row[48])},
                 "ctaUrl": sv(row[49]),
+                "dossierCtaLabel": {"fr": sv(row[50]), "en": sv(row[51])},
+                "eligibilityNote": {"fr": sv(row[52]), "en": sv(row[53])},
             },
         })
 
