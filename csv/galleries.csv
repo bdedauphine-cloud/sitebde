@@ -1,0 +1,10 @@
+﻿SLUG,TITRE,PAGE HTML,SLUG ÉVÉNEMENT LIÉ,IMAGE COUVERTURE,GOOGLE PHOTOS URL,MODE LIGHTBOX,ACTIF (OUI/NON),ORDRE
+## Identifiant unique de la galerie (ne jamais modifier),Nom de la galerie affiché sur la page et dans le bouton de la page événement,Nom du fichier HTML de la galerie (ex: galerie-begins.html),Slug de l'événement lié — affiche un bouton vers la galerie sur la page événement,Photo de couverture affichée sur la page événement et dans la bande photos de la homepage,Lien vers l'album complet Google Photos,overlay = photos s'ouvrent en plein écran sur le site / link = redirige vers Google Photos,OUI = galerie visible + photo de couverture dans la bande homepage / NON = masquée,Ordre d'affichage
+begins,Begins,galerie-begins.html,begins,uploads/begins-2025-05.jpg,https://photos.google.com/,overlay,OUI,1
+croisette,La Croisette,galerie-croisette.html,croisette,uploads/croisette-2025-01.jpg,https://photos.google.com/,overlay,OUI,2
+dauphinend,Dauph'End,galerie-dauphinend.html,dauphinend,uploads/DSC04666-scaled.jpg,https://photos.google.com/,overlay,OUI,3
+gala,Gala Dauphine,galerie-gala.html,gala,uploads/gala-2026-259.jpg,https://photos.google.com/,lightbox,OUI,4
+howwedau,How We Dau,galerie-howwedau.html,howwedau,uploads/cap-145216.png,https://photos.google.com/,lightbox,OUI,5
+nuitdauphine,Nuit Dauphine,galerie-nuitdauphine.html,nuitdauphine,uploads/DSC05851-scaled.jpg,https://photos.google.com/,overlay,OUI,6
+prixmode,Prix Mode,galerie-prixmode.html,prixmode,uploads/DSC04479-scaled.jpg,https://photos.google.com/,overlay,OUI,7
+wei,WEI,galerie-wei.html,wei,uploads/DSC04545-scaled.jpg,https://photos.google.com/,overlay,OUI,8

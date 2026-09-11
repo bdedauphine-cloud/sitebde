@@ -1,0 +1,13 @@
+﻿NOM,LOGO,FALLBACK,ALT,URL,CATÉGORIE,TYPE FR,TYPE EN,LIEN LABEL,ACTIF (OUI/NON),ORDRE
+## Nom du sponsor affiché sur la page Partenaires et la homepage,Chemin de l'image du logo (uploads/partners/...),Initiales affichées à la place du logo si le fichier est absent,Texte alternatif de l'image (accessibilité et SEO),Lien vers le site du sponsor — s'ouvre au clic sur le logo,Catégorie interne pour regroupement visuel,Description du partenariat affichée en français (ex: Partenaire bancaire),Description du partenariat affichée en anglais,Texte du lien affiché sous le logo (ex: Visiter le site),OUI = logo affiché / NON = masqué sans être supprimé,Position dans la liste (plus petit = affiché en premier)
+Caisse d'Épargne,uploads/partners/logo-caisse-epargne.png,,Caisse d'Épargne,https://www.caisse-epargne.fr,Banque,Banque · Finance,Bank · Finance,caisse-epargne.fr →,OUI,1
+Red Bull,uploads/partners/logo-redbull.png,RB,Red Bull,https://www.redbull.com/fr-fr/,Boisson,Boisson · Énergie,Drink · Energy,redbull.com →,OUI,2
+Uber,uploads/partners/logo-uber.png,UB,Uber,https://www.uber.com/fr/fr/,Mobilité,Mobilité · VTC,Mobility · Ride-hailing,uber.com →,NON,3
+YouStock,uploads/partners/logo-youstock.png,,YouStock,https://www.youstock.com,Stockage,Stockage · Logistique,Storage · Logistics,youstock.com →,NON,4
+Sumeria,uploads/partners/logo-sumeria.png,,Sumeria,https://sumeria.eu,Fintech,Fintech · Paiement,Fintech · Payment,sumeria.eu →,OUI,5
+Cercles de la Forme,uploads/partners/logo-cercles-forme.png,,Cercles de la Forme,https://www.cerclesdelaforme.com,Sport & bien-être,Sport · Bien-être,Sport · Wellness,cerclesdelaforme.com →,NON,6
+Heetch,uploads/partners/logo-heetch.png,,Heetch,https://www.heetch.com,Mobilité,Mobilité · VTC,Mobility · Ride-hailing,heetch.com →,OUI,7
+Admissions Parallèles,uploads/partners/logo-admissions-paralleles.png,,Admissions Parallèles,https://www.admissionsparalleles.com,Orientation,Orientation · Admissions,Guidance · Admissions,admissionsparalleles.com →,NON,8
+Prépa Parisiennes,,PP,Prépa Parisiennes,https://www.preparisiennes.com,Formation,Formation · Orientation,Education · Guidance,preparisiennes.com →,NON,9
+Smart Renting,,SR,Smart Renting,https://smart-renting.com,Immobilier étudiant,Immobilier · Étudiant,Real Estate · Student,smart-renting.com →,NON,10
+En Voiture Simone,uploads/partners/logo-en-voiture-simone.png,,En Voiture Simone,https://www.envoituresimone.com,Mobilité,Mobilité · Auto-école,Mobility · Driving School,envoituresimone.com →,NON,11

@@ -1,0 +1,14 @@
+﻿SLUG ÉVÉNEMENT,ORDRE,LABEL,ROUGE (OUI/NON),LABEL FR,LABEL EN
+## Slug de l'événement concerné,Ordre d'affichage du badge,Texte du badge (utilisé si pas de traduction),OUI = badge affiché en rouge sur la page événement,Texte du badge en français affiché sur la page de l'événement,Texte du badge en anglais
+croisette,1,Début d'année,NON,Début d'année,Start of year
+begins,1,Début d'année,NON,Début d'année,Start of year
+wei,1,Rentrée,NON,Rentrée,Back to school
+nuitdauphine,1,Label Les Nuits,OUI,Label Les Nuits,
+nuitdauphine,2,30+ éditions,NON,30+ éditions,
+howwedau,1,Flagship,OUI,Flagship,
+howwedau,2,Showcases rap,NON,Showcases rap,
+gala,1,Édition spéciale,OUI,Édition spéciale,
+gala,2,Co-organisé PSL,NON,Co-organisé PSL,
+prixmode,1,Nouveau format,OUI,Nouveau format,
+prixmode,2,Art & Mode,NON,Art & Mode,
+dauphinend,1,Annuel,NON,Annuel,Annual

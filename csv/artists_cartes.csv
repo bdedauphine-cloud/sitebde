@@ -1,0 +1,9 @@
+﻿NOM,IMAGE,ALT,ANNÉE · ÉVÉNEMENT,TEXTE ÉVÉNEMENT,BADGE,FEATURED (OUI/NON),ACTIF (OUI/NON),ORDRE
+## Nom de l'artiste affiché sur la carte du carrousel homepage,Chemin de la photo de l'artiste (uploads/...),Texte alternatif de l'image,Texte affiché sur la carte sous le nom (ex: 2025 · How We Dau),Texte secondaire affiché sur la carte (nom de l'événement),"Badge affiché sur la carte (ex: Headliner, Live, Exclusif)",OUI = carte visuellement mise en avant dans le carrousel,OUI = carte visible dans le carrousel homepage / NON = masquée,Position dans le carrousel (plus petit = affiché en premier)
+Gazo,uploads/cap-145216.png,Gazo,2026 · How We Dau,Showcase exclusif · Paris Dauphine,Édition 2026,OUI,OUI,1
+Gims,uploads/cap-144920.png,Gims,2025 · How We Dau,Showcase · Paris Dauphine,Édition 2025,NON,OUI,2
+SCH,uploads/DSC05266-scaled.jpg,SCH,2023 · How We Dau,Showcase · Paris Dauphine,Édition 2023,NON,OUI,3
+Laylow,uploads/cap-145018.png,Laylow,2022 · How We Dau,Showcase · Paris Dauphine,Édition 2022,NON,OUI,4
+Djadja & Dinaz,uploads/hwd2024dinaz.jpg,Djadja & Dinaz,2022 · How We Dau,Showcase · Paris Dauphine,Édition 2022,NON,OUI,5
+PLK · SDM,uploads/cap-145204.png,PLK & SDM,2021 · How We Dau,Showcase · Paris Dauphine,Édition 2021,NON,OUI,6
+VANCO,uploads/DSC05863-scaled.jpg,Nuit Dauphine VANCO,2026 · Nuit Dauphine,Nuit Dauphine · Club parisien,Édition 2026,NON,OUI,7

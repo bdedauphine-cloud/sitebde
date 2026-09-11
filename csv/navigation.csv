@@ -1,0 +1,8 @@
+﻿ORDRE,LABEL FR,LABEL EN,HREF,LIEN HORS HOME
+## Position (1=premier lien du menu),Texte du lien affiché en français,Texte du lien affiché en anglais,URL de destination (fichier HTML ou lien externe),Si renseigné : ce lien s'ouvre dans un nouvel onglet quand on n'est pas sur la homepage
+1,Événements,Events,evenements.html,
+2,Notre label,Our Label,nuits.html,
+3,How We Dau,How We Dau,howwedau.html,
+4,Partenaires,Partners,partenaires.html,
+5,Notre histoire,Our Story,about.html,
+6,Contact,Contact,#contact,index.html#contact

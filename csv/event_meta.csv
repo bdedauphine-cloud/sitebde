@@ -1,0 +1,31 @@
+﻿SLUG ÉVÉNEMENT,ORDRE,CLÉ FR,CLÉ EN,VALEUR FR,VALEUR EN
+## Slug de l'événement concerné,Ordre d'affichage de la ligne dans le tableau d'infos,"Label affiché en français dans les infos pratiques (ex: Format, Durée, Prix, Lieu)",Label affiché en anglais,"Valeur affichée en français (ex: Soirée, 6h, 15€, Paris)",Valeur affichée en anglais
+croisette,1,Format,Format,Croisière sur la Seine,River cruise on the Seine
+croisette,2,Période,Period,Début d'année universitaire,Start of the academic year
+croisette,3,Ambiance,Atmosphere,"Rencontre, découverte, cohésion","Meeting, discovery, bonding"
+begins,1,Format,Format,Rencontre & découverte,Meetup & discovery
+begins,2,Période,Period,Début d'année universitaire,Start of the academic year
+begins,3,Objectif,Purpose,Créer les premiers liens,Create first connections
+begins,4,Ambiance,Atmosphere,"Accueil, découverte, cohésion","Welcome, discovery, bonding"
+wei,1,Durée,Duration,3 jours,3 days
+wei,2,Participants,Participants,600 — 700,600 — 700
+wei,3,Période,Period,9–11 octobre 2026,"October 9–11, 2026"
+wei,4,Inclus,Included,"Hébergement, repas, soirées","Accommodation, meals, parties"
+nuitdauphine,1,Format,Format,Soirée électro-house,Electro-house party
+nuitdauphine,2,Historique,History,30+ éditions,30+ editions
+nuitdauphine,3,Lieu,Venue,Clubs parisiens premium,Premium Parisian clubs
+nuitdauphine,4,Artistes passés,Past artists,"Emmanuel Jal, Ofenbach, Esposito…","Emmanuel Jal, Ofenbach, Esposito…"
+nuitdauphine,5,Édition 2026,2026 Edition,VANCO,VANCO
+howwedau,1,Format,Format,Grande soirée rap / club,Major rap party / club night
+howwedau,2,Historique,History,Depuis 6 ans,Running for 6 years
+howwedau,3,Particularité,Signature,Showcases d'artistes majeurs,Exclusive major artist showcases
+gala,1,Lieu,Venue,"Chalet du Lac, Bois de Vincennes","Chalet du Lac, Bois de Vincennes"
+gala,2,Fréquence,Frequency,Annuel · Fin d'année,Annual · End of year
+gala,3,Participants 2026,2026 Attendees,1 500+,1 500+
+gala,4,Dress code,Dress code,Tenue chic exigée,Smart dress required
+gala,5,Soutenu par,Supported by,Université Paris Dauphine-PSL,Université Paris Dauphine-PSL
+prixmode,1,Format,Format,"Défilés de mode, art, culture","Fashion shows, art, culture"
+prixmode,2,Lieu,Venue,Campus Dauphine,Dauphine Campus
+prixmode,3,Public,Audience,"Étudiants, créateurs, jury pro","Students, designers, professional jury"
+dauphinend,1,Format,Format,Soirée de clôture,Closing party
+dauphinend,2,Période,Period,Fin d'année universitaire,End of the academic year

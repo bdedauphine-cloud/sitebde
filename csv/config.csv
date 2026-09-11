@@ -1,0 +1,37 @@
+﻿CHAMP,VALEUR,DESCRIPTION (impact sur le site)
+## Nom du champ (ne pas modifier),Valeur à modifier,Explication de l'impact sur le site
+siteName,BDE Dauphine,Affiché dans l'onglet du navigateur et le titre de chaque page
+university,Paris Dauphine-PSL,Nom de l'université affiché dans le footer
+year,2026,Année affichée dans le footer et le copyright
+seasonLabel,Saison 2025-2026,Libellé de saison affiché dans le footer (ex: Saison 2025-2026)
+email,bdedauphine@gmail.com,Email de contact affiché sur la page Contact
+phone,07 86 21 93 12,Téléphone affiché sur la page Contact
+phoneHref,0786219312,Téléphone sans espaces pour les liens cliquables (tel:+33...)
+address,"Université Paris Dauphine-PSL, Place du Maréchal de Lattre de Tassigny, 75016 Paris",Adresse affichée sur la page Contact
+logo,uploads/logo-1777708303205.png,Chemin du logo affiché dans le header et le footer
+footerDescription,Bureau des Étudiants de l'Université Paris Dauphine-PSL — Association loi 1901 à but non lucratif. La vie étudiante depuis 1979.,Texte de présentation affiché dans le footer en français
+footerDescriptionEn,Student Union of Paris Dauphine-PSL University — Non-profit association. Student life since 1979.,Texte de présentation affiché dans le footer en anglais
+instagramUrl,https://www.instagram.com/bdedauphine/,Lien Instagram BDE — bouton dans le footer et page Contact
+instagramLabel,Instagram @bdedauphine,Texte affiché pour le lien Instagram BDE
+nuitsInstagramUrl,https://www.instagram.com/lesnuitsdauphine/,Lien Instagram Nuits Dauphine — affiché sur la page Notre Label
+nuitsInstagramLabel,@lesnuitsdauphine,Texte affiché pour le lien Instagram Nuits
+tiktokUrl,https://www.tiktok.com/@bdedauphine,Lien TikTok — bouton dans le footer et page Contact
+facebookUrl,https://www.facebook.com/bdedauphine,Lien Facebook — bouton dans le footer et page Contact
+defaultTicketUrl,https://shotgun.live/fr/venues/nuits-dauphine,Lien billetterie générique utilisé si un événement n'a pas son propre lien
+defaultGooglePhotosUrl,https://photos.google.com/,Lien Google Photos générique utilisé si une galerie n'a pas son propre album
+copyrightText,© 2026 BDE Dauphine · Paris Dauphine-PSL · Association loi 1901,Texte copyright affiché en bas du footer
+ticket_eventName,How We Dau 2026,Nom de l'événement affiché dans le modal billetterie (popup bouton Billets)
+ticket_eventSub,Paris Dauphine-PSL · Prochainement,Sous-titre du modal billetterie en français
+ticket_eventSubEn,Paris Dauphine-PSL · Coming soon,Sous-titre du modal billetterie en anglais
+ticket_url,https://shotgun.live/fr/venues/nuits-dauphine,URL Shotgun ou autre billetterie — lien du bouton principal du modal
+ticket_buttonLabel,Réserver sur Shotgun,Texte du bouton billetterie en français (ex: Prendre ma place)
+ticket_buttonLabelEn,Book on Shotgun,Texte du bouton billetterie en anglais
+ticket_description,Billetterie officielle,Description affichée dans le modal billetterie en français
+ticket_descriptionEn,Official ticketing,Description affichée dans le modal billetterie en anglais
+ticket_note,,Note informative dans le modal billetterie en français (ex: tarif réduit)
+ticket_noteEn,,Note informative dans le modal billetterie en anglais
+affiche_active,OUI,OUI = l'affiche de l'événement à venir peut s'afficher / NON = fonctionnalité désactivée partout
+affiche_joursAvant,14,Nombre de jours avant l'événement où l'affiche commence à s'afficher (défaut : 14)
+affiche_frequence,session,session = une fois par visite / evenement = une fois par événement / toujours = à chaque page
+affiche_pages,toutes,toutes = sur toutes les pages / home = uniquement sur la page d'accueil
+affiche_delaiMs,700,Délai en millisecondes avant l'apparition de l'affiche (défaut : 700)
