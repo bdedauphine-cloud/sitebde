@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Favicons / icons -->
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#050608" name="theme-color"/>
+<title>Notre histoire — BDE Dauphine · Paris Dauphine-PSL depuis 1979</title>
+<meta content="46 ans d'histoire du BDE Dauphine — 5 pôles, 45 membres actifs, des événements légendaires. Découvrez l'association étudiante de Paris Dauphine-PSL." name="description"/>
+<meta content="index, follow" name="robots">
+<!-- Social preview -->
+<meta content="Notre histoire — BDE Dauphine · Paris Dauphine-PSL" property="og:title"/>
+<meta content="46 ans d'histoire du BDE Dauphine — 5 pôles, 45 membres actifs, des événements légendaires." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://bdedauphine.fr/about.html" property="og:url"/>
+<meta content="https://bdedauphine.fr/uploads/DSC04314-scaled.jpg" property="og:image"/>
+<meta content="BDE Dauphine" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Notre histoire — BDE Dauphine · Paris Dauphine-PSL" name="twitter:title"/>
+<meta content="46 ans d'histoire du BDE Dauphine — 5 pôles, 45 membres actifs, des événements légendaires." name="twitter:description"/>
+<meta content="https://bdedauphine.fr/uploads/DSC04314-scaled.jpg" name="twitter:image"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .page-hero { padding: 140px 0 80px; border-bottom: 1px solid var(--border); }
+    .page-hero-inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+
+    /* ── STRUCTURE INTRO ── */
+    #structure { padding: 100px 0; border-bottom: 1px solid var(--border); }
+    .structure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .structure-text p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+    .structure-text strong { color: var(--white); font-weight: 500; }
+    .structure-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+    .structure-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) saturate(0.9); }
+
+    /* ── CHIFFRES CLÉS ── */
+    #chiffres { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .chiffres-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-top: 48px; }
+    .chiffre-cell { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 28px; }
+    .chiffre-num { font-family: var(--font-title); font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+    .chiffre-label { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.4; }
+
+    /* ── BUREAU ── */
+    #bureau { padding: 100px 0; border-bottom: 1px solid var(--border); }
+    .bureau-roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-top: 48px; }
+    .bureau-role { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 28px; }
+    .bureau-role-title { font-family: var(--font-title); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .bureau-role-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── PÔLES ── */
+    #poles { padding: 100px 0; border-bottom: 1px solid var(--border); }
+    .pole-section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .pole-section:last-child { border-bottom: none; }
+    .pole-grid { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
+    .pole-sidebar {}
+    .pole-name { font-family: var(--font-title); font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .pole-members { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .pole-icon { width: 32px; height: 2px; background: var(--red); }
+    .pole-content {}
+    .pole-block { margin-bottom: 28px; }
+    .pole-block-title { font-family: var(--font-title); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .pole-block p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+
+    /* ── TIMELINE ── */
+    #timeline { padding: 100px 0; }
+    .timeline-items { margin-top: 48px; }
+    .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .timeline-year { font-family: var(--font-title); font-size: 16px; font-weight: 700; color: var(--red); }
+    .timeline-desc { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .page-hero-inner { flex-direction: column; align-items: flex-start; }
+      .structure-grid { grid-template-columns: 1fr; }
+      .chiffres-grid { grid-template-columns: 1fr 1fr; }
+      .bureau-roles { grid-template-columns: 1fr; }
+      .pole-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 80px 1fr; }
+    }
+  </style>
+</meta></head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-blob" id="cursorBlob"></div>
+<!-- =====================================================
+     NAVIGATION GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > navigation
+     Modifier les libellés et liens dans data/site.js.
+     Ne pas écrire les liens de menu directement ici.
+     ===================================================== --><nav data-render="nav" id="nav"></nav>
+<div class="page-hero">
+<div class="container">
+<div class="page-hero-inner">
+<div>
+<div class="label-sm reveal">Since 1979</div>
+<h1 class="title-xl reveal" data-en="Our Story" data-fr="Notre histoire" style="transition-delay:0.05s;">Notre histoire</h1>
+</div>
+<p class="body-lg reveal" data-en="46 years of student history, 5 teams, 45 active members — the BDE that brings Dauphine to life." data-fr="46 ans d'histoire associative, 5 pôles, 45 membres actifs — le BDE qui fait vivre Dauphine." style="max-width:380px;transition-delay:0.1s;">
+          46 ans d'histoire associative, 5 pôles, 45 membres actifs — le BDE qui fait vivre Dauphine.
+        </p>
+</div>
+</div>
+</div>
+<!-- STRUCTURE -->
+<section id="structure">
+<div class="container">
+<div class="structure-grid">
+<div class="reveal">
+<div class="label-sm" data-en="Our Structure" data-fr="Notre structure">Notre structure</div>
+<h2 class="title-lg" data-en="The Association" data-fr="L'association" style="margin-bottom:32px;">L'association</h2>
+<div class="structure-text">
+<p data-en="What sets our association apart is its &lt;strong&gt;continuity&lt;/strong&gt;. Each year, the association reviews applications from Dauphine students wishing to join the BDE. After deliberation, the association decides on candidates based on their motivation and commitment to the projects." data-fr="La particularité de notre association réside dans sa &lt;strong&gt;durabilité&lt;/strong&gt;. Chaque année, l'association étudie les demandes d'admission de dauphinois souhaitant intégrer le BDE. Après concertation, l'association statue sur l'acceptation des candidats, en fonction de leur motivation et de leur désir de s'investir pour les projets.">La particularité de notre association réside dans sa <strong>durabilité</strong>. Chaque année, l'association étudie les demandes d'admission de dauphinois souhaitant intégrer le BDE. Après concertation, l'association statue sur l'acceptation des candidats, en fonction de leur motivation et de leur désir de s'investir pour les projets.</p>
+<p data-en="The &lt;strong&gt;20 new recruits&lt;/strong&gt; become members and join one of the 5 specialist teams: Communication, Events, Partnership, WEI, and DAD (formerly JACES). They are trained within their respective teams to eventually take over from their predecessors." data-fr="Les &lt;strong&gt;20 nouvelles recrues&lt;/strong&gt; deviennent alors bédéistes et intègrent l'un des 5 pôles constitutifs de l'association : Communication, Soirée, Partenariat, WEI, et DAD (ex-JACES). Ils sont formés selon leurs pôles respectifs, pour assurer à terme les missions de leurs prédécesseurs.">Les <strong>20 nouvelles recrues</strong> deviennent alors bédéistes et intègrent l'un des 5 pôles constitutifs de l'association : Communication, Soirée, Partenariat, WEI, et DAD (ex-JACES). Ils sont formés selon leurs pôles respectifs, pour assurer à terme les missions de leurs prédécesseurs.</p>
+<p data-en="Despite this specialisation, all &lt;strong&gt;45 active members&lt;/strong&gt; contribute to every project year-round — communications, staffing, outreach, logistics." data-fr="Malgré cette spécialisation, les &lt;strong&gt;45 membres actifs&lt;/strong&gt; travaillent sur tous les projets, tout au long de l'année — communication, staff, prise de contact, logistique.">Malgré cette spécialisation, les <strong>45 membres actifs</strong> travaillent sur tous les projets, tout au long de l'année — communication, staff, prise de contact, logistique.</p>
+<p data-en="After 2 years of active membership, most members become &lt;strong&gt;honorary members&lt;/strong&gt; (alumni) and join our extensive intergenerational network. The others stand for election to join the Board, as President, Vice-President or Treasurer." data-fr="Après 2 ans d'activité, la plupart des membres deviennent &lt;strong&gt;membres d'honneur&lt;/strong&gt; (« anciens ») et viennent agrandir notre large réseau intergénérationnel. Les autres actifs se présentent aux élections pour intégrer le Bureau, aux postes de Président, Vice-Président ou Trésorier.">Après 2 ans d'activité, la plupart des membres deviennent <strong>membres d'honneur</strong> (« anciens ») et viennent agrandir notre large réseau intergénérationnel. Les autres actifs se présentent aux élections pour intégrer le Bureau, aux postes de Président, Vice-Président ou Trésorier.</p>
+</div>
+</div>
+<div class="reveal" style="transition-delay:0.2s;">
+<div class="structure-photo">
+<img alt="Équipe BDE Dauphine" src="uploads/DSC04314-scaled.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CHIFFRES -->
+<section id="chiffres">
+<div class="container">
+<div class="label-sm reveal" data-en="By the Numbers" data-fr="En quelques chiffres">En quelques chiffres</div>
+<h2 class="title-lg reveal" data-en="BDE Impact" data-fr="L'impact BDE" style="transition-delay:0.05s;">L'impact BDE</h2>
+<div class="chiffres-grid reveal" style="transition-delay:0.1s;">
+<div class="chiffre-cell"><div class="chiffre-num">1979</div><div class="chiffre-label" data-en="Founded" data-fr="Année de création">Année de création</div></div>
+<div class="chiffre-cell"><div class="chiffre-num">45</div><div class="chiffre-label" data-en="Active members" data-fr="Membres actifs">Membres actifs</div></div>
+<div class="chiffre-cell"><div class="chiffre-num">10k</div><div class="chiffre-label" data-en="Dauphine students" data-fr="Étudiants Dauphine">Étudiants Dauphine</div></div>
+<div class="chiffre-cell"><div class="chiffre-num">1500+</div><div class="chiffre-label" data-en="At Gala 2026" data-fr="Au Gala 2026">Au Gala 2026</div></div>
+<div class="chiffre-cell"><div class="chiffre-num">5</div><div class="chiffre-label" data-en="Specialist teams" data-fr="Pôles spécialisés">Pôles spécialisés</div></div>
+<div class="chiffre-cell"><div class="chiffre-num">700</div><div class="chiffre-label" data-en="WEI participants" data-fr="Participants WEI">Participants WEI</div></div>
+<div class="chiffre-cell"><div class="chiffre-num">30+</div><div class="chiffre-label" data-en="Nuit Dauphine editions" data-fr="Éditions Nuit Dauphine">Éditions Nuit Dauphine</div></div>
+<div class="chiffre-cell"><div class="chiffre-num">B013</div><div class="chiffre-label" data-en="Campus office" data-fr="Bureau campus">Bureau campus</div></div>
+</div>
+</div>
+</section>
+<!-- BUREAU -->
+<section id="bureau">
+<div class="container">
+<div class="reveal">
+<div class="label-sm" data-en="Governance" data-fr="Gouvernance">Gouvernance</div>
+<h2 class="title-lg" data-en="The Board" data-fr="Le Bureau">Le Bureau</h2>
+</div>
+<div class="bureau-roles reveal" style="transition-delay:0.1s;">
+<div class="bureau-role">
+<div class="bureau-role-title" data-en="President" data-fr="Président·e">Président·e</div>
+<div class="bureau-role-desc" data-en="Represents the association to the university, PSL administration and partners. Coordinates all activities and ensures the BDE's strategic vision." data-fr="Représente l'association auprès de l'université, de l'administration PSL et des partenaires. Coordonne l'ensemble des activités et garantit la vision stratégique du BDE.">Représente l'association auprès de l'université, de l'administration PSL et des partenaires. Coordonne l'ensemble des activités et garantit la vision stratégique du BDE.</div>
+</div>
+<div class="bureau-role">
+<div class="bureau-role-title" data-en="Vice-President" data-fr="Vice-Président·e">Vice-Président·e</div>
+<div class="bureau-role-desc" data-en="Supports the president in all duties. Oversees project operations and coordination between teams. Manages internal cohesion within the association." data-fr="Seconde le président dans toutes ses missions. Assure le suivi opérationnel des projets et la liaison entre les pôles. Gère la cohésion interne de l'association.">Seconde le président dans toutes ses missions. Assure le suivi opérationnel des projets et la liaison entre les pôles. Gère la cohésion interne de l'association.</div>
+</div>
+<div class="bureau-role">
+<div class="bureau-role-title" data-en="Treasurer" data-fr="Trésorier·e">Trésorier·e</div>
+<div class="bureau-role-desc" data-en="Responsible for the association's financial management. Oversees budgeting, accounting, banking relations and financial transparency." data-fr="Responsable de la gestion financière de l'association. Assure le suivi budgétaire, la comptabilité, les relations bancaires et la transparence des comptes.">Responsable de la gestion financière de l'association. Assure le suivi budgétaire, la comptabilité, les relations bancaires et la transparence des comptes.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PÔLES -->
+<section id="poles">
+<div class="container">
+<div class="reveal">
+<div class="label-sm" data-en="Internal Organisation" data-fr="Organisation interne">Organisation interne</div>
+<h2 class="title-lg" data-en="Our Teams" data-fr="Nos pôles" style="margin-bottom:16px;">Nos pôles</h2>
+<p class="body-lg" data-en="Each member joins one of 5 teams based on their skills and motivation. Find us in room B013." data-fr="Chaque bédéiste intègre l'un des 5 pôles selon ses compétences et sa motivation. Retrouve le BDE en B013." style="max-width:640px;">Chaque bédéiste intègre l'un des 5 pôles selon ses compétences et sa motivation. Retrouve le BDE en B013.</p>
+</div>
+<!-- Pôle Communication -->
+<div class="pole-section reveal">
+<div class="pole-grid">
+<div class="pole-sidebar">
+<div class="pole-icon"></div>
+<div class="pole-name">Communication</div>
+<div class="pole-members">5 membres / génération</div>
+</div>
+<div class="pole-content">
+<div class="pole-block">
+<div class="pole-block-title" data-en="Missions" data-fr="Missions">Missions</div>
+<p data-en="The Communication Team creates and distributes content to promote our events and partners' offers across all our channels and beyond. Posters, trailers, visual assets — the goal is to share all our news. It also coordinates internal communication tasks with strict plans for clear and precise organisation." data-fr="Le Pôle Communication crée et diffuse des contenus pour promouvoir nos événements et les offres de nos partenaires, sur l'ensemble de nos réseaux et au-delà. Création d'affiches, trailers, supports visuels — l'idée est de diffuser toute notre actualité. Il coordonne aussi la répartition interne des tâches de communication avec des plans stricts pour une organisation claire et précise.">Le Pôle Communication crée et diffuse des contenus pour promouvoir nos événements et les offres de nos partenaires, sur l'ensemble de nos réseaux et au-delà. Création d'affiches, trailers, supports visuels — l'idée est de diffuser toute notre actualité. Il coordonne aussi la répartition interne des tâches de communication avec des plans stricts pour une organisation claire et précise.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Contribution" data-fr="Contribution">Contribution</div>
+<p data-en="The team builds the association's public face: it works to maintain our image among the Dauphine community, generation after generation. It reinvents our event communications each year and supports all other teams in building their communication plans." data-fr="Le pôle érige la vitrine de l'association : il œuvre à la continuité de notre image auprès des dauphinois, génération après génération. Il réinvente chaque année la communication de nos événements et assiste tous les autres pôles dans le montage de leurs plans de communication.">Le pôle érige la vitrine de l'association : il œuvre à la continuité de notre image auprès des dauphinois, génération après génération. Il réinvente chaque année la communication de nos événements et assiste tous les autres pôles dans le montage de leurs plans de communication.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Required Skills" data-fr="Qualités requises">Qualités requises</div>
+<p data-en="Versatility, subtlety in visual creation, communication intelligence (posting at the right time on the right channel), and rigorous organisational skills for the success of our campaigns." data-fr="Polyvalence, subtilité dans la création visuelle, intelligence de la communication (poster au bon moment sur le bon réseau), et sens de l'organisation rigoureux pour la réussite de nos campagnes.">Polyvalence, subtilité dans la création visuelle, intelligence de la communication (poster au bon moment sur le bon réseau), et sens de l'organisation rigoureux pour la réussite de nos campagnes.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pôle Soirée -->
+<div class="pole-section reveal">
+<div class="pole-grid">
+<div class="pole-sidebar">
+<div class="pole-icon"></div>
+<div class="pole-name">Soirée</div>
+<div class="pole-members">2 membres / génération</div>
+</div>
+<div class="pole-content">
+<div class="pole-block">
+<div class="pole-block-title" data-en="Missions" data-fr="Missions">Missions</div>
+<p data-en="Since its founding, the BDE has been defined by exceptional events — PLK, SDM, SCH, Koba LaD, Gazo, Gims. The Events team manages every aspect of a party, from concept to execution: communications, artist relations, run of show, post-event. Formed by a pair, efficiency is maximised: thinking and communication flow more smoothly." data-fr="Depuis sa création, le BDE est marqué par l'organisation d'événements d'exception — PLK, SDM, SCH, Koba LaD, Gazo, Gims. Le pôle soirée gère tous les aspects d'une soirée, de sa conception à sa réalisation : communication, relation artiste, déroulé, post-événement. Constitué d'un binôme mixte, l'efficacité est optimisée : la réflexion et la communication y sont plus fluides.">Depuis sa création, le BDE est marqué par l'organisation d'événements d'exception — PLK, SDM, SCH, Koba LaD, Gazo, Gims. Le pôle soirée gère tous les aspects d'une soirée, de sa conception à sa réalisation : communication, relation artiste, déroulé, post-événement. Constitué d'un binôme mixte, l'efficacité est optimisée : la réflexion et la communication y sont plus fluides.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Contribution" data-fr="Contribution">Contribution</div>
+<p data-en="Acting as an intermediary between the Board and active members, the team guides other members on event logistics. It bridges concept and execution across all major events on the calendar." data-fr="Intermédiaire entre le bureau et les actifs, le pôle guide les autres membres pour la logistique événementielle. Il fait le lien entre conception et exécution sur tous les grands rendez-vous du calendrier.">Intermédiaire entre le bureau et les actifs, le pôle guide les autres membres pour la logistique événementielle. Il fait le lien entre conception et exécution sur tous les grands rendez-vous du calendrier.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Required Skills" data-fr="Qualités requises">Qualités requises</div>
+<p data-en="Teamwork, versatility, the ability to minimise the risk of unforeseen issues and to place participants' wellbeing at the centre of concerns for long-term loyalty." data-fr="Travail en équipe, polyvalence, capacité à minimiser les risques d'imprévus et à placer le bien-être des participants au centre des préoccupations pour fidéliser sur le long terme.">Travail en équipe, polyvalence, capacité à minimiser les risques d'imprévus et à placer le bien-être des participants au centre des préoccupations pour fidéliser sur le long terme.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pôle Partenariat -->
+<div class="pole-section reveal">
+<div class="pole-grid">
+<div class="pole-sidebar">
+<div class="pole-icon"></div>
+<div class="pole-name">Partenariat</div>
+<div class="pole-members">4 membres / génération</div>
+</div>
+<div class="pole-content">
+<div class="pole-block">
+<div class="pole-block-title" data-en="Missions" data-fr="Missions">Missions</div>
+<p data-en="The Partnership Team secures the funding needed for ambitious projects: company research by sector, outreach, meetings, tailored communication proposals and contract closing. The challenge is to adapt each campaign to each company in order to optimise every collaboration. The team also handles the association's clothing design." data-fr="Le Pôle Partenariat acquiert les fonds nécessaires aux projets ambitieux. Référencement d'entreprises par secteur, prise de contact, rendez-vous, proposition de communication adaptée, conclusion de contrat. L'enjeu : adapter les campagnes en fonction de l'entreprise pour optimiser chaque collaboration. Le pôle assure aussi le design des vêtements de l'association.">Le Pôle Partenariat acquiert les fonds nécessaires aux projets ambitieux. Référencement d'entreprises par secteur, prise de contact, rendez-vous, proposition de communication adaptée, conclusion de contrat. L'enjeu : adapter les campagnes en fonction de l'entreprise pour optimiser chaque collaboration. Le pôle assure aussi le design des vêtements de l'association.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Contribution" data-fr="Contribution">Contribution</div>
+<p data-en="Essential financial support. Our quality ambitions come at a cost: these funds are necessary to keep pushing further. Every partnership is sought with care to best support the BDE's work — equipment, visibility, resources." data-fr="Soutien financier indispensable. Notre ambition de qualité a un coût : ces fonds sont nécessaires pour aller toujours plus loin. Chaque partenariat est recherché avec minutie pour soutenir au mieux le travail du BDE — matériel, visibilité, ressources.">Soutien financier indispensable. Notre ambition de qualité a un coût : ces fonds sont nécessaires pour aller toujours plus loin. Chaque partenariat est recherché avec minutie pour soutenir au mieux le travail du BDE — matériel, visibilité, ressources.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Required Skills" data-fr="Qualités requises">Qualités requises</div>
+<p data-en="Knowledge of the Dauphine audience, interpersonal skills and rigour, listening and analytical abilities. First-year training is particularly intensive to ensure success in the senior year." data-fr="Connaissance du public dauphinois, relationnel et rigueur, capacités d'écoute et d'analyse. La formation en première année est particulièrement soutenue pour réussir en année de responsable.">Connaissance du public dauphinois, relationnel et rigueur, capacités d'écoute et d'analyse. La formation en première année est particulièrement soutenue pour réussir en année de responsable.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pôle WEI -->
+<div class="pole-section reveal">
+<div class="pole-grid">
+<div class="pole-sidebar">
+<div class="pole-icon"></div>
+<div class="pole-name">WEI</div>
+<div class="pole-members">5 membres / génération</div>
+</div>
+<div class="pole-content">
+<div class="pole-block">
+<div class="pole-block-title" data-en="Missions" data-fr="Missions">Missions</div>
+<p data-en="Organised by the BDE since its founding, the WEI brings together 600 to 700 students every year. The team handles every task: venue selection, contract negotiation, theme building, security planning, role assignment. Preparation begins 6 to 7 months before the event." data-fr="Organisé par le BDE depuis sa création, le WEI réunit 600 à 700 étudiants chaque année. Le pôle prend en charge l'ensemble des tâches : choix du lieu, négociation de contrat, construction du thème, quadrillage de la sécurité, répartition des rôles. La mise en place débute 6 à 7 mois avant l'événement.">Organisé par le BDE depuis sa création, le WEI réunit 600 à 700 étudiants chaque année. Le pôle prend en charge l'ensemble des tâches : choix du lieu, négociation de contrat, construction du thème, quadrillage de la sécurité, répartition des rôles. La mise en place débute 6 à 7 mois avant l'événement.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Contribution" data-fr="Contribution">Contribution</div>
+<p data-en="The heart of the Dauphine integration experience, the WEI is the first large-scale event. It is a challenge in terms of organisation, safety and creativity — an essential experience for future projects. Theme, communications and a brand-new experience to build every year." data-fr="Cœur de l'intégration dauphinoise, le WEI est le premier événement de grande envergure. C'est un défi en termes d'organisation, de sécurité et de créativité — une expérience indispensable pour la suite des projets. Thème, communication et expérience inédite à construire chaque année.">Cœur de l'intégration dauphinoise, le WEI est le premier événement de grande envergure. C'est un défi en termes d'organisation, de sécurité et de créativité — une expérience indispensable pour la suite des projets. Thème, communication et expérience inédite à construire chaque année.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Required Skills" data-fr="Qualités requises">Qualités requises</div>
+<p data-en="Responsibility (safety is the main challenge), adaptability to complex situations, creative thinking to propose quality new ideas, and a unifying spirit to bring together an entire year group." data-fr="Responsabilité (la sécurité est le principal challenge), adaptation aux situations compliquées, esprit créatif pour proposer de nouvelles idées qualitatives, et esprit fédérateur pour rassembler une promotion entière.">Responsabilité (la sécurité est le principal challenge), adaptation aux situations compliquées, esprit créatif pour proposer de nouvelles idées qualitatives, et esprit fédérateur pour rassembler une promotion entière.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pôle DAD -->
+<div class="pole-section reveal">
+<div class="pole-grid">
+<div class="pole-sidebar">
+<div class="pole-icon"></div>
+<div class="pole-name">DAD / Prix Mode</div>
+<div class="pole-members">4 membres / génération</div>
+</div>
+<div class="pole-content">
+<div class="pole-block">
+<div class="pole-block-title" data-en="Missions" data-fr="Missions">Missions</div>
+<p data-en="This team organises Prix Mode — a week-long festival on campus combining fashion shows, live art, contemporary art and cultural events. Co-organised with the BDA, each member specialises in a strand: runway, live art, contemporary art and concert. Preparation begins in September." data-fr="Ce pôle organise le Prix Mode — une semaine de festival sur le campus mêlant défilés de mode, art vivant, art contemporain et événements culturels. Organisé en collaboration avec le BDA, chaque actif est spécialisé selon le déroulé : défilé, art vivant, art contemporain et concert. La préparation commence dès septembre.">Ce pôle organise le Prix Mode — une semaine de festival sur le campus mêlant défilés de mode, art vivant, art contemporain et événements culturels. Organisé en collaboration avec le BDA, chaque actif est spécialisé selon le déroulé : défilé, art vivant, art contemporain et concert. La préparation commence dès septembre.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Contribution" data-fr="Contribution">Contribution</div>
+<p data-en="This team diversifies our projects with an artistic and cultural dimension. Its events take place on campus — lecture halls, courtyards, workspaces — and open the BDE to a different audience. It gives us visibility within Paris Sciences-Lettres and demonstrates our ability to organise varied events." data-fr="Ce pôle diversifie nos projets avec une dimension artistique et culturelle. Il se déroule au sein du campus — amphithéâtres, cour, espaces de travail — et ouvre le BDE à un public différent. Il nous donne une visibilité au sein de Paris Sciences-Lettres et montre notre capacité à organiser des événements variés.">Ce pôle diversifie nos projets avec une dimension artistique et culturelle. Il se déroule au sein du campus — amphithéâtres, cour, espaces de travail — et ouvre le BDE à un public différent. Il nous donne une visibilité au sein de Paris Sciences-Lettres et montre notre capacité à organiser des événements variés.</p>
+</div>
+<div class="pole-block">
+<div class="pole-block-title" data-en="Required Skills" data-fr="Qualités requises">Qualités requises</div>
+<p data-en="Patience and long-term perseverance, innovation within the constraints of campus space and time, and listening to other members to create a coherent week." data-fr="Patience et persévérance sur le long terme, capacité d'innovation dans le respect des contraintes d'espace et de temps du campus, et écoute des autres membres pour créer une semaine cohérente.">Patience et persévérance sur le long terme, capacité d'innovation dans le respect des contraintes d'espace et de temps du campus, et écoute des autres membres pour créer une semaine cohérente.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TIMELINE -->
+<section id="timeline">
+<div class="container">
+<div class="reveal">
+<div class="label-sm" data-en="Timeline" data-fr="Chronologie">Chronologie</div>
+<h2 class="title-lg" data-en="Our History" data-fr="Notre histoire">Notre histoire</h2>
+</div>
+<div class="timeline-items reveal" style="transition-delay:0.1s;">
+<div class="timeline-item"><div class="timeline-year">1979</div><div class="timeline-desc">Création du Bureau des Étudiants de l'Université Paris Dauphine.</div></div>
+<div class="timeline-item"><div class="timeline-year">Années 90</div><div class="timeline-desc">Naissance de la Nuit Dauphine — soirée électro-house dans les clubs parisiens. Artistes comme Emmanuel Jal, Martin Solveig, Birdy Nam Nam et Esposito marqueront les éditions.</div></div>
+<div class="timeline-item"><div class="timeline-year">2010</div><div class="timeline-desc">Lancement des Dauphine Art Days, festival artistique et culturel sur le campus. Défilés, expo, concerts.</div></div>
+<div class="timeline-item"><div class="timeline-year">~2020</div><div class="timeline-desc">Création de la How We Dau — soirée rap flagship. Premiers showcases : PLK, SDM.</div></div>
+<div class="timeline-item"><div class="timeline-year">2023</div><div class="timeline-desc">Showcases SCH et Laylow (How We Dau). La soirée flagship confirme son statut d'incontournable de la scène étudiante parisienne.</div></div>
+<div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-desc">How We Dau accueille Gims en showcase exclusif.</div></div>
+<div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-desc">Showcase Gazo (How We Dau), VANCO (Nuit Dauphine). Gala Dauphine au Chalet du Lac — 1 500 personnes, co-organisation PSL.</div></div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+     FOOTER GÉNÉRÉ AUTOMATIQUEMENT
+     Source : /data/site.js
+     Modifier email, téléphone, année, réseaux sociaux dans data/site.js.
+     ===================================================== --><footer data-render="footer"></footer>
+<!-- =====================================================
+     MODAL BILLETTERIE GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > ticket
+     Modifier le lien Shotgun dans data/site.js.
+     ===================================================== --><div class="modal-overlay" data-render="ticket-modal" id="ticketModal" onclick="closeModalOnBg(event)"></div>
+<!-- =====================================================
+     AFFICHE DE L'ÉVÉNEMENT À VENIR — contenu généré par js/render.js
+     Réglages : csv/config.csv (affiche_*) et csv/events.csv (colonnes AFFICHE *)
+     ===================================================== --><dialog class="affiche-dialog" data-render="affiche" id="afficheModal" aria-labelledby="afficheTitle"></dialog>
+
+<!-- =====================================================
+     DONNÉES + MOTEUR DE RENDU
+     Pour modifier les contenus, éditer les fichiers /data/*.js.
+     Les fichiers /js/*.js transforment ces données en HTML.
+     ===================================================== -->
+<script src="data/site.js"></script>
+<script src="data/sponsors.js"></script>
+<script src="data/events.js"></script>
+<script src="data/galleries.js"></script>
+<script src="data/artists.js"></script>
+<script src="data/pages.js"></script>
+<script src="data/legal.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+<script src="js/affiche.js"></script>
+<script>
+    const dot=document.getElementById('cursorDot'),blob=document.getElementById('cursorBlob');let mx=0,my=0,bx=0,by=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    function ab(){bx+=(mx-bx)*0.07;by+=(my-by)*0.07;blob.style.left=bx+'px';blob.style.top=by+'px';requestAnimationFrame(ab);}ab();
+    const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -32px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    function toggleNav(){const b=document.getElementById('navBurger'),l=document.getElementById('navLinks');b.classList.toggle('open');l.classList.toggle('open');document.body.style.overflow=l.classList.contains('open')?'hidden':'';}
+    document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('navBurger').classList.remove('open');document.body.style.overflow='';}));
+    const modal=document.getElementById('ticketModal');
+    function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.style.overflow='hidden';}
+    function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+    function closeModalOnBg(e){if(e.target===modal)closeModal();}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+    const LANG_KEY='bde-lang';
+    function applyLang(lang){document.documentElement.lang=lang;const b=document.getElementById('langToggle');if(b)b.textContent=lang==='en'?'FR':'EN';document.querySelectorAll('[data-fr]').forEach(el=>{el.innerHTML=lang==='en'?el.dataset.en:el.dataset.fr;});localStorage.setItem(LANG_KEY,lang);}
+    function toggleLang(){applyLang(document.documentElement.lang==='fr'?'en':'fr');}
+    (function(){const s=localStorage.getItem(LANG_KEY);if(s){applyLang(s);return;}if(!(navigator.language||'fr').toLowerCase().startsWith('fr'))applyLang('en');})();
+  </script>
+</body>
+</html>

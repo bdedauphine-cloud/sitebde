@@ -1,0 +1,66 @@
+# Cloudflare Pages reads this file at deploy time and attaches these
+# response headers to every request it serves. See:
+# https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Static site, no server, no database, no accounts — most classic
+# server-side attack surface doesn't apply here. What's locked down below
+# is the browser side: what an injected/compromised script could do, and
+# how the site can be framed/embedded by others.
+#
+# Content-Security-Policy, directive by directive:
+#   default-src 'self'      baseline: same-origin only, for anything not
+#                            covered by a more specific directive below.
+#   script-src 'self' 'unsafe-inline'
+#                            'unsafe-inline' is a real concession, not a
+#                            default left in by accident: this site's nav,
+#                            modal, mobile menu and photo lightboxes are
+#                            wired with onclick="..." attributes (see
+#                            js/components.js, js/render.js, and the
+#                            per-page inline <script> at the bottom of
+#                            every page) rather than addEventListener —
+#                            including dynamically-generated markup whose
+#                            onclick="openLightbox(N)" index changes every
+#                            time a gallery gets new photos (see
+#                            AI-INSTRUCTIONS.md Workflow D), which rules
+#                            out a static sha256 allow-list as anything
+#                            but a maintenance trap. Tightening this
+#                            further means refactoring every onclick="" to
+#                            addEventListener binding first — a real
+#                            follow-up task, not done here.
+#   style-src 'self' 'unsafe-inline'
+#                            every page carries its own inline <style>
+#                            block (page-specific rules) — CSS injection
+#                            is real but far lower severity than script
+#                            injection, so this stays allowed while
+#                            script-src stays as tight as the current
+#                            onclick-based architecture allows.
+#   img-src 'self'          every image is self-hosted under uploads/ —
+#                            no data: URIs are used anywhere on the site.
+#   font-src 'self'          fonts/ — self-hosted (see style.css), no
+#                            request to Google Fonts or any other origin.
+#   connect-src / form-action 'self' https://formsubmit.co
+#                            the contact form's only network call
+#                            (index.html, fetch() to FormSubmit's AJAX
+#                            endpoint) — form-action is its own directive,
+#                            separate from connect-src, kept as defense in
+#                            depth even though the form is intercepted by
+#                            JS before any native submit would fire.
+#   frame-ancestors 'none'  refuses to be framed anywhere, including by
+#                            itself — nothing on this site legitimately
+#                            needs to be iframed. Modern replacement for
+#                            X-Frame-Options, kept below too as a fallback.
+#   object-src 'none'       no Flash/plugin content, ever.
+#   base-uri 'self'         stops an injected <base> tag from silently
+#                            rewriting every relative link/script/asset.
+#   manifest-src 'self'     site.webmanifest, self-hosted.
+#   upgrade-insecure-requests  belt-and-braces on top of Cloudflare's own
+#                            automatic HTTPS.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; upgrade-insecure-requests

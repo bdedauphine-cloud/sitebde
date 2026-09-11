@@ -1,0 +1,1 @@
+# Aucune dépendance externe — le système CSV utilise uniquement des modules Python natifs (csv, json)

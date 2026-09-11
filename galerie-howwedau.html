@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Favicons / icons -->
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#050608" name="theme-color"/>
+<title>How We Dau — Galerie · BDE Dauphine</title>
+<meta content="index, follow" name="robots"/>
+<meta content="Galerie photo How We Dau — BDE Dauphine." name="description">
+<!-- Social preview -->
+<meta content="How We Dau — Galerie · BDE Dauphine" property="og:title"/>
+<meta content="Galerie photo How We Dau — BDE Dauphine." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://bdedauphine.fr/galerie-howwedau.html" property="og:url"/>
+<meta content="https://bdedauphine.fr/uploads/cap-145216.png" property="og:image"/>
+<meta content="BDE Dauphine" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="How We Dau — Galerie · BDE Dauphine" name="twitter:title"/>
+<meta content="Galerie photo How We Dau — BDE Dauphine." name="twitter:description"/>
+<meta content="https://bdedauphine.fr/uploads/cap-145216.png" name="twitter:image"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .page-hero { padding: 140px 0 80px; border-bottom: 1px solid var(--border); }
+    .page-hero-inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+
+    /* ── GALLERY ── */
+    #gallery { padding: 80px 0; }
+    .gallery-year-group { margin-bottom: 80px; }
+    .gallery-year-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .gallery-year-title { font-family: var(--font-title); font-size: clamp(28px, 4vw, 48px); font-weight: 900; letter-spacing: -0.03em; }
+    .gallery-year-caption { font-size: 14px; color: var(--muted); max-width: 400px; text-align: right; line-height: 1.5; }
+
+    .gallery-masonry { columns: 3; column-gap: 12px; }
+    .gallery-item { break-inside: avoid; margin-bottom: 12px; position: relative; overflow: hidden; cursor: none; }
+    .gallery-item img { width: 100%; display: block; filter: brightness(0.8) saturate(0.85); transition: filter 0.4s, transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .gallery-item:hover img { filter: brightness(0.95) saturate(1); transform: scale(1.02); }
+    .gallery-item-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px 16px; background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s; }
+    .gallery-item:hover .gallery-item-caption { opacity: 1; }
+    .gallery-item-caption p { font-size: 13px; color: var(--white); line-height: 1.4; }
+    .gallery-item-caption .caption-tag { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox { position: fixed; inset: 0; z-index: 600; background: rgba(8,8,8,0.95); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(16px); }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+    .lightbox-close { position: absolute; top: 32px; right: 32px; font-size: 24px; color: var(--muted); background: none; border: none; cursor: none; transition: color 0.2s; }
+    .lightbox-close:hover { color: var(--white); }
+    .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); font-size: 32px; color: var(--muted); background: none; border: none; cursor: none; transition: color 0.2s; padding: 16px; }
+    .lightbox-nav:hover { color: var(--white); }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+    .lightbox-caption { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); text-align: center; }
+    .lightbox-caption p { font-size: 14px; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .gallery-masonry { columns: 2; }
+      .page-hero-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 500px) {
+      .gallery-masonry { columns: 1; }
+    }
+  </style>
+</meta></head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-blob" id="cursorBlob"></div>
+<!-- =====================================================
+     NAVIGATION GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > navigation
+     Modifier les libellés et liens dans data/site.js.
+     Ne pas écrire les liens de menu directement ici.
+     ===================================================== --><nav data-render="nav" id="nav"></nav>
+<div class="page-hero">
+<div class="container">
+<div class="page-hero-inner">
+<div>
+<div class="label-sm reveal" data-en="Gallery" data-fr="Galerie">Galerie</div>
+<h1 class="title-xl reveal" style="transition-delay:0.05s;">How We Dau</h1>
+</div>
+<div class="reveal" style="transition-delay:0.1s;display:flex;flex-direction:column;align-items:flex-end;gap:16px;">
+<p class="body-lg" data-en="All editions — from the first PLK &amp; SDM showcases to Gazo in 2026." data-fr="Toutes les éditions — des premiers showcases PLK &amp; SDM jusqu'à Gazo en 2026." style="max-width:380px;text-align:right;">Toutes les éditions — des premiers showcases PLK &amp; SDM jusqu'à Gazo en 2026.</p>
+<button class="btn btn-red" data-en="Photos 2026 →" data-fr="Photos 2026 →" onclick="openPhotos()" style="cursor:none;">Photos 2026 →</button>
+</div>
+</div>
+</div>
+</div>
+<section id="gallery">
+<div class="container">
+<!-- ÉDITION 2026 -->
+<div class="gallery-year-group reveal">
+<div class="gallery-year-header">
+<div class="gallery-year-title">2026</div>
+<div class="gallery-year-caption" data-en="Gazo showcase · Incredible energy in the room." data-fr="Showcase Gazo · Énergie incroyable dans la salle.">Showcase Gazo · Énergie incroyable dans la salle.</div>
+</div>
+<!-- =====================================================
+     GRILLE PHOTOS AUTOMATIQUE
+     Source : /data/galleries.js
+     Ajouter/supprimer les images dans la galerie correspondant à cette page.
+     Les fichiers images doivent être placés dans /uploads/.
+     ===================================================== --><div class="gallery-masonry" data-gallery-slug="howwedau" data-render="gallery-masonry"></div>
+</div>
+<!-- ÉDITION 2025 -->
+<div class="gallery-year-group reveal">
+<div class="gallery-year-header">
+<div class="gallery-year-title">2025</div>
+<div class="gallery-year-caption" data-en="Gims showcase · The surprise of the year. No one saw it coming — an unforgettable night." data-fr="Showcase Gims · La surprise de l'année. Personne ne s'y attendait — une soirée inoubliable.">Showcase Gims · La surprise de l'année. Personne ne s'y attendait — une soirée inoubliable.</div>
+</div>
+<div class="gallery-masonry">
+<div class="gallery-item" onclick="openLightbox(4)">
+<img alt="Gims How We Dau 2025" src="uploads/cap-144920.png"/>
+<div class="gallery-item-caption"><div class="caption-tag">Showcase</div><p data-en="Gims — live performance" data-fr="Gims — performance live">Gims — performance live</p></div>
+</div>
+<div class="gallery-item" onclick="openLightbox(5)">
+<img alt="How We Dau 2025" src="uploads/DSC06115-scaled.jpg"/>
+<div class="gallery-item-caption"><div class="caption-tag" data-en="Atmosphere" data-fr="Ambiance">Ambiance</div><p data-en="The crowd in a trance" data-fr="Le public en transe">Le public en transe</p></div>
+</div>
+<div class="gallery-item" onclick="openLightbox(6)">
+<img alt="How We Dau 2025" src="uploads/DSC06186-scaled.jpg"/>
+<div class="gallery-item-caption"><div class="caption-tag">Staff</div><p data-en="The BDE team in control" data-fr="L'équipe BDE aux commandes">L'équipe BDE aux commandes</p></div>
+</div>
+</div>
+</div>
+<!-- ÉDITIONS PRÉCÉDENTES -->
+<div class="gallery-year-group reveal">
+<div class="gallery-year-header">
+<div class="gallery-year-title" data-en="Previous editions" data-fr="Éditions précédentes">Éditions précédentes</div>
+<div class="gallery-year-caption" data-en="SCH, Laylow, Djadja &amp; Dinaz, PLK, SDM, Koba LaD, Leto — stronger every year." data-fr="SCH, Laylow, Djadja &amp; Dinaz, PLK, SDM, Koba LaD, Leto — chaque année une montée en puissance.">SCH, Laylow, Djadja &amp; Dinaz, PLK, SDM, Koba LaD, Leto — chaque année une montée en puissance.</div>
+</div>
+<div class="gallery-masonry">
+<div class="gallery-item" onclick="openLightbox(7)">
+<img alt="SCH How We Dau" src="uploads/cap-145000.png"/>
+<div class="gallery-item-caption"><div class="caption-tag">SCH</div><p data-en="Explosive showcase" data-fr="Showcase explosif">Showcase explosif</p></div>
+</div>
+<div class="gallery-item" onclick="openLightbox(8)">
+<img alt="Laylow How We Dau" src="uploads/cap-145018.png"/>
+<div class="gallery-item-caption"><div class="caption-tag">Laylow</div><p data-en="Immersive atmosphere, unique staging" data-fr="Ambiance planante, mise en scène unique">Ambiance planante, mise en scène unique</p></div>
+</div>
+<div class="gallery-item" onclick="openLightbox(9)">
+<img alt="Djadja &amp; Dinaz" src="uploads/cap-145101.png"/>
+<div class="gallery-item-caption"><div class="caption-tag">Djadja &amp; Dinaz</div><p data-en="The duo that set the room on fire" data-fr="Le duo qui a enflammé la salle">Le duo qui a enflammé la salle</p></div>
+</div>
+<div class="gallery-item" onclick="openLightbox(10)">
+<img alt="PLK SDM" src="uploads/cap-145204.png"/>
+<div class="gallery-item-caption"><div class="caption-tag">PLK · SDM</div><p data-en="The first editions — the beginning of the legend" data-fr="Les premières éditions — le début de la légende">Les premières éditions — le début de la légende</p></div>
+</div>
+<div class="gallery-item" onclick="openLightbox(11)">
+<img alt="How We Dau previous" src="uploads/DSC05266-scaled.jpg"/>
+<div class="gallery-item-caption"><div class="caption-tag" data-en="Atmosphere" data-fr="Ambiance">Ambiance</div><p data-en="A packed room" data-fr="Une salle pleine à craquer">Une salle pleine à craquer</p></div>
+</div>
+<div class="gallery-item" onclick="openLightbox(12)">
+<img alt="How We Dau crowd" src="uploads/DSC05637-scaled.jpg"/>
+<div class="gallery-item-caption"><div class="caption-tag" data-en="Crowd" data-fr="Public">Public</div><p data-en="Dauphine fervour" data-fr="La ferveur Dauphine">La ferveur Dauphine</p></div>
+</div>
+</div>
+</div>
+<div style="text-align:center;padding:40px 0;">
+<a class="btn" data-en="← Back to event" data-fr="← Retour à l'événement" href="evenements.html#howwedau">← Retour à l'événement</a>
+</div>
+</div>
+</section>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
+<button class="lightbox-close" onclick="closeLightbox()">×</button>
+<button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+<img alt="" id="lightboxImg" src=""/>
+<button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+<div class="lightbox-caption"><p id="lightboxCaption"></p></div>
+</div>
+<!-- =====================================================
+     FOOTER GÉNÉRÉ AUTOMATIQUEMENT
+     Source : /data/site.js
+     Modifier email, téléphone, année, réseaux sociaux dans data/site.js.
+     ===================================================== --><footer data-render="footer"></footer>
+<!-- =====================================================
+     MODAL BILLETTERIE GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > ticket
+     Modifier le lien Shotgun dans data/site.js.
+     ===================================================== --><div class="modal-overlay" data-render="ticket-modal" id="ticketModal" onclick="closeModalOnBg(event)"></div>
+<!-- =====================================================
+     AFFICHE DE L'ÉVÉNEMENT À VENIR — contenu généré par js/render.js
+     Réglages : csv/config.csv (affiche_*) et csv/events.csv (colonnes AFFICHE *)
+     ===================================================== --><dialog class="affiche-dialog" data-render="affiche" id="afficheModal" aria-labelledby="afficheTitle"></dialog>
+<!-- PHOTOS MODAL -->
+<div class="modal-overlay" id="photosModal" onclick="closePhotosOnBg(event)">
+<div class="modal-box">
+<div class="modal-header">
+<div><div class="label-sm" data-en="Photo album" data-fr="Album photos" style="margin-bottom:8px;">Album photos</div><h3 style="font-family:var(--font-title);font-size:18px;font-weight:700;">How We Dau 2026</h3></div>
+<button class="modal-close" onclick="closePhotos()">×</button>
+</div>
+<div class="modal-body">
+<div class="modal-event-sub" data-en="Full album · Google Photos" data-fr="Album complet · Google Photos">Album complet · Google Photos</div>
+<div class="modal-cta-row" style="margin-top:16px;">
+<!-- Mettre à jour ce lien chaque année -->
+<a class="modal-shotgun-btn" href="https://photos.google.com/" target="_blank">
+<div class="modal-shotgun-left">
+<span class="modal-shotgun-name" data-en="2026 edition photos" data-fr="Photos édition 2026">Photos édition 2026</span>
+<span class="modal-shotgun-desc" data-en="Google Photos album — open access" data-fr="Album Google Photos — accès libre">Album Google Photos — accès libre</span>
+</div>
+<span class="modal-arrow">→</span>
+</a>
+</div>
+<p class="modal-note" data-en="Link updated every year. For previous editions, contact us." data-fr="Lien mis à jour chaque année. Pour les éditions précédentes, contactez-nous.">Lien mis à jour chaque année. Pour les éditions précédentes, contactez-nous.</p>
+</div>
+</div>
+</div>
+
+<!-- =====================================================
+     DONNÉES + MOTEUR DE RENDU
+     Pour modifier les contenus, éditer les fichiers /data/*.js.
+     Les fichiers /js/*.js transforment ces données en HTML.
+     ===================================================== -->
+<script src="data/site.js"></script>
+<script src="data/sponsors.js"></script>
+<script src="data/events.js"></script>
+<script src="data/galleries.js"></script>
+<script src="data/artists.js"></script>
+<script src="data/pages.js"></script>
+<script src="data/legal.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+<script src="js/affiche.js"></script>
+<script>
+    // Cursor
+    const dot=document.getElementById('cursorDot'),blob=document.getElementById('cursorBlob');let mx=0,my=0,bx=0,by=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    function ab(){bx+=(mx-bx)*0.07;by+=(my-by)*0.07;blob.style.left=bx+'px';blob.style.top=by+'px';requestAnimationFrame(ab);}ab();
+    const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    function toggleNav(){const b=document.getElementById('navBurger'),l=document.getElementById('navLinks');b.classList.toggle('open');l.classList.toggle('open');document.body.style.overflow=l.classList.contains('open')?'hidden':'';}
+    document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('navBurger').classList.remove('open');document.body.style.overflow='';}));
+    const modal=document.getElementById('ticketModal');
+    function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.style.overflow='hidden';}
+    function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+    function closeModalOnBg(e){if(e.target===modal)closeModal();}
+    const photosModal=document.getElementById('photosModal');
+    function openPhotos(){photosModal.classList.add('open');document.body.style.overflow='hidden';}
+    function closePhotos(){photosModal.classList.remove('open');document.body.style.overflow='';}
+    function closePhotosOnBg(e){if(e.target===photosModal)closePhotos();}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closePhotos();closeLightbox();}});
+
+    // Lightbox
+    const galleryImages = [];
+    const galleryCaptions = [];
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      galleryImages.push(item.querySelector('img').src);
+      const cap = item.querySelector('.gallery-item-caption p');
+      galleryCaptions.push(cap ? cap.textContent : '');
+    });
+    let currentLB = 0;
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCap = document.getElementById('lightboxCaption');
+
+    function openLightbox(i) {
+      currentLB = i;
+      lbImg.src = galleryImages[i];
+      lbCap.textContent = galleryCaptions[i];
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeLightboxBg(e) { if(e.target === lb) closeLightbox(); }
+    function navLightbox(dir) {
+      currentLB = (currentLB + dir + galleryImages.length) % galleryImages.length;
+      lbImg.src = galleryImages[currentLB];
+      lbCap.textContent = galleryCaptions[currentLB];
+    }
+    document.addEventListener('keydown', e => {
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'ArrowLeft') navLightbox(-1);
+      if(e.key === 'ArrowRight') navLightbox(1);
+    });
+    function getLang(){return localStorage.getItem('lang')||((navigator.language||'').startsWith('fr')?'fr':'en');}
+    function applyLang(l){document.querySelectorAll('[data-fr]').forEach(el=>{el.textContent=l==='fr'?el.dataset.fr:el.dataset.en;});const btn=document.getElementById('langToggle');if(btn)btn.textContent=l==='fr'?'EN':'FR';}
+    function toggleLang(){const l=getLang()==='fr'?'en':'fr';localStorage.setItem('lang',l);applyLang(l);}
+    applyLang(getLang());
+  </script>
+</body>
+</html>

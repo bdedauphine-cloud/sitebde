@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Favicons / icons -->
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#050608" name="theme-color"/>
+<title>Gala Dauphine — Galerie · BDE Dauphine</title>
+<meta content="index, follow" name="robots"/>
+<meta content="Les photos du Gala Dauphine — l'événement de prestige du BDE Paris Dauphine-PSL." name="description">
+<!-- Social preview -->
+<meta content="Gala Dauphine — Galerie · BDE Dauphine" property="og:title"/>
+<meta content="Les photos du Gala Dauphine — l'événement de prestige du BDE Paris Dauphine-PSL." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://bdedauphine.fr/galerie-gala.html" property="og:url"/>
+<meta content="https://bdedauphine.fr/uploads/gala-2026-259.jpg" property="og:image"/>
+<meta content="BDE Dauphine" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Gala Dauphine — Galerie · BDE Dauphine" name="twitter:title"/>
+<meta content="Les photos du Gala Dauphine — l'événement de prestige du BDE Paris Dauphine-PSL." name="twitter:description"/>
+<meta content="https://bdedauphine.fr/uploads/gala-2026-259.jpg" name="twitter:image"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .gallery-hero{position:relative;height:72vh;min-height:500px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}
+    .gallery-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform;}
+    .gallery-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(170deg,rgba(8,8,8,0.08) 0%,rgba(8,8,8,0.9) 100%);}
+    .gallery-hero-content{position:relative;z-index:2;padding:0 48px 60px;}
+    .gallery-hero-back{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-bottom:28px;transition:color 0.2s;cursor:none;}
+    .gallery-hero-back:hover{color:var(--white);}
+    .gallery-hero-tag{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+    .gallery-hero-title{font-family:var(--font-title);font-size:clamp(44px,8vw,104px);font-weight:900;letter-spacing:-0.04em;line-height:0.92;margin-bottom:20px;}
+    .gallery-hero-title .outline{-webkit-text-stroke:1px rgba(244,242,238,0.32);color:transparent;}
+    .gallery-hero-sub{font-size:16px;color:var(--muted);max-width:520px;line-height:1.65;}
+    #gallery{padding:80px 0;}
+    .gallery-year-group{margin-bottom:96px;}
+    .gallery-year-header{display:grid;grid-template-columns:auto 1fr;gap:40px 56px;align-items:end;margin-bottom:40px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .gallery-year-num{font-family:var(--font-title);font-size:clamp(60px,10vw,112px);font-weight:900;letter-spacing:-0.05em;line-height:1;-webkit-text-stroke:1px rgba(244,242,238,0.11);color:transparent;white-space:nowrap;}
+    .gallery-year-name{font-family:var(--font-title);font-size:clamp(18px,2.5vw,26px);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;}
+    .gallery-year-caption{font-size:15px;color:var(--muted);line-height:1.7;max-width:520px;}
+    .gallery-year-tag{display:inline-block;margin-bottom:8px;font-family:var(--font-title);font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--border);color:var(--muted);}
+    .gallery-year-tag.red{border-color:var(--red);color:var(--red);}
+    .gallery-masonry{columns:3;column-gap:10px;}
+    .gallery-item{break-inside:avoid;margin-bottom:10px;position:relative;overflow:hidden;cursor:none;}
+    .gallery-item img{width:100%;display:block;filter:brightness(0.82) saturate(0.86);transition:filter 0.5s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);}
+    .gallery-item:hover img{filter:brightness(1) saturate(1.05);transform:scale(1.04);}
+    .gallery-item-caption{position:absolute;bottom:0;left:0;right:0;padding:28px 18px 18px;background:linear-gradient(to top,rgba(8,8,8,0.92) 0%,transparent 100%);opacity:0;transition:opacity 0.35s;}
+    .gallery-item:hover .gallery-item-caption{opacity:1;}
+    .gallery-caption-tag{font-size:10px;color:var(--muted);letter-spacing:0.13em;text-transform:uppercase;margin-bottom:5px;}
+    .gallery-caption-text{font-size:13px;color:var(--white);line-height:1.4;}
+    .lightbox{position:fixed;inset:0;z-index:600;background:rgba(8,8,8,0.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+    .lightbox.open{opacity:1;pointer-events:all;}
+    .lightbox img{max-width:88vw;max-height:84vh;object-fit:contain;display:block;}
+    .lb-close{position:fixed;top:28px;right:32px;font-size:32px;color:var(--muted);background:none;border:none;cursor:none;transition:color 0.2s;z-index:10;line-height:1;}
+    .lb-close:hover{color:var(--white);}
+    .lb-nav{position:fixed;top:50%;transform:translateY(-50%);font-size:44px;color:var(--muted);background:none;border:none;cursor:none;transition:color 0.2s;padding:16px;z-index:10;}
+    .lb-nav:hover{color:var(--white);}
+    .lb-prev{left:16px;}.lb-next{right:16px;}
+    .lb-caption{position:fixed;bottom:28px;left:0;right:0;text-align:center;}
+    .lb-caption p{font-size:13px;color:var(--muted);letter-spacing:0.05em;}
+    .lb-counter{position:fixed;top:32px;left:32px;font-family:var(--font-title);font-size:12px;color:var(--muted);letter-spacing:0.1em;}
+    @media(max-width:900px){.gallery-masonry{columns:2;}.gallery-year-header{grid-template-columns:1fr;gap:16px;}.gallery-hero-content{padding:0 20px 40px;}}
+    @media(max-width:500px){.gallery-masonry{columns:1;}}
+  </style>
+</meta></head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-blob" id="cursorBlob"></div>
+<!-- =====================================================
+     NAVIGATION GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > navigation
+     Modifier les libellés et liens dans data/site.js.
+     Ne pas écrire les liens de menu directement ici.
+     ===================================================== --><nav data-render="nav" id="nav"></nav>
+<div class="gallery-hero">
+<div class="gallery-hero-bg" id="galleryHeroBg" style="background-image:url('uploads/gala-2026-259.jpg');background-position:center 40%;"></div>
+<div class="gallery-hero-content">
+<a class="gallery-hero-back" data-en="← Back to event" data-fr="← Retour à l'événement" href="evenements.html#gala">← Retour à l'événement</a>
+<div class="gallery-hero-tag reveal" data-en="Gallery · Event 05 · Chalet du Lac" data-fr="Galerie · Événement 05 · Chalet du Lac">Galerie · Événement 05 · Chalet du Lac</div>
+<h1 class="gallery-hero-title reveal" style="transition-delay:0.06s;">Gala<br/><span class="outline">Dauphine</span></h1>
+<p class="gallery-hero-sub reveal" data-en="The most prestigious event of the year — ceremony, ball and 1,500 guests at the Chalet du Lac." data-fr="L'événement de prestige de l'année — cérémonie, bal et 1 500 personnes au Chalet du Lac." style="transition-delay:0.12s;">L'événement de prestige de l'année — cérémonie, bal et 1 500 personnes au Chalet du Lac.</p>
+</div>
+</div>
+<section id="gallery">
+<div class="container">
+<div class="gallery-year-group reveal">
+<div class="gallery-year-header">
+<div class="gallery-year-num">2026</div>
+<div>
+<div class="gallery-year-tag red" data-en="2026 edition · 1,500+ guests" data-fr="Édition 2026 · 1 500+ invités">Édition 2026 · 1 500+ invités</div>
+<div class="gallery-year-name" data-en="Gala Dauphine 2026" data-fr="Gala Dauphine 2026">Gala Dauphine 2026</div>
+<p class="gallery-year-caption" data-en="The 2026 edition at Chalet du Lac brought together 1,500 guests in formal attire, a farewell ceremony for graduating M2 students attended by university staff and a ball spanning several rooms. Co-organised with Université Paris Dauphine-PSL." data-fr="L'édition 2026 au Chalet du Lac a réuni 1 500 personnes en tenue chic, une cérémonie d'adieu aux M2 en présence de l'administration et un bal dansant sur plusieurs salles. Co-organisé avec l'Université Paris Dauphine-PSL.">L'édition 2026 au Chalet du Lac a réuni 1 500 personnes en tenue chic, une cérémonie d'adieu aux M2 en présence de l'administration et un bal dansant sur plusieurs salles. Co-organisé avec l'Université Paris Dauphine-PSL.</p>
+</div>
+</div>
+<!-- =====================================================
+     GRILLE PHOTOS AUTOMATIQUE
+     Source : /data/galleries.js
+     Ajouter/supprimer les images dans la galerie correspondant à cette page.
+     Les fichiers images doivent être placés dans /uploads/.
+     ===================================================== --><div class="gallery-masonry" data-gallery-slug="gala" data-render="gallery-masonry"></div>
+</div>
+<div class="gallery-year-group reveal">
+<div class="gallery-year-header">
+<div class="gallery-year-num">—</div>
+<div>
+<div class="gallery-year-tag" data-en="Previous editions" data-fr="Éditions précédentes">Éditions précédentes</div>
+<div class="gallery-year-name" data-en="Every year, the same grandeur" data-fr="Chaque année, le même faste">Chaque année, le même faste</div>
+<p class="gallery-year-caption" data-en="The Gala Dauphine is a tradition full of emotion. Each edition marks the end of a year, a farewell for the M2 students leaving Dauphine — and a celebration for those who remain. The dress code, the lights, the music: a unique atmosphere that renews itself every year without ever repeating." data-fr="Le Gala Dauphine est une tradition chargée d'émotion. Chaque édition marque une fin d'année, un adieu pour les M2 qui quittent Dauphine — et une fête pour ceux qui restent. Le dress code, les lumières, la musique : une atmosphère unique qui se renouvelle chaque année sans se répéter.">Le Gala Dauphine est une tradition chargée d'émotion. Chaque édition marque une fin d'année, un adieu pour les M2 qui quittent Dauphine — et une fête pour ceux qui restent. Le dress code, les lumières, la musique : une atmosphère unique qui se renouvelle chaque année sans se répéter.</p>
+</div>
+</div>
+<div class="gallery-masonry">
+</div>
+</div>
+<div style="text-align:center;padding:60px 0 40px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+<a class="btn" data-en="← Back to event" data-fr="← Retour à l'événement" href="evenements.html#gala">← Retour à l'événement</a>
+<a class="btn" data-en="All events" data-fr="Tous les événements" href="evenements.html">Tous les événements</a>
+</div>
+</div>
+</section>
+<div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
+<div class="lb-counter" id="lbCounter"></div>
+<button class="lb-close" onclick="closeLightbox()">×</button>
+<button class="lb-nav lb-prev" onclick="navLightbox(-1)">‹</button>
+<img alt="" id="lbImg" src=""/>
+<button class="lb-nav lb-next" onclick="navLightbox(1)">›</button>
+<div class="lb-caption"><p id="lbCap"></p></div>
+</div>
+<!-- =====================================================
+     FOOTER GÉNÉRÉ AUTOMATIQUEMENT
+     Source : /data/site.js
+     Modifier email, téléphone, année, réseaux sociaux dans data/site.js.
+     ===================================================== --><footer data-render="footer"></footer>
+<!-- =====================================================
+     MODAL BILLETTERIE GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > ticket
+     Modifier le lien Shotgun dans data/site.js.
+     ===================================================== --><div class="modal-overlay" data-render="ticket-modal" id="ticketModal" onclick="closeModalOnBg(event)"></div>
+<!-- =====================================================
+     AFFICHE DE L'ÉVÉNEMENT À VENIR — contenu généré par js/render.js
+     Réglages : csv/config.csv (affiche_*) et csv/events.csv (colonnes AFFICHE *)
+     ===================================================== --><dialog class="affiche-dialog" data-render="affiche" id="afficheModal" aria-labelledby="afficheTitle"></dialog>
+
+<!-- =====================================================
+     DONNÉES + MOTEUR DE RENDU
+     Pour modifier les contenus, éditer les fichiers /data/*.js.
+     Les fichiers /js/*.js transforment ces données en HTML.
+     ===================================================== -->
+<script src="data/site.js"></script>
+<script src="data/sponsors.js"></script>
+<script src="data/events.js"></script>
+<script src="data/galleries.js"></script>
+<script src="data/artists.js"></script>
+<script src="data/pages.js"></script>
+<script src="data/legal.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+<script src="js/affiche.js"></script>
+<script>
+    const dot=document.getElementById('cursorDot'),blob=document.getElementById('cursorBlob');let mx=0,my=0,bx=0,by=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    function ab(){bx+=(mx-bx)*0.07;by+=(my-by)*0.07;blob.style.left=bx+'px';blob.style.top=by+'px';requestAnimationFrame(ab);}ab();
+    const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+    const heroBg=document.getElementById('galleryHeroBg');
+    window.addEventListener('scroll',()=>{if(window.scrollY<window.innerHeight*0.8)heroBg.style.transform=`translateY(${window.scrollY*0.22}px)`;},{passive:true});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -24px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    const modal=document.getElementById('ticketModal');
+    function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.style.overflow='hidden';}
+    function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+    function closeModalOnBg(e){if(e.target===modal)closeModal();}
+    const galleryImages=[];const galleryCaptions=[];
+    document.querySelectorAll('.gallery-item').forEach(item=>{galleryImages.push(item.querySelector('img').src);const cap=item.querySelector('.gallery-caption-text');galleryCaptions.push(cap?cap.textContent:'');});
+    let currentLB=0;const lb=document.getElementById('lightbox');const lbImg=document.getElementById('lbImg');const lbCap=document.getElementById('lbCap');const lbCounter=document.getElementById('lbCounter');
+    function openLightbox(i){currentLB=i;lbImg.src=galleryImages[i];lbCap.textContent=galleryCaptions[i];lbCounter.textContent=(i+1)+' / '+galleryImages.length;lb.classList.add('open');document.body.style.overflow='hidden';}
+    function closeLightbox(){lb.classList.remove('open');document.body.style.overflow='';}
+    function closeLightboxBg(e){if(e.target===lb)closeLightbox();}
+    function navLightbox(dir){currentLB=(currentLB+dir+galleryImages.length)%galleryImages.length;lbImg.src=galleryImages[currentLB];lbCap.textContent=galleryCaptions[currentLB];lbCounter.textContent=(currentLB+1)+' / '+galleryImages.length;}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeLightbox();}if(lb.classList.contains('open')&&e.key==='ArrowLeft')navLightbox(-1);if(lb.classList.contains('open')&&e.key==='ArrowRight')navLightbox(1);});
+    function toggleNav(){const b=document.getElementById('navBurger'),l=document.getElementById('navLinks');b.classList.toggle('open');l.classList.toggle('open');document.body.style.overflow=l.classList.contains('open')?'hidden':'';}
+    document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('navBurger').classList.remove('open');document.body.style.overflow='';}));
+    const LANG_KEY = 'bde-lang';
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      const btn = document.getElementById('langToggle');
+      if (btn) btn.textContent = lang === 'en' ? 'FR' : 'EN';
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.fr;
+      });
+      localStorage.setItem(LANG_KEY, lang);
+    }
+    function toggleLang() {
+      applyLang(document.documentElement.lang === 'fr' ? 'en' : 'fr');
+    }
+    (function() {
+      const saved = localStorage.getItem(LANG_KEY);
+      if (saved) { applyLang(saved); return; }
+      if (!(navigator.language || 'fr').toLowerCase().startsWith('fr')) applyLang('en');
+    })();
+  </script>
+</body>
+</html>

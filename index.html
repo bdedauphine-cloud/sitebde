@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Favicons / icons -->
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#050608" name="theme-color"/>
+<title>BDE Dauphine — Bureau des Étudiants · Paris Dauphine-PSL</title>
+<meta content="BDE Dauphine — le Bureau des Étudiants de l'Université Paris Dauphine-PSL. Événements, soirées, showcases rap et vie étudiante depuis 1979." name="description"/>
+<meta content="index, follow" name="robots">
+<link href="https://bdedauphine.fr/" rel="canonical"/>
+<!-- Social preview -->
+<meta content="BDE Dauphine — Paris Dauphine-PSL" property="og:title"/>
+<meta content="Événements, showcases exclusifs et vie étudiante à Paris Dauphine-PSL. Gala, How We Dau, WEI et plus." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://bdedauphine.fr/" property="og:url"/>
+<meta content="https://bdedauphine.fr/uploads/photos_now-1777708863357.jpg" property="og:image"/>
+<meta content="BDE Dauphine" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="BDE Dauphine — Paris Dauphine-PSL" name="twitter:title"/>
+<meta content="Événements, showcases exclusifs et vie étudiante à Paris Dauphine-PSL. Gala, How We Dau, WEI et plus." name="twitter:description"/>
+<meta content="https://bdedauphine.fr/uploads/photos_now-1777708863357.jpg" name="twitter:image"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    /* ── HERO ─────────────────────────────────────── */
+    #hero { height: 100vh; min-height: 640px; position: relative; display: grid; grid-template-rows: 1fr auto; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('uploads/photos_now-1777708863357.jpg'); background-size: cover; background-position: center 25%; will-change: transform; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(170deg, rgba(8,8,8,0.6) 0%, rgba(8,8,8,0.5) 45%, rgba(8,8,8,0.9) 100%); }
+    .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 48px 18px; max-width: 900px; }
+    .hero-since { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .hero-title { font-family: 'Unbounded', sans-serif; font-size: clamp(48px, 9vw, 128px); font-weight: 900; line-height: 0.92; letter-spacing: -0.04em; margin-bottom: 32px; }
+    .hero-title .outline { -webkit-text-stroke: 1px rgba(244,242,238,0.8); color: transparent; }
+    .hero-meta { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
+    .hero-desc { font-size: 15px; color: var(--muted); max-width: 360px; line-height: 1.65; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-scroll { position: relative; z-index: 2; padding: 20px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .hero-scroll-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .hero-scroll-stats { display: flex; gap: 40px; }
+    .hero-stat { text-align: right; }
+    .hero-stat-num { font-family: var(--font-title); font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+    .hero-stat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── ÉVÉNEMENTS GRID ──────────────────────────── */
+    #evenements { padding: 100px 0 0; }
+    .events-header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 48px; border-bottom: 1px solid var(--border); margin-bottom: 0; }
+    .event-row { display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(130px, auto) 200px 80px; align-items: center; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--border); cursor: none; text-decoration: none; color: var(--white); transition: background 0.2s; position: relative; }
+    .event-row:hover { background: rgba(244,242,238,0.02); }
+    .event-row:hover .event-row-num { color: var(--red); }
+    .event-row:hover .event-row-arrow { opacity: 1; transform: translateX(0); }
+    .event-row-num { font-family: var(--font-title); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--muted); transition: color 0.2s; }
+    .event-row-name { font-family: var(--font-title); font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; letter-spacing: -0.02em; }
+    .event-row-meta { font-size: 13px; color: var(--muted); }
+    .event-row-arrow { justify-self: end; font-size: 20px; color: var(--muted); opacity: 0; transform: translateX(-8px); transition: opacity 0.2s, transform 0.2s; }
+
+    /* ── HERO LOGO DROIT ─────────────────────────── */
+    /* Pour changer la taille du logo : modifier la valeur width dans .hero-logo-right img */
+    .hero-logo-right {
+      position: absolute;
+      right: 48px;
+      bottom: 152px; /* aligne approximativement avec la ligne "DAUPHINE" */
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.50;
+      filter: brightness(0) invert(1);
+    }
+    .hero-logo-right img {
+      width: 220px; /* ← MODIFIER ICI pour changer la taille du logo */
+      display: block;
+    }
+
+@media (max-width: 900px) {
+  .hero-logo-right {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.45;
+  }
+
+  .hero-logo-right img {
+    width: 150px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero-actions .btn {
+    padding: 12px 10px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+    /* ── SHOWCASES / ARTISTES ────────────────────── */
+    #showcases { padding: 100px 0 0; }
+    .artists-carousel { overflow: hidden; border-top: 1px solid var(--border); margin-top: 48px; }
+    .artists-carousel-track { display: flex; gap: 0; width: max-content; animation: marquee 50s linear infinite; }
+    .artists-carousel-track:hover { animation-play-state: paused; }
+    .artist-card { flex: 0 0 300px; height: 420px; position: relative; overflow: hidden; border-right: 1px solid var(--border); }
+    .artist-card-featured { flex: 0 0 440px; }
+    .artist-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5) saturate(0.75); transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.4s; }
+    .artist-card:hover img { transform: scale(1.05); filter: brightness(0.7) saturate(0.9); }
+    .artist-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,8,0.97) 0%, rgba(8,8,8,0.25) 45%, transparent 70%); }
+    .artist-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; }
+    .artist-card-year { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .artist-card-name { font-family: var(--font-title); font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; margin-bottom: 6px; }
+    .artist-card-event { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .artist-card-badge { display: inline-block; margin-top: 12px; font-family: var(--font-title); font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(244,242,238,0.45); color: var(--white); }
+    /* Artist text strip */
+    .artists-text-strip { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .artists-text-track { display: flex; align-items: center; animation: marquee 55s linear infinite; white-space: nowrap; }
+    .artist-text-item { font-family: var(--font-title); font-size: clamp(44px,7vw,84px); font-weight: 900; letter-spacing: -0.05em; color: transparent; -webkit-text-stroke: 1px rgba(244,242,238,0.16); padding: 0 48px; flex-shrink: 0; line-height: 1; }
+    .artist-text-sep { color: var(--red); opacity: 0.5; padding: 0 8px; font-size: clamp(24px,4vw,48px); flex-shrink: 0; }
+
+    /* ── GALERIE BANDE ────────────────────────────── */
+    #galerie-band { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .galerie-strip { display: flex; height: 360px; }
+    .galerie-strip-item { flex: 0 0 auto; overflow: hidden; position: relative; }
+    .galerie-strip-item img { height: 100%; width: auto; object-fit: cover; display: block; filter: brightness(0.75) saturate(0.85); transition: filter 0.3s; }
+    .galerie-strip-item:hover img { filter: brightness(0.9) saturate(1); }
+
+    /* ── HISTOIRE + IDENTITE ──────────────────────── */
+    #identite { padding: 100px 0; }
+    .identite-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .year-big { font-family: var(--font-title); font-size: clamp(80px, 12vw, 160px); font-weight: 900; line-height: 1; letter-spacing: -0.05em; -webkit-text-stroke: 1px rgba(244,242,238,0.8); color: transparent; margin-bottom: -20px; }
+    .identite-text { margin-top: 32px; }
+    .identite-text p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+    .identite-text strong { color: var(--white); font-weight: 500; }
+    .identite-right { padding-top: 40px; }
+    .identite-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative; }
+    .identite-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: brightness(0.8) saturate(0.9); }
+
+    /* ── NUITS LABEL ──────────────────────────────── */
+    #nuits { padding: 100px 0; background: #0d0d0d; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .nuits-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .nuits-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; height: 460px; }
+    .nuits-photo { overflow: hidden; }
+    .nuits-photo:first-child { grid-row: span 2; }
+    .nuits-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) saturate(0.8); transition: filter 0.4s; }
+    .nuits-photo:hover img { filter: brightness(0.85) saturate(0.95); }
+    .nuits-title { font-family: var(--font-title); font-size: clamp(36px, 5vw, 64px); font-weight: 900; line-height: 1; letter-spacing: -0.03em; margin-bottom: 24px; }
+    .nuits-title .line2 { -webkit-text-stroke: 1px rgba(244,242,238,0.3); color: transparent; }
+    .nuits-stats-row { display: flex; gap: 40px; margin: 32px 0; padding: 24px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .nuits-stat-num { font-family: var(--font-title); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: var(--white); }
+    .nuits-stat-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+
+    /* ── PARTENAIRES MINI ─────────────────────────── */
+    #partenaires { padding: 100px 0; }
+    .partners-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; }
+    .partners-scroll-section { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .partners-scroll-track { display: flex; animation: marquee 32s linear infinite; }
+    .partner-scroll-item { flex: 0 0 auto; display: flex; align-items: center; gap: 20px; padding: 22px 44px; border-right: 1px solid var(--border); text-decoration: none; color: var(--white); cursor: none; transition: background 0.2s; }
+    .partner-scroll-item:hover { background: rgba(244,242,238,0.03); }
+    .partner-scroll-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); flex-shrink: 0; opacity: 0.55; }
+    .partner-scroll-name { font-family: var(--font-title); font-size: 13px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+    .partner-scroll-type { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; white-space: nowrap; }
+    .partner-cta-row { margin-top: 48px; display: flex; align-items: center; justify-content: space-between; padding: 32px 40px; border: 1px solid var(--border); }
+    .partner-cta-text h3 { font-family: var(--font-title); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0px; }
+    .partner-cta-text p { font-size: 14px; color: var(--muted); }
+    .partner-cta-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 0px; }
+    .partner-cta-contact span { font-size: 13px; color: var(--muted); }
+    .partner-cta-contact strong { font-size: 14px; color: var(--white); }
+
+    /* ── CONTACT ──────────────────────────────────── */
+    #contact { padding: 100px 0; border-top: 1px solid var(--border); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-form { display: flex; flex-direction: column; gap: 0; }
+    .form-field { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+    .form-field label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); padding: 16px 0 6px; }
+    .form-field input, .form-field textarea, .form-field select { background: transparent; border: none; color: var(--white); font-family: var(--font-body); font-size: 15px; font-weight: 300; padding: 0 0 16px; outline: none; resize: none; cursor: none; -webkit-appearance: none; }
+    .form-field select option { background: #111; }
+    .form-field textarea { height: 80px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; }
+    .form-row-2 .form-field:first-child { border-right: 1px solid var(--border); padding-right: 24px; }
+    .form-row-2 .form-field:last-child { padding-left: 24px; }
+    .form-submit { margin-top: 28px; }
+
+    @media (max-width: 900px) {
+      .hero-content { padding: 0 20px 72px; }
+      .hero-scroll { padding: 16px 20px; }
+      .hero-scroll-stats { gap: 20px; }
+      .event-row { grid-template-columns: 48px 1fr; gap: 16px 20px; }
+      .event-row > .event-row-meta { grid-column: 2; }
+      .event-row-arrow { display: none; }
+      .artist-card { flex: 0 0 260px; height: 380px; }
+      .artist-card-featured { flex: 0 0 300px; }
+      .identite-grid, .nuits-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .identite-right { padding-top: 0; }
+      .partners-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .partner-cta-row { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .partner-cta-contact { align-items: flex-start; }
+      .galerie-strip { height: 220px; }
+      /* Events header "voir tout" */
+      .events-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+    @media (max-width: 768px) {
+      /* Artists carousel: touch-scrollable on mobile */
+      .artists-carousel { overflow-x: auto; overflow-y: hidden; height: 380px; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
+      .artists-carousel::-webkit-scrollbar { display: none; }
+      .artists-carousel-track { animation: none !important; }
+      .artist-card, .artist-card-featured { scroll-snap-align: start; }
+    }
+     
+    @media (max-width: 768px) {
+  .partners-scroll-section {
+    overflow: visible;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .partners-scroll-track {
+    animation: none !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .partner-scroll-item {
+    flex: none;
+    min-height: 96px;
+    padding: 18px 10px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .partner-scroll-item:nth-child(even) {
+    border-right: none;
+  }
+
+  .partner-scroll-name {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .partner-scroll-type {
+    font-size: 9px;
+  }
+
+  .partner-logo-box {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+  }
+
+  .partner-scroll-dot {
+    display: none;
+  }
+}
+/* ── LOGOS SPONSORS / PARTENAIRES ───────────────── */
+
+.sponsor-logo-ph,
+.partner-logo-box {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--border);
+  background: rgba(244,242,238,0.045);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.sponsor-logo-ph img,
+.partner-logo-box img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(1) brightness(1.45);
+  opacity: 0.78;
+  transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.sponsor-item:hover .sponsor-logo-ph img,
+.partner-scroll-item:hover .partner-logo-box img {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.partner-scroll-item {
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .sponsor-logo-ph,
+  .partner-logo-box {
+    width: 44px;
+    height: 44px;
+  }
+
+  .sponsor-logo-ph img,
+  .partner-logo-box img {
+    max-width: 70%;
+    max-height: 70%;
+    filter: grayscale(0) brightness(1);
+    opacity: 1;
+  }
+
+  .partner-scroll-item {
+    min-height: 108px;
+  }
+}
+
+  </style>
+</meta></head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-blob" id="cursorBlob"></div>
+<!-- NAV -->
+<!-- =====================================================
+     NAVIGATION GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > navigation
+     Modifier les libellés et liens dans data/site.js.
+     Ne pas écrire les liens de menu directement ici.
+     ===================================================== --><nav data-render="nav" id="nav"></nav>
+<!-- HERO -->
+<section id="hero">
+<div class="hero-bg" id="heroBg"></div>
+<div class="hero-content">
+<div class="hero-since reveal" data-en="Paris Dauphine-PSL · Student Union · Since 1979" data-fr="Paris Dauphine-PSL · Bureau des Étudiants · Depuis 1979">Paris Dauphine-PSL · Bureau des Étudiants · Depuis 1979</div>
+<h1 class="hero-title reveal" style="transition-delay:0.1s">
+        BDE<br/><span class="outline">DAUPHINE</span>
+</h1>
+<div class="hero-meta reveal" style="transition-delay:0.2s">
+<p class="hero-desc" data-en="Student life, events, parties. 10,000 students, one BDE." data-fr="La vie étudiante, les événements, les soirées. 10 000 étudiants, un seul BDE.">La vie étudiante, les événements, les soirées. 10 000 étudiants, un seul BDE.</p>
+<div class="hero-actions">
+<a class="btn" data-en="Our Events" data-fr="Nos événements" href="#evenements">Nos événements</a>
+<a class="btn" data-en="Our Story" data-fr="Notre histoire" href="about.html">Notre histoire</a>
+</div>
+</div>
+</div>
+<!-- Logo BDE droit — aligné avec "DAUPHINE" — taille modifiable dans .hero-logo-right img -->
+<div aria-hidden="true" class="hero-logo-right">
+<img alt="" src="uploads/logo-1777708303205.png"/>
+</div>
+<div class="hero-scroll reveal">
+<span class="hero-scroll-label">Scroll</span>
+<div class="hero-scroll-stats">
+<div class="hero-stat">
+<div class="hero-stat-num">46</div>
+<div class="hero-stat-label" data-en="years of history" data-fr="ans d'histoire">ans d'histoire</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">10k</div>
+<div class="hero-stat-label" data-en="students" data-fr="étudiants">étudiants</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">1500+</div>
+<div class="hero-stat-label" data-en="at Gala 2026" data-fr="au Gala 2026">au Gala 2026</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SPONSORS MARQUEE -->
+<!-- =====================================================
+     BANDEAU SPONSORS AUTOMATIQUE
+     Source : /data/sponsors.js
+     Ajouter/supprimer/réordonner les sponsors dans ce fichier.
+     ===================================================== --><div data-render="sponsors-marquee"></div>
+<!-- ÉVÉNEMENTS (ordre corrigé) -->
+<section class="page-section" id="evenements" style="padding-bottom:0;">
+<div class="container">
+<div class="events-header reveal">
+<div>
+<div class="label-sm" data-en="Our Projects" data-fr="Nos projets">Nos projets</div>
+<h2 class="title-xl" data-en="Events" data-fr="Événements">Événements</h2>
+</div>
+<a class="btn" data-en="See all →" data-fr="Voir tout →" href="evenements.html">Voir tout →</a>
+</div>
+<!-- =====================================================
+     LISTE ÉVÉNEMENTS ACCUEIL
+     Source : /data/events.js
+     showOnHome: true => affiché ici.
+     order définit la position.
+     ===================================================== --><div class="events-list" data-render="home-events"></div>
+</div>
+</section>
+<!-- ARTISTES (carousel horizontal) -->
+<section id="showcases">
+<div class="container">
+<div style="padding: 80px 0 0; display:flex; justify-content:space-between; align-items:flex-end;">
+<div>
+<div class="label-sm reveal">How We Dau × Les Nuits Dauphine</div>
+<h2 class="title-xl reveal" data-en="Artists" data-fr="Artistes" style="transition-delay:0.05s">Artistes</h2>
+</div>
+<p class="body-md reveal" data-en="Exclusive showcases at How We Dau and Les Nuits Dauphine — major French music scene artists for the Dauphine community." data-fr="Des showcases exclusifs au sein des How We Dau et des Nuits Dauphine — des artistes majeurs de la scène française pour la communauté Dauphine." style="max-width:340px;text-align:right;transition-delay:0.1s">
+          Des showcases exclusifs au sein des How We Dau et des Nuits Dauphine — des artistes majeurs de la scène française pour la communauté Dauphine.
+        </p>
+</div>
+</div>
+<div class="artists-carousel">
+<!-- =====================================================
+     CARROUSEL ARTISTES
+     Source : /data/artists.js
+     Modifier les artistes, images et années dans data/artists.js.
+     ===================================================== --><div class="artists-carousel-track" data-render="artists-carousel" id="artistsCarouselTrack"></div>
+</div>
+<div class="artists-text-strip">
+<div class="artists-text-track" data-render="artists-text-strip" id="artistsTextTrack"></div>
+</div>
+</section>
+<!-- GALERIE BANDE -->
+<div id="galerie-band">
+<!-- =====================================================
+     BANDE PHOTO AUTOMATIQUE
+     Source : /data/galleries.js
+     Les premières images actives des galeries sont affichées ici.
+     ===================================================== --><div class="galerie-strip" data-render="home-gallery-strip" id="galerieStrip"></div>
+</div>
+<!-- IDENTITÉ -->
+<section class="page-section" id="identite">
+<div class="container">
+<div class="identite-grid">
+<div class="identite-left reveal">
+<div class="label-sm" data-en="Student Union" data-fr="Bureau des Étudiants">Bureau des Étudiants</div>
+<div class="year-big">1979</div>
+<div class="identite-text">
+<p data-en="The BDE has shaped student life at Paris Dauphine-PSL University for &lt;strong&gt;over 46 years&lt;/strong&gt;." data-fr="Le BDE rythme depuis &lt;strong&gt;plus de 46 ans&lt;/strong&gt; la vie des étudiants de l'Université Paris Dauphine-PSL.">Le BDE rythme depuis <strong>plus de 46 ans</strong> la vie des étudiants de l'Université Paris Dauphine-PSL.</p>
+<p data-en="Our events serve the &lt;strong&gt;10,000 Dauphine students&lt;/strong&gt; on campus. The biggest ones are open to outside audiences — reaching a wide community of dynamic students, entrepreneurs and international profiles." data-fr="Nos événements s'adressent aux &lt;strong&gt;10 000 dauphinois&lt;/strong&gt; du campus. Les plus importants s'ouvrent à un public extérieur — atteignant une large communauté d'étudiants dynamiques, entrepreneurs, internationaux.">Nos événements s'adressent aux <strong>10 000 dauphinois</strong> du campus. Les plus importants s'ouvrent à un public extérieur — atteignant une large communauté d'étudiants dynamiques, entrepreneurs, internationaux.</p>
+<p data-en="&lt;strong&gt;45 active members&lt;/strong&gt; mobilised year-round. A serious, demanding association, proud of its history." data-fr="&lt;strong&gt;45 membres actifs&lt;/strong&gt; mobilisés toute l'année. Une association sérieuse, exigeante, et fière de son histoire."><strong>45 membres actifs</strong> mobilisés toute l'année. Une association sérieuse, exigeante, et fière de son histoire.</p>
+<div style="margin-top:32px; display:flex; gap:12px;">
+<a class="btn" data-en="Our Story →" data-fr="Notre histoire →" href="about.html">Notre histoire →</a>
+<a class="btn" data-en="Partners" data-fr="Partenaires" href="partenaires.html">Partenaires</a>
+</div>
+</div>
+</div>
+<div class="identite-right reveal" style="transition-delay:0.2s">
+<div class="identite-photo">
+<img alt="Gala Dauphine 2026" src="uploads/gala-2026-332.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- LABEL LES NUITS DAUPHINE -->
+<section id="nuits">
+<div class="container">
+<div class="nuits-layout">
+<div class="nuits-photos reveal">
+<div class="nuits-photo"><img alt="Les Nuits Dauphine" src="uploads/cap-145101.png"/></div>
+<div class="nuits-photo"><img alt="Les Nuits Dauphine" src="uploads/cap-145018.png"/></div>
+<div class="nuits-photo"><img alt="Les Nuits Dauphine" src="uploads/cap-145204.png"/></div>
+</div>
+<div class="reveal" style="transition-delay:0.2s">
+<div class="label-sm" data-en="Event Label" data-fr="Label événementiel">Label événementiel</div>
+<div class="nuits-title">Les Nuits<br/><span class="line2">Dauphine</span></div>
+<p class="body-lg" data-en="The BDE's music label. A demanding lineup, exceptional Parisian venues, the festive DNA of Dauphine." data-fr="Le label musical du BDE. Une programmation exigeante, des lieux d'exception parisiens, l'ADN festif de Dauphine.">Le label musical du BDE. Une programmation exigeante, des lieux d'exception parisiens, l'ADN festif de Dauphine.</p>
+<div class="nuits-stats-row">
+<div>
+<div class="nuits-stat-num">10k+</div>
+<div class="nuits-stat-label" data-en="Instagram followers" data-fr="abonnés Instagram">abonnés Instagram</div>
+</div>
+<div>
+<div class="nuits-stat-num">15+</div>
+<div class="nuits-stat-label" data-en="events / year" data-fr="soirées / an">soirées / an</div>
+</div>
+<div>
+<div class="nuits-stat-num">Paris</div>
+<div class="nuits-stat-label" data-en="premium venues" data-fr="venues premium">venues premium</div>
+</div>
+</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;">
+<a class="btn" data-en="Discover the label" data-fr="Découvrir le label" href="nuits.html">Découvrir le label</a>
+<a class="btn" href="https://www.instagram.com/lesnuitsdauphine/" target="_blank">Instagram →</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PARTENAIRES -->
+<section class="page-section" id="partenaires">
+<div class="container">
+<div class="partners-header reveal">
+<div>
+<div class="label-sm" data-en="They Trust Us" data-fr="Ils nous font confiance">Ils nous font confiance</div>
+<h2 class="title-xl" data-en="Partners" data-fr="Partenaires">Partenaires</h2>
+</div>
+<p class="body-md" data-en="10,000 engaged students. A young, active, influential audience." data-fr="10 000 étudiants engagés. Une audience jeune, active, prescriptrice." style="max-width:320px;text-align:right;">10 000 étudiants engagés. Une audience jeune, active, prescriptrice.</p>
+</div>
+<div class="partners-scroll-section">
+<!-- =====================================================
+     PARTENAIRES ACCUEIL
+     Source : /data/sponsors.js
+     active/order/category contrôlent l'affichage.
+     ===================================================== --><div class="partners-scroll-track" data-render="partners-scroll" id="partnersScrollTrack"></div>
+</div>
+<div class="partner-cta-row reveal">
+<div class="partner-cta-text">
+<h3 data-en="Become a Partner" data-fr="Devenir partenaire">Devenir partenaire</h3>
+<p data-en="Event visibility, social media, campus. Tailor-made formats." data-fr="Visibilité événements, réseaux sociaux, campus. Formats sur mesure.">Visibilité événements, réseaux sociaux, campus. Formats sur mesure.</p>
+</div>
+<div class="partner-cta-contact">
+<a class="btn btn-red" data-en="Partnership Deck →" data-fr="Dossier partenariat →" href="partenaires.html">Dossier partenariat →</a>
+<span>bdedauphine@gmail.com</span>
+<strong>07 86 21 93 12</strong>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<div class="contact-layout">
+<div class="reveal">
+<div class="label-sm" data-en="Get in Touch" data-fr="Nous écrire">Nous écrire</div>
+<h2 class="title-xl" style="margin-bottom:10px;">Contact</h2>
+<p class="body-lg" data-en="Partnerships, tickets, press, artist collaborations — our team responds quickly." data-fr="Partenariat, billet, presse, collaboration artiste — notre équipe répond vite." style="margin-bottom:32px;">Partenariat, billet, presse, collaboration artiste — notre équipe répond vite.</p>
+<div style="display:flex;flex-direction:column;gap:20px;">
+<div>
+<div class="label-sm" data-en="General email" data-fr="Email général" style="margin-bottom:2px;">Email général</div>
+<a href="mailto:bdedauphine@gmail.com" style="font-size:16px;text-decoration:none;cursor:none;">bdedauphine@gmail.com</a>
+</div>
+<div>
+<div class="label-sm" data-en="Phone" data-fr="Téléphone" style="margin-bottom:2px;">Téléphone</div>
+<a href="tel:0786219312" style="font-size:16px;text-decoration:none;cursor:none;">07 86 21 93 12</a>
+</div>
+<div>
+<div class="label-sm" style="margin-bottom:2px;">Instagram</div>
+<a href="https://www.instagram.com/bdedauphine/" style="font-size:16px;text-decoration:none;cursor:none;" target="_blank">@bdedauphine</a>
+</div>
+<div>
+<div class="label-sm" data-en="Address" data-fr="Adresse" style="margin-bottom:2px;">Adresse</div>
+<span style="font-size:15px;color:var(--muted);">Place du Maréchal de Lattre de Tassigny, 75116 Paris</span>
+</div>
+</div>
+</div>
+<form class="contact-form reveal" id="contactForm" style="transition-delay:0.15s;">
+<input name="_subject" type="hidden" value="Nouveau message — BDE Dauphine"/>
+<input name="_captcha" type="hidden" value="false"/>
+<div class="form-row-2">
+<div class="form-field"><label data-en="First name" data-fr="Prénom">Prénom</label><input name="prenom" placeholder="Marie" required="" type="text"/></div>
+<div class="form-field"><label data-en="Last name" data-fr="Nom">Nom</label><input name="nom" placeholder="Dupont" required="" type="text"/></div>
+</div>
+<div class="form-field"><label>Email</label><input name="email" placeholder="marie@example.com" required="" type="email"/></div>
+<div class="form-field">
+<label data-en="Subject" data-fr="Objet">Objet</label>
+<select name="objet" required="">
+<option data-en="Choose..." data-fr="Choisir..." disabled="" selected="" value="">Choisir...</option>
+<option data-en="Business partnership" data-fr="Partenariat commercial">Partenariat commercial</option>
+<option data-en="Artist collaboration" data-fr="Collaboration artiste">Collaboration artiste</option>
+<option data-en="Ticketing question" data-fr="Question billetterie">Question billetterie</option>
+<option data-en="Press / media" data-fr="Presse / média">Presse / média</option>
+<option data-en="Other" data-fr="Autre">Autre</option>
+</select>
+</div>
+<div class="form-field"><label data-en="Message" data-fr="Message">Message</label><textarea name="message" placeholder="Votre message..." required=""></textarea></div>
+<div class="form-submit"><button class="btn btn-red" data-en="Send →" data-fr="Envoyer →" id="formBtn" style="width:100%;cursor:none;" type="submit">Envoyer →</button></div>
+</form>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER GÉNÉRÉ AUTOMATIQUEMENT
+     Source : /data/site.js
+     Modifier email, téléphone, année, réseaux sociaux dans data/site.js.
+     ===================================================== --><footer data-render="footer"></footer>
+<!-- TICKET MODAL -->
+<!-- =====================================================
+     MODAL BILLETTERIE GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > ticket
+     Modifier le lien Shotgun dans data/site.js.
+     ===================================================== --><div class="modal-overlay" data-render="ticket-modal" id="ticketModal" onclick="closeModalOnBg(event)"></div>
+<!-- =====================================================
+     AFFICHE DE L'ÉVÉNEMENT À VENIR — contenu généré par js/render.js
+     Réglages : csv/config.csv (affiche_*) et csv/events.csv (colonnes AFFICHE *)
+     ===================================================== --><dialog class="affiche-dialog" data-render="affiche" id="afficheModal" aria-labelledby="afficheTitle"></dialog>
+
+<!-- =====================================================
+     DONNÉES + MOTEUR DE RENDU
+     Pour modifier les contenus, éditer les fichiers /data/*.js.
+     Les fichiers /js/*.js transforment ces données en HTML.
+     ===================================================== -->
+<script src="data/site.js"></script>
+<script src="data/sponsors.js"></script>
+<script src="data/events.js"></script>
+<script src="data/galleries.js"></script>
+<script src="data/artists.js"></script>
+<script src="data/pages.js"></script>
+<script src="data/legal.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+<script src="js/affiche.js"></script>
+<script>
+    // Cursor
+    const dot = document.getElementById('cursorDot');
+    const blob = document.getElementById('cursorBlob');
+    let mx = 0, my = 0, bx = 0, by = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+    function animateBlob() { bx += (mx - bx) * 0.07; by += (my - by) * 0.07; blob.style.left = bx + 'px'; blob.style.top = by + 'px'; requestAnimationFrame(animateBlob); }
+    animateBlob();
+
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+    // Parallax hero
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => { if (window.scrollY < window.innerHeight) heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`; }, { passive: true });
+
+    // Reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Gallery strip auto-scroll
+    const strip = document.getElementById('galerieStrip');
+    let stripPos = 0;
+    strip.innerHTML += strip.innerHTML;
+    function scrollStrip() { stripPos += 0.6; const max = strip.scrollWidth / 2; if (stripPos >= max) stripPos = 0; strip.style.transform = `translateX(-${stripPos}px)`; requestAnimationFrame(scrollStrip); }
+    scrollStrip();
+
+    // Sponsors marquee — duplicate for infinite loop
+    const sTrack = document.getElementById('sponsorsTrack');
+    sTrack.innerHTML += sTrack.innerHTML;
+
+    // Partners marquee — duplicate only on desktop
+    const pTrack = document.getElementById('partnersScrollTrack');
+    if (pTrack && window.innerWidth > 768) pTrack.innerHTML += pTrack.innerHTML;
+
+    // Artists text strip — duplicate for infinite loop
+    const aTrack = document.getElementById('artistsTextTrack');
+    if (aTrack) aTrack.innerHTML += aTrack.innerHTML;
+
+    // Artists carousel — duplicate only on desktop (mobile uses touch scroll)
+    const cTrack = document.getElementById('artistsCarouselTrack');
+    if (cTrack && window.innerWidth > 768) cTrack.innerHTML += cTrack.innerHTML;
+
+    // Hamburger nav toggle
+    function toggleNav() {
+      const b = document.getElementById('navBurger');
+      const l = document.getElementById('navLinks');
+      b.classList.toggle('open');
+      l.classList.toggle('open');
+      document.body.style.overflow = l.classList.contains('open') ? 'hidden' : '';
+    }
+    document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('navBurger').classList.remove('open');
+      document.body.style.overflow = '';
+    }));
+
+    // Modal
+    const modal = document.getElementById('ticketModal');
+    function openModal(e) { if(e) e.preventDefault(); modal.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeModal() { modal.classList.remove('open'); document.body.style.overflow=''; }
+    function closeModalOnBg(e) { if(e.target===modal) closeModal(); }
+    document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+    // Form — envoi réel via FormSubmit AJAX
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('formBtn');
+      const form = e.target;
+      const isEn = document.documentElement.lang === 'en';
+      btn.textContent = isEn ? 'Sending…' : 'Envoi en cours…';
+      btn.disabled = true;
+      try {
+        const resp = await fetch('https://formsubmit.co/ajax/bdedauphine@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (resp.ok) {
+          btn.textContent = isEn ? 'Sent ✓' : 'Message envoyé ✓';
+          btn.style.background = '#1a7a3c'; btn.style.borderColor = '#1a7a3c';
+          form.reset();
+          setTimeout(() => {
+            btn.textContent = isEn ? 'Send →' : 'Envoyer →';
+            btn.style.background = ''; btn.style.borderColor = ''; btn.disabled = false;
+          }, 4000);
+        } else { throw new Error(); }
+      } catch {
+        btn.textContent = isEn ? 'Error — try again' : 'Erreur — réessayez';
+        btn.style.background = '#6b0f1a'; btn.style.borderColor = '#6b0f1a'; btn.disabled = false;
+        setTimeout(() => { btn.textContent = isEn ? 'Send →' : 'Envoyer →'; btn.style.background = ''; btn.style.borderColor = ''; }, 3500);
+      }
+    });
+
+    // Langue FR / EN
+    const LANG_KEY = 'bde-lang';
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      const btn = document.getElementById('langToggle');
+      if (btn) btn.textContent = lang === 'en' ? 'FR' : 'EN';
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.fr;
+      });
+      localStorage.setItem(LANG_KEY, lang);
+    }
+    function toggleLang() {
+      const current = document.documentElement.lang || 'fr';
+      applyLang(current === 'fr' ? 'en' : 'fr');
+    }
+    // Auto-detect on first visit
+    (function() {
+      const saved = localStorage.getItem(LANG_KEY);
+      if (saved) { applyLang(saved); return; }
+      const browserLang = (navigator.language || 'fr').toLowerCase();
+      if (!browserLang.startsWith('fr')) applyLang('en');
+    })();
+  </script>
+</body>
+</html>

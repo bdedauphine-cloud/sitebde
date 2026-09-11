@@ -1,0 +1,242 @@
+<!DOCTYPE html> 
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Favicons / icons -->
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#050608" name="theme-color"/>
+<title>Partenaires — BDE Dauphine · Paris Dauphine-PSL</title>
+<meta content="Devenez partenaire du BDE Dauphine — 10 000 étudiants de Paris Dauphine-PSL, une audience jeune et internationale. Dossier partenariat disponible." name="description"/>
+<meta content="index, follow" name="robots">
+<!-- Social preview -->
+<meta content="Partenaires — BDE Dauphine · Paris Dauphine-PSL" property="og:title"/>
+<meta content="Devenez partenaire du BDE Dauphine — 10 000 étudiants de Paris Dauphine-PSL, une audience jeune et internationale." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://bdedauphine.fr/partenaires.html" property="og:url"/>
+<meta content="https://bdedauphine.fr/uploads/photos_now-1777708863357.jpg" property="og:image"/>
+<meta content="BDE Dauphine" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Partenaires — BDE Dauphine · Paris Dauphine-PSL" name="twitter:title"/>
+<meta content="Devenez partenaire du BDE Dauphine — 10 000 étudiants de Paris Dauphine-PSL, une audience jeune et internationale." name="twitter:description"/>
+<meta content="https://bdedauphine.fr/uploads/photos_now-1777708863357.jpg" name="twitter:image"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .page-hero { padding: 140px 0 80px; border-bottom: 1px solid var(--border); }
+    .page-hero-inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+
+    /* ── AUDIENCE (wider cells) ── */
+    #audience { padding: 100px 0; border-bottom: 1px solid var(--border); }
+    .audience-numbers { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-top: 56px; }
+    .audience-cell { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 44px 48px; min-width: 180px; }
+    .audience-num { font-family: var(--font-title); font-size: clamp(32px, 4.5vw, 52px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 10px; white-space: nowrap; }
+    .audience-label { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4; }
+
+    /* ── SPONSORS WITH LOGOS ── */
+    #sponsors { padding: 100px 0; border-bottom: 1px solid var(--border); }
+    .sponsors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-top: 56px; }
+    .sponsor-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 40px 28px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-decoration: none; color: var(--white); cursor: none; transition: background 0.2s; text-align: center; }
+    .sponsor-card:hover { background: rgba(244,242,238,0.03); }
+    .sponsor-card-logo { width: 120px; height: 120px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--font-title); font-size: 28px; font-weight: 700; color: var(--muted); background: rgba(244,242,238,0.02); overflow: hidden; flex-shrink: 0; }
+    .sponsor-card-logo img { max-width: 90%; max-height: 90%; object-fit: contain; display: block; filter: grayscale(1) brightness(1.45); opacity: 0.78; transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease; }
+    .sponsor-card:hover .sponsor-card-logo img { filter: grayscale(0) brightness(1); opacity: 1; transform: scale(1.05); }
+    .sponsor-card-name { font-family: var(--font-title); font-size: 15px; font-weight: 700; letter-spacing: 0.01em; }
+    .sponsor-card-type { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    .sponsor-card-link { font-size: 12px; color: var(--red); margin-top: 4px; transition: opacity 0.2s; }
+    .sponsor-card:hover .sponsor-card-link { opacity: 0.7; }
+
+    /* ── FORMATS ── */
+    #formats { padding: 100px 0; border-bottom: 1px solid var(--border); }
+    .formats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-top: 56px; }
+    .format-cell { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 28px; }
+    .format-icon { width: 32px; height: 2px; background: var(--red); margin-bottom: 20px; }
+    .format-title { font-family: var(--font-title); font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .format-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── CTA ── */
+    #cta-partner { padding: 100px 0; }
+    .cta-partner-inner { border: 1px solid var(--border); padding: 64px; display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; }
+    .cta-partner-inner h2 { font-family: var(--font-title); font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 16px; line-height: 1.1; }
+    .cta-partner-inner p { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 520px; }
+    .cta-partner-contacts { display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+    .cta-contact-item { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+    .cta-contact-item span { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+    .cta-contact-item a, .cta-contact-item strong { font-size: 15px; color: var(--white); text-decoration: none; cursor: none; font-weight: 400; transition: color 0.2s; }
+    .cta-contact-item a:hover { color: var(--muted); }
+
+    
+@media (max-width: 900px) {
+  .page-hero-inner { flex-direction: column; align-items: flex-start; }
+  .dauphine-intro-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .audience-numbers { grid-template-columns: 1fr 1fr; }
+  .sponsors-grid { grid-template-columns: 1fr 1fr; }
+  .formats-grid { grid-template-columns: 1fr; }
+  .cta-partner-inner { grid-template-columns: 1fr; padding: 32px; }
+  .cta-partner-contacts { align-items: flex-start; }
+  .cta-contact-item { align-items: flex-start; }
+
+  .sponsor-card-logo img {
+    filter: grayscale(0) brightness(1);
+    opacity: 1;
+  }
+}
+
+  </style>
+</meta></head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-blob" id="cursorBlob"></div>
+<!-- =====================================================
+     NAVIGATION GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > navigation
+     Modifier les libellés et liens dans data/site.js.
+     Ne pas écrire les liens de menu directement ici.
+     ===================================================== --><nav data-render="nav" id="nav"></nav>
+<div class="page-hero">
+<div class="container">
+<div class="page-hero-inner">
+<div>
+<div class="label-sm reveal" data-en="Partnership" data-fr="Collaboration">Collaboration</div>
+<h1 class="title-xl reveal" data-en="Partners" data-fr="Partenaires" style="transition-delay:0.05s;">Partenaires</h1>
+</div>
+<p class="body-lg reveal" data-en="10,000 Dauphine students. A young, dynamic, international audience. A partnership with the BDE means a direct presence in their daily lives." data-fr="10&amp;nbsp;000 étudiants Dauphine. Une audience jeune, dynamique, internationale. Un partenariat avec le BDE, c'est une présence directe dans leur quotidien." style="max-width:380px; transition-delay:0.1s;">
+          10 000 étudiants Dauphine. Une audience jeune, dynamique, internationale. Un partenariat avec le BDE, c'est une présence directe dans leur quotidien.
+        </p>
+</div>
+</div>
+</div>
+<!-- AUDIENCE (wider cells) -->
+<section id="audience">
+<div class="container">
+<div class="reveal">
+<div class="label-sm" data-en="Our Audience" data-fr="Notre audience">Notre audience</div>
+<h2 class="title-lg" data-en="The Numbers That Matter" data-fr="Les chiffres qui comptent">Les chiffres qui comptent</h2>
+<div class="dauphine-intro-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:32px;margin-bottom:0;">
+<p class="body-md" data-en="&lt;strong style='color:var(--white);'&gt;Paris Dauphine-PSL&lt;/strong&gt; is one of France's largest management and economics universities. A member of &lt;strong style='color:var(--white);'&gt;PSL (Paris Sciences &amp;amp; Lettres)&lt;/strong&gt; — ranked in the global top 30 (QS Rankings) — Dauphine welcomes nearly &lt;strong style='color:var(--white);'&gt;10,000 students&lt;/strong&gt;, with a large proportion of international students, in excellence programs in economics, finance, law, applied mathematics and social sciences." data-fr="&lt;strong style='color:var(--white);'&gt;Paris Dauphine-PSL&lt;/strong&gt; est l'une des plus grandes universités de gestion et d'économie de France. Membre de &lt;strong style='color:var(--white);'&gt;PSL (Paris Sciences &amp;amp; Lettres)&lt;/strong&gt; — classée dans le top 30 mondial (QS Rankings) — Dauphine accueille près de &lt;strong style='color:var(--white);'&gt;10 000 étudiants&lt;/strong&gt; dont une forte proportion d'internationaux, dans des formations d'excellence en économie, finance, droit, mathématiques appliquées et sciences sociales." style="line-height:1.75;">
+<strong style="color:var(--white);">Paris Dauphine-PSL</strong> est l'une des plus grandes universités de gestion et d'économie de France. Membre de <strong style="color:var(--white);">PSL (Paris Sciences &amp; Lettres)</strong> — classée dans le top 30 mondial (QS Rankings) — Dauphine accueille près de <strong style="color:var(--white);">10 000 étudiants</strong> dont une forte proportion d'internationaux, dans des formations d'excellence en économie, finance, droit, mathématiques appliquées et sciences sociales.
+          </p>
+<p class="body-md" data-en="The Dauphine audience is highly sought after: ambitious students, future executives and entrepreneurs, brand-conscious and internationally mobile, with strong word-of-mouth influence. A partnership with BDE Dauphine means privileged access to this community through events, social media and official communications throughout the year." data-fr="L'audience Dauphine est particulièrement prisée : étudiants ambitieux, futurs cadres et entrepreneurs, sensibles aux marques, mobilité internationale, fort pouvoir prescripteur. Un partenariat avec le BDE Dauphine, c'est un accès privilégié à cette communauté via les événements, les réseaux sociaux et les communications officielles tout au long de l'année." style="line-height:1.75;">
+            L'audience Dauphine est particulièrement prisée : étudiants ambitieux, futurs cadres et entrepreneurs, sensibles aux marques, mobilité internationale, fort pouvoir prescripteur. Un partenariat avec le BDE Dauphine, c'est un accès privilégié à cette communauté via les événements, les réseaux sociaux et les communications officielles tout au long de l'année.
+          </p>
+</div>
+</div>
+<div class="audience-numbers reveal" style="transition-delay:0.1s;margin-top:40px;">
+<div class="audience-cell"><div class="audience-num">10 000</div><div class="audience-label" data-en="Dauphine Students" data-fr="Étudiants Dauphine">Étudiants Dauphine</div></div>
+<div class="audience-cell"><div class="audience-num">1 500+</div><div class="audience-label" data-en="At the 2025 Gala" data-fr="Au Gala 2025">Au Gala 2025</div></div>
+<div class="audience-cell"><div class="audience-num">10k+</div><div class="audience-label" data-en="Instagram Followers" data-fr="Abonnés Instagram">Abonnés Instagram</div></div>
+<div class="audience-cell"><div class="audience-num">700</div><div class="audience-label" data-en="WEI Attendees" data-fr="Participants WEI">Participants WEI</div></div>
+<div class="audience-cell"><div class="audience-num">15+</div><div class="audience-label" data-en="Events per year" data-fr="Soirées par an">Soirées par an</div></div>
+<div class="audience-cell"><div class="audience-num">46</div><div class="audience-label" data-en="Years of history" data-fr="Ans d'histoire">Ans d'histoire</div></div>
+<div class="audience-cell"><div class="audience-num">45</div><div class="audience-label" data-en="Active members" data-fr="Membres actifs">Membres actifs</div></div>
+<div class="audience-cell"><div class="audience-num">PSL</div><div class="audience-label" data-en="University network" data-fr="Réseau universitaire">Réseau universitaire</div></div>
+</div>
+</div>
+</section>
+<!-- SPONSORS WITH LOGOS -->
+<section id="sponsors">
+<div class="container">
+<div class="reveal">
+<div class="label-sm" data-en="They trust us" data-fr="Ils nous font confiance">Ils nous font confiance</div>
+<h2 class="title-lg" data-en="Our Partners" data-fr="Nos partenaires">Nos partenaires</h2>
+</div>
+<!-- =====================================================
+     CARTES SPONSORS AUTOMATIQUES
+     Source : /data/sponsors.js
+     Ajouter un logo dans /uploads/partners/ puis modifier data/sponsors.js.
+     active:false masque un sponsor. order change la position.
+     ===================================================== --><div class="sponsors-grid reveal" data-render="sponsor-cards" style="transition-delay:0.1s;"></div>
+</div>
+</section>
+<!-- FORMATS -->
+<section id="formats">
+<div class="container">
+<div class="reveal">
+<div class="label-sm" data-en="Partnership" data-fr="Collaboration">Collaboration</div>
+<h2 class="title-lg" data-en="Available Formats" data-fr="Formats possibles">Formats possibles</h2>
+</div>
+<div class="formats-grid reveal" style="transition-delay:0.1s;">
+<div class="format-cell"><div class="format-icon"></div><div class="format-title" data-en="Event Presence" data-fr="Présence événementielle">Présence événementielle</div><div class="format-desc" data-en="Direct visibility at our events: Gala (1,500+), How We Dau, WEI (700), Nuit Dauphine, Croisette. Stand, distribution, signage, on-site branding." data-fr="Visibilité directe sur nos événements : Gala (1 500+), How We Dau, WEI (700), Nuit Dauphine, Croisette. Stand, distribution, affichage, branding sur place.">Visibilité directe sur nos événements : Gala (1 500+), How We Dau, WEI (700), Nuit Dauphine, Croisette. Stand, distribution, affichage, branding sur place.</div></div>
+<div class="format-cell"><div class="format-icon"></div><div class="format-title" data-en="Digital Partnership" data-fr="Partenariat digital">Partenariat digital</div><div class="format-desc" data-en="Mentions on our social media (@bdedauphine, @lesnuitsdauphine), stories, sponsored posts, newsletter integrations. Qualified audience, high engagement rate." data-fr="Mentions sur nos réseaux sociaux (@bdedauphine, @lesnuitsdauphine), stories, posts sponsorisés, intégrations newsletters. Audience qualifiée, taux d'engagement élevé.">Mentions sur nos réseaux sociaux (@bdedauphine, @lesnuitsdauphine), stories, posts sponsorisés, intégrations newsletters. Audience qualifiée, taux d'engagement élevé.</div></div>
+<div class="format-cell"><div class="format-icon"></div><div class="format-title" data-en="Campus Partnership" data-fr="Partenariat campus">Partenariat campus</div><div class="format-desc" data-en="Signage on the Dauphine campus, flyer and special offer distribution, presence in the BDE's official communications to 10,000 students." data-fr="Affichage sur le campus Dauphine, distribution de flyers et offres spéciales, présence dans les communications officielles du BDE aux 10&amp;nbsp;000 étudiants.">Affichage sur le campus Dauphine, distribution de flyers et offres spéciales, présence dans les communications officielles du BDE aux 10 000 étudiants.</div></div>
+<div class="format-cell"><div class="format-icon"></div><div class="format-title" data-en="Artist Collaboration" data-fr="Collaboration artiste">Collaboration artiste</div><div class="format-desc" data-en="Brand activation at our exclusive showcases (Gazo, Gims, SCH…). Unique visibility opportunity with a live, student and engaged audience." data-fr="Activation de marque lors de nos showcases exclusifs (Gazo, Gims, SCH…). Opportunité de visibilité unique auprès d'une audience en live, étudiante et engagée.">Activation de marque lors de nos showcases exclusifs (Gazo, Gims, SCH…). Opportunité de visibilité unique auprès d'une audience en live, étudiante et engagée.</div></div>
+<div class="format-cell"><div class="format-icon"></div><div class="format-title" data-en="Custom Package" data-fr="Pack sur mesure">Pack sur mesure</div><div class="format-desc" data-en="Specific need? We build a collaboration with you tailored to your objectives — recruitment, awareness, customer acquisition, brand image among young audiences." data-fr="Besoin spécifique ? On construit ensemble une collaboration adaptée à vos objectifs — recrutement, notoriété, acquisition client, image de marque auprès des jeunes.">Besoin spécifique ? On construit ensemble une collaboration adaptée à vos objectifs — recrutement, notoriété, acquisition client, image de marque auprès des jeunes.</div></div>
+<div class="format-cell"><div class="format-icon"></div><div class="format-title" data-en="Annual Partnership" data-fr="Partenariat annuel">Partenariat annuel</div><div class="format-desc" data-en="Year-round presence across all our events and communications. Preferred format by our long-standing partners. Quote on request." data-fr="Présence tout au long de l'année sur l'ensemble de nos événements et communications. Format préféré par nos partenaires historiques. Devis sur demande.">Présence tout au long de l'année sur l'ensemble de nos événements et communications. Format préféré par nos partenaires historiques. Devis sur demande.</div></div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section id="cta-partner">
+<div class="container">
+<div class="cta-partner-inner reveal">
+<div>
+<h2 data-en="Join our partners" data-fr="Rejoindre nos partenaires">Rejoindre nos partenaires</h2>
+<p data-en="Contact us to receive our full partnership dossier. We are open to all forms of collaboration — financial, in-kind, activation, co-branding. Our team responds within 48h." data-fr="Contactez-nous pour recevoir notre dossier de partenariat complet. Nous sommes ouverts à toute forme de collaboration — financière, en nature, activation, co-branding. Notre équipe répond sous 48h.">Contactez-nous pour recevoir notre dossier de partenariat complet. Nous sommes ouverts à toute forme de collaboration — financière, en nature, activation, co-branding. Notre équipe répond sous 48h.</p>
+<a class="btn btn-red" data-en="Contact us →" data-fr="Nous contacter →" href="mailto:bdedauphine@gmail.com" style="margin-top:28px;display:inline-block;">Nous contacter →</a>
+</div>
+<div class="cta-partner-contacts">
+<div class="cta-contact-item"><span>Email</span><a href="mailto:bdedauphine@gmail.com">bdedauphine@gmail.com</a></div>
+<div class="cta-contact-item"><span data-en="Phone" data-fr="Téléphone">Téléphone</span><a href="tel:0786219312">07 86 21 93 12</a></div>
+<div class="cta-contact-item"><span>Instagram</span><a href="https://www.instagram.com/bdedauphine/" target="_blank">@bdedauphine</a></div>
+<div class="cta-contact-item"><span data-en="Address" data-fr="Adresse">Adresse</span><strong>Place du Maréchal de Lattre<br/>75116 Paris</strong></div>
+</div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+     FOOTER GÉNÉRÉ AUTOMATIQUEMENT
+     Source : /data/site.js
+     Modifier email, téléphone, année, réseaux sociaux dans data/site.js.
+     ===================================================== --><footer data-render="footer"></footer>
+<!-- =====================================================
+     MODAL BILLETTERIE GÉNÉRÉE AUTOMATIQUEMENT
+     Source : /data/site.js > ticket
+     Modifier le lien Shotgun dans data/site.js.
+     ===================================================== --><div class="modal-overlay" data-render="ticket-modal" id="ticketModal" onclick="closeModalOnBg(event)"></div>
+<!-- =====================================================
+     AFFICHE DE L'ÉVÉNEMENT À VENIR — contenu généré par js/render.js
+     Réglages : csv/config.csv (affiche_*) et csv/events.csv (colonnes AFFICHE *)
+     ===================================================== --><dialog class="affiche-dialog" data-render="affiche" id="afficheModal" aria-labelledby="afficheTitle"></dialog>
+
+<!-- =====================================================
+     DONNÉES + MOTEUR DE RENDU
+     Pour modifier les contenus, éditer les fichiers /data/*.js.
+     Les fichiers /js/*.js transforment ces données en HTML.
+     ===================================================== -->
+<script src="data/site.js"></script>
+<script src="data/sponsors.js"></script>
+<script src="data/events.js"></script>
+<script src="data/galleries.js"></script>
+<script src="data/artists.js"></script>
+<script src="data/pages.js"></script>
+<script src="data/legal.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+<script src="js/affiche.js"></script>
+<script>
+    const dot=document.getElementById('cursorDot'),blob=document.getElementById('cursorBlob');let mx=0,my=0,bx=0,by=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    function ab(){bx+=(mx-bx)*0.07;by+=(my-by)*0.07;blob.style.left=bx+'px';blob.style.top=by+'px';requestAnimationFrame(ab);}ab();
+    const nav=document.getElementById('nav');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    function toggleNav(){const b=document.getElementById('navBurger'),l=document.getElementById('navLinks');b.classList.toggle('open');l.classList.toggle('open');document.body.style.overflow=l.classList.contains('open')?'hidden':'';}
+    document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('navBurger').classList.remove('open');document.body.style.overflow='';}));
+    const modal=document.getElementById('ticketModal');
+    function openModal(e){if(e)e.preventDefault();modal.classList.add('open');document.body.style.overflow='hidden';}
+    function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+    function closeModalOnBg(e){if(e.target===modal)closeModal();}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+    const LANG_KEY='bde-lang';
+    function applyLang(lang){document.documentElement.lang=lang;const b=document.getElementById('langToggle');if(b)b.textContent=lang==='en'?'FR':'EN';document.querySelectorAll('[data-fr]').forEach(el=>{el.innerHTML=lang==='en'?el.dataset.en:el.dataset.fr;});localStorage.setItem(LANG_KEY,lang);}
+    function toggleLang(){applyLang(document.documentElement.lang==='fr'?'en':'fr');}
+    (function(){const s=localStorage.getItem(LANG_KEY);if(s){applyLang(s);return;}if(!(navigator.language||'fr').toLowerCase().startsWith('fr'))applyLang('en');})();
+  </script>
+</body>
+</html>
