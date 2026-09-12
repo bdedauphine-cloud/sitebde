@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 12/09/2026 07:52
+// Généré automatiquement par sync.py le 12/09/2026 15:42
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -1072,8 +1072,8 @@ window.BDE_EVENTS = [
     "googlePhotosUrl": "",
     "galleryPage": "galerie-prixmode.html",
     "galleryLabel": "Galerie photos des éditions →",
-    "showOnHome": true,
-    "showOnEventsPage": true,
+    "showOnHome": false,
+    "showOnEventsPage": false,
     "showOnNuitsPage": false,
     "featured": false,
     "status": "current",
