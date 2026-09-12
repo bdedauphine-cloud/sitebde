@@ -341,6 +341,16 @@ Pour masquer de la page événements :
 showOnEventsPage: false
 ```
 
+⚠️ **Après avoir masqué un événement, vérifier la numérotation (`ORDRE` et
+`NUMÉRO` dans `csv/events.csv`, `order` et `number` dans `data/events.js`)
+des événements restants.** Les cartes affichées gardent le numéro écrit
+dans le CSV/JSON — masquer un événement au milieu de la liste laisse un
+trou (ex : "07" disparaît, la carte suivante reste étiquetée "08" alors
+qu'elle est maintenant la 7ᵉ visible). Renuméroter en séquence les
+événements encore visibles (`SUR HOME`/`SUR ÉVÉNEMENTS` = OUI), et
+donner à l'événement masqué un `ORDRE`/`NUMÉRO` à part (ex : après le
+dernier) pour ne pas entrer en collision si on le réactive plus tard.
+
 ---
 
 # 8. Ajouter une galerie photo

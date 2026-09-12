@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 12/09/2026 15:42
+// Généré automatiquement par sync.py le 12/09/2026 15:59
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -1014,9 +1014,141 @@ window.BDE_EVENTS = [
     }
   },
   {
-    "slug": "prixmode",
+    "slug": "dauphinend",
     "order": 7,
     "number": "07",
+    "title": "Dauph'End",
+    "subtitle": "Clôture de l'année universitaire",
+    "category": "Annuel",
+    "date": "",
+    "dateLabel": {
+      "fr": "",
+      "en": ""
+    },
+    "statusLabel": {
+      "fr": "",
+      "en": ""
+    },
+    "statusColor": "",
+    "place": "Paris",
+    "venue": "",
+    "shortDescription": "Clôture de l'année universitaire",
+    "homeDescriptionI18n": {
+      "fr": "Clôture de l'année universitaire",
+      "en": "End of the academic year"
+    },
+    "homePeriod": "Annuel",
+    "homePeriodI18n": {
+      "fr": "Annuel",
+      "en": "Annual"
+    },
+    "longDescription": [
+      "La note finale. Dauph'End clôture l'année universitaire avec une dernière soirée mémorable pour toute la communauté Dauphine. Un au revoir à l'année qui passe, avant de repartir pour l'été."
+    ],
+    "descriptionBlocks": [
+      {
+        "text": "La note finale. Dauph'End clôture l'année universitaire avec une dernière soirée mémorable pour toute la communauté Dauphine. Un au revoir à l'année qui passe, avant de repartir pour l'été.",
+        "i18n": {
+          "fr": "La note finale. Dauph'End clôture l'année universitaire avec une dernière soirée mémorable pour toute la communauté Dauphine. Un au revoir à l'année qui passe, avant de repartir pour l'été.",
+          "en": "The final note. Dauph'End closes the academic year with one last memorable night for the entire Dauphine community. A farewell to the year gone by, before heading off for the summer."
+        }
+      }
+    ],
+    "image": "uploads/DSC04433-scaled.jpg",
+    "images": [
+      "uploads/DSC04433-scaled.jpg",
+      "uploads/DSC04743-scaled.jpg",
+      "uploads/DSC04627-scaled.jpg"
+    ],
+    "alt": "Dauph'End",
+    "ticketUrl": "",
+    "ticketLabel": "Réserver",
+    "dossierUrl": "",
+    "dossierLabel": {
+      "fr": "Dossier à remplir",
+      "en": "Form to complete"
+    },
+    "dossierDownload": true,
+    "googlePhotosUrl": "",
+    "galleryPage": "galerie-dauphinend.html",
+    "galleryLabel": "Galerie photos des éditions →",
+    "showOnHome": true,
+    "showOnEventsPage": true,
+    "showOnNuitsPage": false,
+    "featured": false,
+    "status": "current",
+    "tags": [
+      {
+        "label": "Annuel",
+        "red": false,
+        "i18n": {
+          "fr": "Annuel",
+          "en": "Annual"
+        }
+      }
+    ],
+    "meta": [
+      {
+        "key": "Format",
+        "value": "Soirée de clôture",
+        "keyI18n": {
+          "fr": "Format",
+          "en": "Format"
+        },
+        "valueI18n": {
+          "fr": "Soirée de clôture",
+          "en": "Closing party"
+        }
+      },
+      {
+        "key": "Période",
+        "value": "Fin d'année universitaire",
+        "keyI18n": {
+          "fr": "Période",
+          "en": "Period"
+        },
+        "valueI18n": {
+          "fr": "Fin d'année universitaire",
+          "en": "End of the academic year"
+        }
+      }
+    ],
+    "artists": [],
+    "reverse": false,
+    "affiche": {
+      "mode": "AUTO",
+      "image": "",
+      "alt": "",
+      "ratio": "",
+      "responsive": false,
+      "daysBefore": 0,
+      "title": {
+        "fr": "",
+        "en": ""
+      },
+      "text": {
+        "fr": "",
+        "en": ""
+      },
+      "ctaLabel": {
+        "fr": "",
+        "en": ""
+      },
+      "ctaUrl": "",
+      "dossierCtaLabel": {
+        "fr": "",
+        "en": ""
+      },
+      "eligibilityNote": {
+        "fr": "",
+        "en": ""
+      }
+    }
+  },
+  {
+    "slug": "prixmode",
+    "order": 8,
+    "number": "08",
     "title": "Prix Mode",
     "subtitle": "Défilés de mode · Art contemporain · Culture",
     "category": "Campus Dauphine",
@@ -1135,138 +1267,6 @@ window.BDE_EVENTS = [
     ],
     "artists": [],
     "reverse": true,
-    "affiche": {
-      "mode": "AUTO",
-      "image": "",
-      "alt": "",
-      "ratio": "",
-      "responsive": false,
-      "daysBefore": 0,
-      "title": {
-        "fr": "",
-        "en": ""
-      },
-      "text": {
-        "fr": "",
-        "en": ""
-      },
-      "ctaLabel": {
-        "fr": "",
-        "en": ""
-      },
-      "ctaUrl": "",
-      "dossierCtaLabel": {
-        "fr": "",
-        "en": ""
-      },
-      "eligibilityNote": {
-        "fr": "",
-        "en": ""
-      }
-    }
-  },
-  {
-    "slug": "dauphinend",
-    "order": 8,
-    "number": "08",
-    "title": "Dauph'End",
-    "subtitle": "Clôture de l'année universitaire",
-    "category": "Annuel",
-    "date": "",
-    "dateLabel": {
-      "fr": "",
-      "en": ""
-    },
-    "statusLabel": {
-      "fr": "",
-      "en": ""
-    },
-    "statusColor": "",
-    "place": "Paris",
-    "venue": "",
-    "shortDescription": "Clôture de l'année universitaire",
-    "homeDescriptionI18n": {
-      "fr": "Clôture de l'année universitaire",
-      "en": "End of the academic year"
-    },
-    "homePeriod": "Annuel",
-    "homePeriodI18n": {
-      "fr": "Annuel",
-      "en": "Annual"
-    },
-    "longDescription": [
-      "La note finale. Dauph'End clôture l'année universitaire avec une dernière soirée mémorable pour toute la communauté Dauphine. Un au revoir à l'année qui passe, avant de repartir pour l'été."
-    ],
-    "descriptionBlocks": [
-      {
-        "text": "La note finale. Dauph'End clôture l'année universitaire avec une dernière soirée mémorable pour toute la communauté Dauphine. Un au revoir à l'année qui passe, avant de repartir pour l'été.",
-        "i18n": {
-          "fr": "La note finale. Dauph'End clôture l'année universitaire avec une dernière soirée mémorable pour toute la communauté Dauphine. Un au revoir à l'année qui passe, avant de repartir pour l'été.",
-          "en": "The final note. Dauph'End closes the academic year with one last memorable night for the entire Dauphine community. A farewell to the year gone by, before heading off for the summer."
-        }
-      }
-    ],
-    "image": "uploads/DSC04433-scaled.jpg",
-    "images": [
-      "uploads/DSC04433-scaled.jpg",
-      "uploads/DSC04743-scaled.jpg",
-      "uploads/DSC04627-scaled.jpg"
-    ],
-    "alt": "Dauph'End",
-    "ticketUrl": "",
-    "ticketLabel": "Réserver",
-    "dossierUrl": "",
-    "dossierLabel": {
-      "fr": "Dossier à remplir",
-      "en": "Form to complete"
-    },
-    "dossierDownload": true,
-    "googlePhotosUrl": "",
-    "galleryPage": "galerie-dauphinend.html",
-    "galleryLabel": "Galerie photos des éditions →",
-    "showOnHome": true,
-    "showOnEventsPage": true,
-    "showOnNuitsPage": false,
-    "featured": false,
-    "status": "current",
-    "tags": [
-      {
-        "label": "Annuel",
-        "red": false,
-        "i18n": {
-          "fr": "Annuel",
-          "en": "Annual"
-        }
-      }
-    ],
-    "meta": [
-      {
-        "key": "Format",
-        "value": "Soirée de clôture",
-        "keyI18n": {
-          "fr": "Format",
-          "en": "Format"
-        },
-        "valueI18n": {
-          "fr": "Soirée de clôture",
-          "en": "Closing party"
-        }
-      },
-      {
-        "key": "Période",
-        "value": "Fin d'année universitaire",
-        "keyI18n": {
-          "fr": "Période",
-          "en": "Period"
-        },
-        "valueI18n": {
-          "fr": "Fin d'année universitaire",
-          "en": "End of the academic year"
-        }
-      }
-    ],
-    "artists": [],
-    "reverse": false,
     "affiche": {
       "mode": "AUTO",
       "image": "",

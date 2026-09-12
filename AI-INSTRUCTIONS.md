@@ -230,6 +230,16 @@ Ne pas retourner tout le site. Retourner uniquement les fichiers changés, clair
 Pour masquer : utiliser `active: false`, `showOnHome: false`, `showOnEventsPage: false`.
 Ne supprimer un bloc que si l'humain le demande explicitement.
 
+### Après avoir masqué un événement, vérifier la numérotation
+Masquer un événement (`showOnHome`/`showOnEventsPage` = false, ou `SUR HOME`/`SUR
+ÉVÉNEMENTS` = NON dans `csv/events.csv`) ne renumérote rien automatiquement : les
+`order`/`number` (`ORDRE`/`NUMÉRO`) des événements restants gardent leur valeur
+d'origine, ce qui laisse un trou visible (ex : l'événement caché était "07", le
+suivant reste étiqueté "08" alors qu'il est maintenant le 7ᵉ affiché). Toujours
+renuméroter en séquence les événements encore visibles après un masquage, et
+donner à l'événement masqué un `order`/`number` à part (ex : après le dernier)
+pour éviter une collision s'il est réactivé plus tard.
+
 ---
 
 ## 6. Référence complète des champs
