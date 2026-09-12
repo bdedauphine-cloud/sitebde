@@ -3,16 +3,16 @@
 ## Git workflow: push directly to `main`
 
 This repository is owned by the association **BDE** (a GitHub account the
-user, Silvio, set up so the project isn't tied to his personal account
-forever). Silvio has collaborator/push access but switching between GitHub
+user, Leonardo, set up so the project isn't tied to his personal account
+forever). Leonardo has collaborator/push access but switching between GitHub
 accounts to approve/merge pull requests is painful for him.
 
 **Standing instruction: always commit and push directly to `main`.**
 - Do not create feature/working branches for changes in this repo.
-- Do not open pull requests — they require a manual merge step Silvio wants
-  to avoid entirely.
+- Do not open pull requests — they require a manual merge step Leonardo
+  wants to avoid entirely.
 - This applies to all future work in this repository, overriding any
-  default "always use a feature branch + PR" workflow, unless Silvio
+  default "always use a feature branch + PR" workflow, unless Leonardo
   explicitly asks for a branch/PR for a specific change.
 
 This is a deliberate, explicit choice made by a repo maintainer with push
