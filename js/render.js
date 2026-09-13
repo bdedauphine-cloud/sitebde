@@ -8,7 +8,7 @@
   function attrI18n(fr,en){let out=''; if(fr) out += ` data-fr="${esc(fr)}"`; if(en) out += ` data-en="${esc(en)}"`; return out;}
   function events(){return (window.BDE_EVENTS||[]).slice().sort((a,b)=>(a.order||999)-(b.order||999));}
   function transitionDelay(i){return i ? ` style="transition-delay:${(i*0.05).toFixed(2)}s"` : '';}
-  function imgMarkup(src,alt){return `<img src="${esc(src)}" alt="${esc(alt||'')}" />`;}
+  function imgMarkup(src,alt){return `<img src="${esc(src)}" alt="${esc(alt||'')}" loading="lazy" decoding="async" />`;}
   function i18nObj(v){
     if(v && typeof v === 'object') return { fr: v.fr || '', en: v.en || '' };
     return { fr: v || '', en: '' };
@@ -67,7 +67,7 @@
   }
   function artistCarousel(){
     const cards=((window.BDE_ARTISTS||{}).cards||[]).filter(a=>a.active!==false).sort((a,b)=>(a.order||999)-(b.order||999));
-    return cards.map(a=>`<div class="artist-card${a.featured?' artist-card-featured':''}"><img src="${esc(a.image)}" alt="${esc(a.alt||a.name)}" /><div class="artist-card-overlay"></div><div class="artist-card-info"><div class="artist-card-year">${esc(a.yearEvent)}</div><div class="artist-card-name">${esc(a.name)}</div><div class="artist-card-event">${esc(a.eventText)}</div><div class="artist-card-badge">${esc(a.badge)}</div></div></div>`).join('');
+    return cards.map(a=>`<div class="artist-card${a.featured?' artist-card-featured':''}"><img src="${esc(a.image)}" alt="${esc(a.alt||a.name)}" loading="lazy" decoding="async" /><div class="artist-card-overlay"></div><div class="artist-card-info"><div class="artist-card-year">${esc(a.yearEvent)}</div><div class="artist-card-name">${esc(a.name)}</div><div class="artist-card-event">${esc(a.eventText)}</div><div class="artist-card-badge">${esc(a.badge)}</div></div></div>`).join('');
   }
   function artistTextStrip(){
     return (((window.BDE_ARTISTS||{}).textStrip)||[]).map(n=>`<span class="artist-text-item">${esc(n)}</span><span class="artist-text-sep">·</span>`).join('');
@@ -102,7 +102,7 @@
       const j=Math.floor(Math.random()*(i+1));
       [random[i],random[j]]=[random[j],random[i]];
     }
-    return [...pinned,...random].slice(0,18).map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" /></div>`).join('');
+    return [...pinned,...random].slice(0,18).map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" loading="lazy" decoding="async" /></div>`).join('');
   }
   function renderGallery(el){
     const slug=el.dataset.gallerySlug;
@@ -112,9 +112,9 @@
       const hasCaption=Boolean(im.tag||im.caption);
       const caption=hasCaption?`<div class="gallery-item-caption"><div class="caption-tag gallery-caption-tag"${attrI18n(im.tagI18n?.fr||im.tag,im.tagI18n?.en||'')}>${esc(im.tag)}</div><p class="gallery-caption-text"${attrI18n(im.captionI18n?.fr||im.caption,im.captionI18n?.en||'')}>${esc(im.caption)}</p></div>`:'';
       if(g.lightboxMode==='lightbox'){
-        return `<div class="gallery-item" onclick="openLightbox(${i})"><img src="${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy" />${caption}</div>`;
+        return `<div class="gallery-item" onclick="openLightbox(${i})"><img src="${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy" decoding="async" />${caption}</div>`;
       }
-      return `<div class="gallery-item" data-src="${esc(im.src)}" data-caption="${esc(im.caption)}"><img src="${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy" />${caption}</div>`;
+      return `<div class="gallery-item" data-src="${esc(im.src)}" data-caption="${esc(im.caption)}"><img src="${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy" decoding="async" />${caption}</div>`;
     }).join('');
   }
 

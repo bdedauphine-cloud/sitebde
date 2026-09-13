@@ -66,6 +66,8 @@
     .lb-caption{position:fixed;bottom:28px;left:0;right:0;text-align:center;}
     .lb-caption p{font-size:13px;color:var(--muted);letter-spacing:0.05em;}
     .lb-counter{position:fixed;top:32px;left:32px;font-family:var(--font-title);font-size:12px;color:var(--muted);letter-spacing:0.1em;}
+    .lb-download{position:fixed;bottom:28px;left:32px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);cursor:none;transition:color 0.2s,border-color 0.2s;background:none;border:1px solid rgba(244,242,238,0.35);padding:8px 14px;text-decoration:none;z-index:10;}
+    .lb-download:hover{color:var(--white);border-color:rgba(244,242,238,0.7);}
     @media(max-width:900px){.gallery-masonry{columns:2;}.gallery-year-header{grid-template-columns:1fr;gap:16px;}.gallery-hero-content{padding:0 20px 40px;}}
     @media(max-width:500px){.gallery-masonry{columns:1;}}
   </style>
@@ -126,6 +128,7 @@
 </section>
 <div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
 <div class="lb-counter" id="lbCounter"></div>
+<a class="lb-download" id="lbDownload" download target="_blank" rel="noopener" data-fr="↓ Télécharger" data-en="↓ Download">↓ Télécharger</a>
 <button class="lb-close" onclick="closeLightbox()">×</button>
 <button class="lb-nav lb-prev" onclick="navLightbox(-1)">‹</button>
 <img alt="" id="lbImg" src=""/>
@@ -178,11 +181,12 @@
     function closeModalOnBg(e){if(e.target===modal)closeModal();}
     const galleryImages=[];const galleryCaptions=[];
     document.querySelectorAll('.gallery-item').forEach(item=>{galleryImages.push(item.querySelector('img').src);const cap=item.querySelector('.gallery-caption-text');galleryCaptions.push(cap?cap.textContent:'');});
-    let currentLB=0;const lb=document.getElementById('lightbox');const lbImg=document.getElementById('lbImg');const lbCap=document.getElementById('lbCap');const lbCounter=document.getElementById('lbCounter');
-    function openLightbox(i){currentLB=i;lbImg.src=galleryImages[i];lbCap.textContent=galleryCaptions[i];lbCounter.textContent=(i+1)+' / '+galleryImages.length;lb.classList.add('open');document.body.style.overflow='hidden';}
+    let currentLB=0;const lb=document.getElementById('lightbox');const lbImg=document.getElementById('lbImg');const lbCap=document.getElementById('lbCap');const lbCounter=document.getElementById('lbCounter');const lbDownload=document.getElementById('lbDownload');
+    function setLbDownload(src){lbDownload.href=src;lbDownload.setAttribute('download',src.split('/').pop());}
+    function openLightbox(i){currentLB=i;lbImg.src=galleryImages[i];setLbDownload(galleryImages[i]);lbCap.textContent=galleryCaptions[i];lbCounter.textContent=(i+1)+' / '+galleryImages.length;lb.classList.add('open');document.body.style.overflow='hidden';}
     function closeLightbox(){lb.classList.remove('open');document.body.style.overflow='';}
     function closeLightboxBg(e){if(e.target===lb)closeLightbox();}
-    function navLightbox(dir){currentLB=(currentLB+dir+galleryImages.length)%galleryImages.length;lbImg.src=galleryImages[currentLB];lbCap.textContent=galleryCaptions[currentLB];lbCounter.textContent=(currentLB+1)+' / '+galleryImages.length;}
+    function navLightbox(dir){currentLB=(currentLB+dir+galleryImages.length)%galleryImages.length;lbImg.src=galleryImages[currentLB];setLbDownload(galleryImages[currentLB]);lbCap.textContent=galleryCaptions[currentLB];lbCounter.textContent=(currentLB+1)+' / '+galleryImages.length;}
     document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeLightbox();}if(lb.classList.contains('open')&&e.key==='ArrowLeft')navLightbox(-1);if(lb.classList.contains('open')&&e.key==='ArrowRight')navLightbox(1);});
     function toggleNav(){const b=document.getElementById('navBurger'),l=document.getElementById('navLinks');b.classList.toggle('open');l.classList.toggle('open');document.body.style.overflow=l.classList.contains('open')?'hidden':'';}
     document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('navBurger').classList.remove('open');document.body.style.overflow='';}));

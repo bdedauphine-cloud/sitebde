@@ -71,6 +71,8 @@
 .lb-img-wrap img{max-width:90vw;max-height:85vh;object-fit:contain;display:block;}
 .lb-close{position:fixed;top:28px;right:32px;font-size:28px;color:rgba(244,242,238,0.6);cursor:none;transition:color 0.2s;background:none;border:none;line-height:1;}
 .lb-close:hover{color:var(--white);}
+.lb-download{position:fixed;top:32px;left:32px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,242,238,0.6);cursor:none;transition:color 0.2s,border-color 0.2s;background:none;border:1px solid rgba(244,242,238,0.35);padding:8px 14px;text-decoration:none;z-index:10;}
+.lb-download:hover{color:var(--white);border-color:rgba(244,242,238,0.7);}
 .lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(244,242,238,0.5);cursor:none;background:none;border:none;padding:16px;transition:color 0.2s;}
 .lb-prev:hover,.lb-next:hover{color:var(--white);}
 .lb-prev{left:24px;}
@@ -180,6 +182,7 @@
 </div>
 <!-- Lightbox -->
 <div class="lb-overlay" id="lbOverlay">
+<a class="lb-download" id="lbDownload" download target="_blank" rel="noopener" data-fr="↓ Télécharger" data-en="↓ Download">↓ Télécharger</a>
 <button class="lb-close" id="lbClose">✕</button>
 <button class="lb-prev" id="lbPrev">←</button>
 <div class="lb-img-wrap"><img alt="" id="lbImg" src=""/></div>
@@ -221,8 +224,8 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 const items=[...document.querySelectorAll('.gallery-item')];
 let cur=0;
-const overlay=document.getElementById('lbOverlay'),lbImg=document.getElementById('lbImg'),lbCaption=document.getElementById('lbCaption'),lbCounter=document.getElementById('lbCounter');
-function openLb(i){cur=i;const it=items[i];lbImg.src=it.dataset.src||it.querySelector('img').src;lbCaption.textContent=it.dataset.caption||'';lbCounter.textContent=(i+1)+' / '+items.length;overlay.classList.add('active');}
+const overlay=document.getElementById('lbOverlay'),lbImg=document.getElementById('lbImg'),lbCaption=document.getElementById('lbCaption'),lbCounter=document.getElementById('lbCounter'),lbDownload=document.getElementById('lbDownload');
+function openLb(i){cur=i;const it=items[i];const src=it.dataset.src||it.querySelector('img').src;lbImg.src=src;lbDownload.href=src;lbDownload.setAttribute('download',src.split('/').pop());lbCaption.textContent=it.dataset.caption||'';lbCounter.textContent=(i+1)+' / '+items.length;overlay.classList.add('active');}
 function closeLb(){overlay.classList.remove('active');}
 function prev(){openLb((cur-1+items.length)%items.length);}
 function next(){openLb((cur+1)%items.length);}

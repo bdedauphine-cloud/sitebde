@@ -381,6 +381,52 @@ dernier) pour ne pas entrer en collision si on le réactive plus tard.
 5. Sauvegarder.
 6. Ouvrir la page galerie concernée.
 
+## Bouton "Télécharger" dans la visionneuse plein écran
+
+Chaque page `galerie-*.html` a son propre bouton de téléchargement dans sa
+visionneuse plein écran (le "lightbox"/"overlay" qui s'ouvre au clic sur une
+photo) : il pointe toujours vers exactement le même fichier que celui affiché
+(`uploads/...`), jamais une version réduite. Ce bouton n'existe que sur les
+pages `galerie-*.html` — pas sur le carrousel artistes ni sur la bande photo
+de la homepage.
+
+⚠️ Chaque page `galerie-*.html` a sa propre copie du script de la visionneuse
+(pas de fichier partagé) et certaines pages n'utilisent pas exactement les
+mêmes noms de classes/id (`lb-overlay`/`lbImg` sur la plupart des pages,
+`lightbox`/`lbImg`/`lbCap` sur `galerie-gala.html`, `lightbox`/`lightboxImg`
+sur `galerie-howwedau.html`). Toujours vérifier la structure exacte de la
+page avant de toucher à ce bouton.
+
+## Chargement différé (`loading="lazy"`) des photos
+
+Toutes les images générées par `js/render.js` (carrousel artistes, bande
+photo de la homepage, masonry des galeries, images des pages événements) et
+la quasi-totalité des `<img>` codées en dur dans les pages ont
+`loading="lazy" decoding="async"` : le navigateur ne télécharge/décode la
+photo que quand elle approche de l'écran. Sur mobile, charger d'un coup
+toutes les photos d'une page (carrousel + bande + galeries, souvent 20-30
+photos de plusieurs centaines de Ko chacune) peut dépasser la mémoire
+disponible pour décoder des images et en faire disparaître certaines
+silencieusement — c'est ce que corrige `loading="lazy"`.
+
+Exceptions volontaires à ne pas "corriger" :
+- L'image `<img>` du fond de hero sur `nuits.html` et `howwedau.html` (elle
+  est visible immédiatement à l'arrivée sur la page, donc chargée sans
+  attendre).
+- L'affiche pop-up (`js/render.js` → `afficheContent()`) : elle doit
+  apparaître dès son déclenchement, donc jamais `loading="lazy"`.
+- Le `<img>` vide (`src=""`) de la visionneuse plein écran des galeries :
+  son `src` est rempli par JS au moment du clic, `loading="lazy"` retarderait
+  son affichage.
+
+## `make_affiche.py` ne concerne que l'affiche pop-up
+
+`make_affiche.py` ne traite qu'une seule image par événement : celle de
+l'AFFICHE (le pop-up qui apparaît avant la date de l'événement, colonnes
+`AFFICHE *` de `csv/events.csv`). Il ne touche pas aux photos des galeries,
+du carrousel artistes ou de la bande homepage — celles-ci restent de simples
+JPG/PNG, pas de AVIF/WebP à générer pour elles.
+
 ---
 
 # 9. Ajouter un album Google Photos

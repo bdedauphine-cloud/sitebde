@@ -54,6 +54,8 @@
     .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
     .lightbox-close { position: absolute; top: 32px; right: 32px; font-size: 24px; color: var(--muted); background: none; border: none; cursor: none; transition: color 0.2s; }
     .lightbox-close:hover { color: var(--white); }
+    .lightbox-download { position: absolute; top: 32px; left: 32px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid rgba(244,242,238,0.35); padding: 8px 14px; cursor: none; transition: color 0.2s, border-color 0.2s; text-decoration: none; }
+    .lightbox-download:hover { color: var(--white); border-color: rgba(244,242,238,0.7); }
     .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); font-size: 32px; color: var(--muted); background: none; border: none; cursor: none; transition: color 0.2s; padding: 16px; }
     .lightbox-nav:hover { color: var(--white); }
     .lightbox-prev { left: 24px; }
@@ -116,15 +118,15 @@
 </div>
 <div class="gallery-masonry">
 <div class="gallery-item" onclick="openLightbox(4)">
-<img alt="Gims How We Dau 2025" src="uploads/cap-144920.png"/>
+<img alt="Gims How We Dau 2025" src="uploads/cap-144920.png" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag">Showcase</div><p data-en="Gims — live performance" data-fr="Gims — performance live">Gims — performance live</p></div>
 </div>
 <div class="gallery-item" onclick="openLightbox(5)">
-<img alt="How We Dau 2025" src="uploads/DSC06115-scaled.jpg"/>
+<img alt="How We Dau 2025" src="uploads/DSC06115-scaled.jpg" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag" data-en="Atmosphere" data-fr="Ambiance">Ambiance</div><p data-en="The crowd in a trance" data-fr="Le public en transe">Le public en transe</p></div>
 </div>
 <div class="gallery-item" onclick="openLightbox(6)">
-<img alt="How We Dau 2025" src="uploads/DSC06186-scaled.jpg"/>
+<img alt="How We Dau 2025" src="uploads/DSC06186-scaled.jpg" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag">Staff</div><p data-en="The BDE team in control" data-fr="L'équipe BDE aux commandes">L'équipe BDE aux commandes</p></div>
 </div>
 </div>
@@ -137,27 +139,27 @@
 </div>
 <div class="gallery-masonry">
 <div class="gallery-item" onclick="openLightbox(7)">
-<img alt="SCH How We Dau" src="uploads/cap-145000.png"/>
+<img alt="SCH How We Dau" src="uploads/cap-145000.png" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag">SCH</div><p data-en="Explosive showcase" data-fr="Showcase explosif">Showcase explosif</p></div>
 </div>
 <div class="gallery-item" onclick="openLightbox(8)">
-<img alt="Laylow How We Dau" src="uploads/cap-145018.png"/>
+<img alt="Laylow How We Dau" src="uploads/cap-145018.png" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag">Laylow</div><p data-en="Immersive atmosphere, unique staging" data-fr="Ambiance planante, mise en scène unique">Ambiance planante, mise en scène unique</p></div>
 </div>
 <div class="gallery-item" onclick="openLightbox(9)">
-<img alt="Djadja &amp; Dinaz" src="uploads/cap-145101.png"/>
+<img alt="Djadja &amp; Dinaz" src="uploads/cap-145101.png" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag">Djadja &amp; Dinaz</div><p data-en="The duo that set the room on fire" data-fr="Le duo qui a enflammé la salle">Le duo qui a enflammé la salle</p></div>
 </div>
 <div class="gallery-item" onclick="openLightbox(10)">
-<img alt="PLK SDM" src="uploads/cap-145204.png"/>
+<img alt="PLK SDM" src="uploads/cap-145204.png" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag">PLK · SDM</div><p data-en="The first editions — the beginning of the legend" data-fr="Les premières éditions — le début de la légende">Les premières éditions — le début de la légende</p></div>
 </div>
 <div class="gallery-item" onclick="openLightbox(11)">
-<img alt="How We Dau previous" src="uploads/DSC05266-scaled.jpg"/>
+<img alt="How We Dau previous" src="uploads/DSC05266-scaled.jpg" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag" data-en="Atmosphere" data-fr="Ambiance">Ambiance</div><p data-en="A packed room" data-fr="Une salle pleine à craquer">Une salle pleine à craquer</p></div>
 </div>
 <div class="gallery-item" onclick="openLightbox(12)">
-<img alt="How We Dau crowd" src="uploads/DSC05637-scaled.jpg"/>
+<img alt="How We Dau crowd" src="uploads/DSC05637-scaled.jpg" loading="lazy" decoding="async" />
 <div class="gallery-item-caption"><div class="caption-tag" data-en="Crowd" data-fr="Public">Public</div><p data-en="Dauphine fervour" data-fr="La ferveur Dauphine">La ferveur Dauphine</p></div>
 </div>
 </div>
@@ -169,6 +171,7 @@
 </section>
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
+<a class="lightbox-download" id="lightboxDownload" download target="_blank" rel="noopener" data-fr="↓ Télécharger" data-en="↓ Download">↓ Télécharger</a>
 <button class="lightbox-close" onclick="closeLightbox()">×</button>
 <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
 <img alt="" id="lightboxImg" src=""/>
@@ -261,10 +264,13 @@
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightboxImg');
     const lbCap = document.getElementById('lightboxCaption');
+    const lbDownload = document.getElementById('lightboxDownload');
+    function setLbDownload(src) { lbDownload.href = src; lbDownload.setAttribute('download', src.split('/').pop()); }
 
     function openLightbox(i) {
       currentLB = i;
       lbImg.src = galleryImages[i];
+      setLbDownload(galleryImages[i]);
       lbCap.textContent = galleryCaptions[i];
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -277,6 +283,7 @@
     function navLightbox(dir) {
       currentLB = (currentLB + dir + galleryImages.length) % galleryImages.length;
       lbImg.src = galleryImages[currentLB];
+      setLbDownload(galleryImages[currentLB]);
       lbCap.textContent = galleryCaptions[currentLB];
     }
     document.addEventListener('keydown', e => {
