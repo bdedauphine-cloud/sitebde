@@ -599,13 +599,26 @@ body.affiche-open { overflow: hidden; }
   .affiche-panel { padding: 26px 24px 34px; }
   .affiche-title { font-size: clamp(26px, 7vw, 34px); }
   .affiche-countdown { margin-bottom: 22px; }
-  .affiche-close { top: 6px; right: 6px; animation: affiche-close-pulse 2.4s ease-in-out infinite; }
+  .affiche-close {
+    top: 10px; right: 10px;           /* marge > au débordement du pic de pulsation */
+    width: 64px; height: 64px;        /* cible plus grosse, plus facile à viser au pouce */
+    font-size: 40px;
+    animation: affiche-close-pulse 1.6s ease-in-out infinite;
+  }
   .affiche-cursor { display: none; }
 }
 
+/* La pulsation joue sur la taille, pas seulement sur le halo : c'est ce qui
+   la rend réellement visible sur l'affiche. */
 @keyframes affiche-close-pulse {
-  0%, 100% { text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 0 4px rgba(255,255,255,0.72); }
-  50% { text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 0 10px rgba(255,255,255,1); }
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 0 5px rgba(255,255,255,0.6);
+  }
+  50% {
+    transform: scale(1.22);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.95), 0 0 16px rgba(255,255,255,1);
+  }
 }
 
 /* ── Mouvement réduit ────────────────────────────────── */
