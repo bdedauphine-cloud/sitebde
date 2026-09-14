@@ -1,6 +1,6 @@
 // =====================================================
 // GÉNÉRATIONS — mosaïque photo sur la page Notre histoire
-// Généré automatiquement par sync.py le 14/09/2026 14:34
+// Généré automatiquement par sync.py le 14/09/2026 14:39
 // Modifier via csv/generations.csv et csv/generation_images.csv
 // ou directement dans ce fichier.
 // Ne pas renommer window.BDE_GENERATIONS.
@@ -21,6 +21,17 @@ window.BDE_GENERATIONS = [
       "en": "2025 – 2026"
     },
     "active": true,
-    "images": []
+    "images": [
+      {
+        "src": "uploads/generation-46-garcons.jpg",
+        "alt": "Génération 46",
+        "size": "wide"
+      },
+      {
+        "src": "uploads/generation-46-filles.jpg",
+        "alt": "Génération 46",
+        "size": "wide"
+      }
+    ]
   }
 ];

@@ -1,2 +1,4 @@
 SLUG GÉNÉRATION,ORDRE,IMAGE,ALT,TAILLE (large/wide/tall/small)
 ## Identifiant de la génération concernée (doit correspondre à la colonne SLUG de generations.csv),Ordre d'affichage dans la mosaïque,Chemin de la photo depuis la racine du site (ex: uploads/photo.jpg),Texte alternatif pour l'accessibilité et le SEO,"Taille de la case dans la mosaïque asymétrique — large (grande case carrée), wide (bannière large), tall (portrait), small (petite case). Alterner les tailles pour un rendu emboîté, voir GUIDE-MISE-A-JOUR.md"
+g46,1,uploads/generation-46-garcons.jpg,Génération 46,wide
+g46,2,uploads/generation-46-filles.jpg,Génération 46,wide
