@@ -5,6 +5,8 @@ If you are an AI reading this repository, read `AI-INSTRUCTIONS.md` before doing
 
 # BDE Dauphine — Site statique data-driven
 
+**Site en ligne : [bdedauphine.fr](https://bdedauphine.fr)**
+
 Site vitrine du Bureau des Étudiants de l'Université Paris Dauphine-PSL.  
 Statique, bilingue FR/EN, déployé sur Cloudflare Pages via GitHub.
 
