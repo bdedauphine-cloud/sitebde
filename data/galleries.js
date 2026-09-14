@@ -1,6 +1,6 @@
 // =====================================================
 // GALERIES ET ALBUMS GOOGLE PHOTOS
-// Généré automatiquement par sync.py le 14/09/2026 14:34
+// Généré automatiquement par sync.py le 14/09/2026 14:36
 // Modifier via csv/galleries.csv et csv/gallery_images.csv
 // ou directement dans ce fichier.
 // Ne pas renommer window.BDE_GALLERIES.
