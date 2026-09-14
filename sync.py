@@ -101,6 +101,16 @@ HEADER_GALLERIES = """\
 // =====================================================
 """
 
+HEADER_GENERATIONS = """\
+// =====================================================
+// GÉNÉRATIONS — mosaïque photo sur la page Notre histoire
+// Généré automatiquement par sync.py le {date}
+// Modifier via csv/generations.csv et csv/generation_images.csv
+// ou directement dans ce fichier.
+// Ne pas renommer window.BDE_GENERATIONS.
+// =====================================================
+"""
+
 
 def write_js(filename, var_name, data, header_tpl):
     path = DATA / filename
@@ -338,6 +348,44 @@ def build_galleries():
     write_js("galleries.js", "BDE_GALLERIES", galleries, HEADER_GALLERIES)
 
 
+VALID_SIZES = ("large", "wide", "tall", "small")
+
+def build_generations():
+    imgs_by_slug = {}
+    for row in read_csv("generation_images.csv"):
+        row = pad(row, 5)
+        slug = sv(row[0])
+        if slug: imgs_by_slug.setdefault(slug, []).append(row)
+    for k in imgs_by_slug:
+        imgs_by_slug[k].sort(key=lambda r: iv(pad(r,2)[1]))
+
+    generations = []
+    for row in read_csv("generations.csv"):
+        row = pad(row, 7)
+        slug = sv(row[0])
+        if not slug: continue
+        images = []
+        for ir in imgs_by_slug.get(slug, []):
+            ir = pad(ir, 5)
+            src, alt = sv(ir[2]), sv(ir[3])
+            if not src: continue
+            size = sv(ir[4], "small").lower()
+            if size not in VALID_SIZES:
+                print(f"  AVERTISSEMENT : generation_images.csv — taille '{size}' invalide pour {slug} ({src}), 'small' utilisé (valeurs valides : {', '.join(VALID_SIZES)})")
+                size = "small"
+            images.append({"src": src, "alt": alt, "size": size})
+        title_fr, title_en = sv(row[2]), sv(row[3])
+        period_fr, period_en = sv(row[4]), sv(row[5])
+        generations.append({
+            "slug": slug, "order": iv(row[1], 1),
+            "title": title_fr, "titleI18n": {"fr": title_fr, "en": title_en},
+            "period": period_fr, "periodI18n": {"fr": period_fr, "en": period_en},
+            "active": bv(row[6]), "images": images,
+        })
+    generations.sort(key=lambda g: g["order"])
+    write_js("generations.js", "BDE_GENERATIONS", generations, HEADER_GENERATIONS)
+
+
 def main():
     if not CSV.exists():
         print(f"\n  ERREUR : dossier csv/ introuvable.\n  Lance d'abord init_excel.bat\n")
@@ -349,8 +397,9 @@ def main():
     build_sponsors()
     build_artists()
     build_galleries()
+    build_generations()
     print()
-    print(f"  Terminé ! 5 fichiers data/*.js mis à jour.")
+    print(f"  Terminé ! 6 fichiers data/*.js mis à jour.")
     print(f"  {datetime.now().strftime('%d/%m/%Y  %H:%M:%S')}")
     print()
 

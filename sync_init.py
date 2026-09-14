@@ -50,11 +50,12 @@ def main():
     print()
     print("  Lecture des fichiers data/*.js...")
 
-    site      = load_js("site.js")
-    events    = load_js("events.js")
-    sponsors  = load_js("sponsors.js")
-    artists   = load_js("artists.js")
-    galleries = load_js("galleries.js")
+    site        = load_js("site.js")
+    events      = load_js("events.js")
+    sponsors    = load_js("sponsors.js")
+    artists     = load_js("artists.js")
+    galleries   = load_js("galleries.js")
+    generations = load_js("generations.js")
 
     print("  Génération des fichiers CSV...")
 
@@ -318,8 +319,28 @@ def main():
                          s(ti.get("fr") or img.get("tag")), s(ti.get("en"))])
     write_csv("gallery_images.csv", rows)
 
+    # ── generations.csv ──────────────────────────────────────────
+    rows = [["SLUG", "ORDRE", "TITRE FR", "TITRE EN", "PÉRIODE FR", "PÉRIODE EN", "ACTIF (OUI/NON)"]]
+    rows.append(["## Identifiant unique de la génération (ne jamais modifier)", "Ordre d'affichage — la génération la plus récente en premier (1 = tout en haut)", "Titre affiché (ex: Génération 46)", "Titre affiché en anglais", "Sous-titre affiché sous le titre (ex: 2025 – 2026)", "Sous-titre en anglais", "OUI = section visible sur la page Notre histoire / NON = masquée"])
+    for gen in generations:
+        ti = gen.get("titleI18n") or {}
+        pi = gen.get("periodI18n") or {}
+        rows.append([s(gen.get("slug")), gen.get("order", ""),
+                     s(ti.get("fr") or gen.get("title")), s(ti.get("en")),
+                     s(pi.get("fr") or gen.get("period")), s(pi.get("en")),
+                     b(gen.get("active"))])
+    write_csv("generations.csv", rows)
+
+    # ── generation_images.csv ────────────────────────────────────
+    rows = [["SLUG GÉNÉRATION", "ORDRE", "IMAGE", "ALT", "TAILLE (large/wide/tall/small)"]]
+    rows.append(["## Identifiant de la génération concernée (doit correspondre à la colonne SLUG de generations.csv)", "Ordre d'affichage dans la mosaïque", "Chemin de la photo depuis la racine du site (ex: uploads/photo.jpg)", "Texte alternatif pour l'accessibilité et le SEO", "Taille de la case dans la mosaïque asymétrique — large (grande case carrée), wide (bannière large), tall (portrait), small (petite case). Alterner les tailles pour un rendu emboîté, voir GUIDE-MISE-A-JOUR.md"])
+    for gen in generations:
+        for k, img in enumerate(gen.get("images") or [], 1):
+            rows.append([s(gen.get("slug")), k, s(img.get("src")), s(img.get("alt")), s(img.get("size"))])
+    write_csv("generation_images.csv", rows)
+
     print()
-    print("  Terminé ! 12 fichiers CSV générés dans csv/")
+    print("  Terminé ! 14 fichiers CSV générés dans csv/")
     print()
 
 

@@ -1,0 +1,3 @@
+﻿SLUG,ORDRE,TITRE FR,TITRE EN,PÉRIODE FR,PÉRIODE EN,ACTIF (OUI/NON)
+## Identifiant unique de la génération (ne jamais modifier),Ordre d'affichage — la génération la plus récente en premier (1 = tout en haut),Titre affiché (ex: Génération 46),Titre affiché en anglais,Sous-titre affiché sous le titre (ex: 2025 – 2026),Sous-titre en anglais,OUI = section visible sur la page Notre histoire / NON = masquée
+g46,1,Génération 46,Generation 46,2025 – 2026,2025 – 2026,OUI

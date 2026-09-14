@@ -72,6 +72,24 @@
   function artistTextStrip(){
     return (((window.BDE_ARTISTS||{}).textStrip)||[]).map(n=>`<span class="artist-text-item">${esc(n)}</span><span class="artist-text-sep">·</span>`).join('');
   }
+  // ── GÉNÉRATIONS ────────────────────────────────────────
+  // Mosaïque photo asymétrique par génération, sur la page Notre histoire.
+  // Source : data/generations.js. Simple affichage, pas de lightbox ni de
+  // téléchargement (contrairement aux galeries d'événements).
+  function generationBlock(g){
+    const title=i18nObj(g.titleI18n||g.title), period=i18nObj(g.periodI18n||g.period);
+    const validSizes=new Set(['large','wide','tall','small']);
+    const tiles=(g.images||[]).map(im=>{
+      const size=validSizes.has(im.size)?im.size:'small';
+      return `<div class="generation-item size-${size}"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" loading="lazy" decoding="async" /></div>`;
+    }).join('');
+    return `<div class="generation-block reveal"><div class="generation-block-header"><h3 class="generation-block-title"${attrI18n(title.fr,title.en)}>${esc(g.title)}</h3>${g.period?`<div class="generation-block-period"${attrI18n(period.fr,period.en)}>${esc(g.period)}</div>`:''}</div><div class="generation-grid">${tiles}</div></div>`;
+  }
+  function renderGenerations(){
+    // Une génération sans photo (pas encore uploadées) ne s'affiche pas —
+    // pas de mosaïque vide en attendant.
+    return (window.BDE_GENERATIONS||[]).filter(g=>g.active!==false&&(g.images||[]).length).slice().sort((a,b)=>(a.order||999)-(b.order||999)).map(generationBlock).join('');
+  }
   function homeGalleryStrip(){
     const homeStripGallerySlugs=new Set(['begins','croisette','gala']);
     const homeStripExcludedImages=new Set([
@@ -266,6 +284,12 @@
     document.querySelectorAll('[data-render="artists-carousel"]').forEach(el=>{el.innerHTML=artistCarousel();});
     document.querySelectorAll('[data-render="artists-text-strip"]').forEach(el=>{el.innerHTML=artistTextStrip();});
     document.querySelectorAll('[data-render="home-gallery-strip"]').forEach(el=>{el.innerHTML=homeGalleryStrip();});
+    document.querySelectorAll('[data-render="generations"]').forEach(el=>{
+      const html=renderGenerations();
+      el.innerHTML=html;
+      const section=el.closest('section');
+      if(section) section.hidden=!html;
+    });
     document.querySelectorAll('[data-render="gallery-masonry"]').forEach(renderGallery);
     document.querySelectorAll('[data-render="affiche"]').forEach(el=>{el.innerHTML=afficheContent();});
   };
