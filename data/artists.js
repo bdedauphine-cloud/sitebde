@@ -10,7 +10,7 @@ window.BDE_ARTISTS = {
   "cards": [
     {
       "name": "Gazo",
-      "image": "uploads/cap-145216.png",
+      "image": "uploads/cap-145216-card.webp",
       "alt": "Gazo",
       "yearEvent": "2026 · How We Dau",
       "eventText": "Showcase exclusif · Paris Dauphine",
@@ -21,7 +21,7 @@ window.BDE_ARTISTS = {
     },
     {
       "name": "Gims",
-      "image": "uploads/cap-144920.png",
+      "image": "uploads/cap-144920-card.webp",
       "alt": "Gims",
       "yearEvent": "2025 · How We Dau",
       "eventText": "Showcase · Paris Dauphine",
@@ -32,7 +32,7 @@ window.BDE_ARTISTS = {
     },
     {
       "name": "SCH",
-      "image": "uploads/DSC05266-scaled.jpg",
+      "image": "uploads/DSC05266-scaled-card.webp",
       "alt": "SCH",
       "yearEvent": "2023 · How We Dau",
       "eventText": "Showcase · Paris Dauphine",
@@ -43,7 +43,7 @@ window.BDE_ARTISTS = {
     },
     {
       "name": "Laylow",
-      "image": "uploads/cap-145018.png",
+      "image": "uploads/cap-145018-card.webp",
       "alt": "Laylow",
       "yearEvent": "2022 · How We Dau",
       "eventText": "Showcase · Paris Dauphine",
@@ -54,7 +54,7 @@ window.BDE_ARTISTS = {
     },
     {
       "name": "Djadja & Dinaz",
-      "image": "uploads/hwd2024dinaz.jpg",
+      "image": "uploads/hwd2024dinaz-card.webp",
       "alt": "Djadja & Dinaz",
       "yearEvent": "2022 · How We Dau",
       "eventText": "Showcase · Paris Dauphine",
@@ -65,7 +65,7 @@ window.BDE_ARTISTS = {
     },
     {
       "name": "PLK · SDM",
-      "image": "uploads/cap-145204.png",
+      "image": "uploads/cap-145204-card.webp",
       "alt": "PLK & SDM",
       "yearEvent": "2021 · How We Dau",
       "eventText": "Showcase · Paris Dauphine",
@@ -76,7 +76,7 @@ window.BDE_ARTISTS = {
     },
     {
       "name": "VANCO",
-      "image": "uploads/DSC05863-scaled.jpg",
+      "image": "uploads/DSC05863-scaled-card.webp",
       "alt": "Nuit Dauphine VANCO",
       "yearEvent": "2026 · Nuit Dauphine",
       "eventText": "Nuit Dauphine · Club parisien",

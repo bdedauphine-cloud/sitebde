@@ -671,12 +671,17 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Gallery strip auto-scroll
+    // Gallery strip auto-scroll — ne démarre qu'à l'approche du bandeau
+    // à l'écran, pour laisser le temps aux images (lazy-load) de charger
+    // avant de les faire défiler.
     const strip = document.getElementById('galerieStrip');
     let stripPos = 0;
     strip.innerHTML += strip.innerHTML;
     function scrollStrip() { stripPos += 0.6; const max = strip.scrollWidth / 2; if (stripPos >= max) stripPos = 0; strip.style.transform = `translateX(-${stripPos}px)`; requestAnimationFrame(scrollStrip); }
-    scrollStrip();
+    const stripObs = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { stripObs.disconnect(); scrollStrip(); }
+    }, { rootMargin: '400px 0px' });
+    stripObs.observe(strip);
 
     // Sponsors marquee — duplicate for infinite loop
     const sTrack = document.getElementById('sponsorsTrack');

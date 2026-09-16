@@ -90,37 +90,33 @@
     // pas de mosaïque vide en attendant.
     return (window.BDE_GENERATIONS||[]).filter(g=>g.active!==false&&(g.images||[]).length).slice().sort((a,b)=>(a.order||999)-(b.order||999)).map(generationBlock).join('');
   }
+  // Sélection figée à l'avance (au lieu d'un tirage aléatoire parmi les
+  // galeries complètes) pour pouvoir servir des dérivés WebP allégés,
+  // dédiés à ce bandeau — les photos en pleine résolution des pages
+  // galeries pesaient plusieurs Mo chacune et ne chargeaient pas de
+  // façon fiable sur mobile.
+  const HOME_GALLERY_STRIP_IMAGES=[
+    {src:'uploads/begins-2025-05-strip.webp',alt:'Begins'},
+    {src:'uploads/croisette-2025-01-strip.webp',alt:'La Croisette'},
+    {src:'uploads/gala-2026-259-strip.webp',alt:'Gala Dauphine'},
+    {src:'uploads/gala-2026-338-strip.webp',alt:'Gala Dauphine 2026 — photo 52'},
+    {src:'uploads/croisette-2026-71-strip.webp',alt:'La Croisette 2026 — photo 71'},
+    {src:'uploads/croisette-2025-extra-12-strip.webp',alt:'La Croisette 2025 — photo 12'},
+    {src:'uploads/croisette-2026-79-strip.webp',alt:'La Croisette 2026 — photo 79'},
+    {src:'uploads/gala-2026-4-strip.webp',alt:'Gala Dauphine 2026 — photo 2'},
+    {src:'uploads/begins-2025-extra-33-strip.webp',alt:'Begins 2025 — photo 33'},
+    {src:'uploads/croisette-2026-19-strip.webp',alt:'La Croisette 2026 — photo 19'},
+    {src:'uploads/croisette-2025-02-strip.webp',alt:'La Croisette 2025 — photo 2'},
+    {src:'uploads/gala-2026-236-strip.webp',alt:'Gala Dauphine 2026 — photo 42'},
+    {src:'uploads/croisette-2026-50-strip.webp',alt:'La Croisette 2026 — photo 50'},
+    {src:'uploads/begins-2025-extra-26-strip.webp',alt:'Begins 2025 — photo 26'},
+    {src:'uploads/begins-2025-extra-05-strip.webp',alt:'Begins 2025 — photo 5'},
+    {src:'uploads/croisette-2025-extra-03-strip.webp',alt:'La Croisette 2025 — photo 3'},
+    {src:'uploads/gala-2026-42-strip.webp',alt:'Gala Dauphine 2026 — photo 13'},
+    {src:'uploads/begins-2025-01-strip.webp',alt:'Begins 2025 — photo 3'}
+  ];
   function homeGalleryStrip(){
-    const homeStripGallerySlugs=new Set(['begins','croisette','gala']);
-    const homeStripExcludedImages=new Set([
-      'uploads/begins-2025-extra-01.jpg',
-      'uploads/gala-2026-3.jpg',
-      'uploads/begins-2025-extra-02.jpg',
-      'uploads/gala-2026-5.jpg',
-      'uploads/begins-2025-extra-04.jpg'
-    ]);
-    const galleries=(window.BDE_GALLERIES||[])
-      .filter(g=>g.active!==false&&homeStripGallerySlugs.has(g.slug))
-      .map(g=>{
-      const cover=g.coverImage?{src:g.coverImage,alt:g.title||''}:null;
-      return [cover,...(g.images||[])].filter(Boolean).filter(im=>!homeStripExcludedImages.has(im.src));
-    });
-    const imgs=[];
-    const maxLength=Math.max(0,...galleries.map(list=>list.length));
-    for(let i=0;i<maxLength;i++){
-      galleries.forEach(list=>{
-        const im=list[i];
-        if(im?.src&&!imgs.some(x=>x.src===im.src)) imgs.push(im);
-      });
-    }
-    const fourthImage=imgs.find(im=>im.src==='uploads/gala-2026-338.jpg');
-    const pinned=[...imgs.slice(0,3),fourthImage].filter(Boolean);
-    const random=imgs.slice(3).filter(im=>im.src!==fourthImage?.src);
-    for(let i=random.length-1;i>0;i--){
-      const j=Math.floor(Math.random()*(i+1));
-      [random[i],random[j]]=[random[j],random[i]];
-    }
-    return [...pinned,...random].slice(0,18).map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" loading="lazy" decoding="async" /></div>`).join('');
+    return HOME_GALLERY_STRIP_IMAGES.map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" loading="lazy" decoding="async" /></div>`).join('');
   }
   function renderGallery(el){
     const slug=el.dataset.gallerySlug;
