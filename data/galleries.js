@@ -1,6 +1,6 @@
 // =====================================================
 // GALERIES ET ALBUMS GOOGLE PHOTOS
-// Généré automatiquement par sync.py le 16/09/2026 21:50
+// Généré automatiquement par sync.py le 16/09/2026 21:56
 // Modifier via csv/galleries.csv et csv/gallery_images.csv
 // ou directement dans ce fichier.
 // Ne pas renommer window.BDE_GALLERIES.
@@ -535,17 +535,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-06.jpg",
-        "alt": "La Croisette 2026 — photo 6",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-07.jpg",
         "alt": "La Croisette 2026 — photo 7",
         "caption": "",
@@ -559,17 +548,6 @@ window.BDE_GALLERIES = [
       {
         "src": "uploads/croisette-2026-08.jpg",
         "alt": "La Croisette 2026 — photo 8",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-09.jpg",
-        "alt": "La Croisette 2026 — photo 9",
         "caption": "",
         "captionI18n": {},
         "tag": "Croisette · 2026",
@@ -713,17 +691,6 @@ window.BDE_GALLERIES = [
       {
         "src": "uploads/croisette-2026-22.jpg",
         "alt": "La Croisette 2026 — photo 22",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-23.jpg",
-        "alt": "La Croisette 2026 — photo 23",
         "caption": "",
         "captionI18n": {},
         "tag": "Croisette · 2026",
@@ -920,17 +887,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-41.jpg",
-        "alt": "La Croisette 2026 — photo 41",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-42.jpg",
         "alt": "La Croisette 2026 — photo 42",
         "caption": "",
@@ -986,17 +942,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-47.jpg",
-        "alt": "La Croisette 2026 — photo 47",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-48.jpg",
         "alt": "La Croisette 2026 — photo 48",
         "caption": "",
@@ -1008,30 +953,8 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-49.jpg",
-        "alt": "La Croisette 2026 — photo 49",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-50.jpg",
         "alt": "La Croisette 2026 — photo 50",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-51.jpg",
-        "alt": "La Croisette 2026 — photo 51",
         "caption": "",
         "captionI18n": {},
         "tag": "Croisette · 2026",
@@ -1063,30 +986,8 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-54.jpg",
-        "alt": "La Croisette 2026 — photo 54",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-55.jpg",
         "alt": "La Croisette 2026 — photo 55",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-56.jpg",
-        "alt": "La Croisette 2026 — photo 56",
         "caption": "",
         "captionI18n": {},
         "tag": "Croisette · 2026",
@@ -1107,30 +1008,8 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-58.jpg",
-        "alt": "La Croisette 2026 — photo 58",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-59.jpg",
         "alt": "La Croisette 2026 — photo 59",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-60.jpg",
-        "alt": "La Croisette 2026 — photo 60",
         "caption": "",
         "captionI18n": {},
         "tag": "Croisette · 2026",
@@ -1162,17 +1041,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-63.jpg",
-        "alt": "La Croisette 2026 — photo 63",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-64.jpg",
         "alt": "La Croisette 2026 — photo 64",
         "caption": "",
@@ -1186,17 +1054,6 @@ window.BDE_GALLERIES = [
       {
         "src": "uploads/croisette-2026-65.jpg",
         "alt": "La Croisette 2026 — photo 65",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-66.jpg",
-        "alt": "La Croisette 2026 — photo 66",
         "caption": "",
         "captionI18n": {},
         "tag": "Croisette · 2026",
@@ -1294,17 +1151,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-75.jpg",
-        "alt": "La Croisette 2026 — photo 75",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-76.jpg",
         "alt": "La Croisette 2026 — photo 76",
         "caption": "",
@@ -1382,17 +1228,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-83.jpg",
-        "alt": "La Croisette 2026 — photo 83",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-84.jpg",
         "alt": "La Croisette 2026 — photo 84",
         "caption": "",
@@ -1459,17 +1294,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-90.jpg",
-        "alt": "La Croisette 2026 — photo 90",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-91.jpg",
         "alt": "La Croisette 2026 — photo 91",
         "caption": "",
@@ -1492,17 +1316,6 @@ window.BDE_GALLERIES = [
         }
       },
       {
-        "src": "uploads/croisette-2026-93.jpg",
-        "alt": "La Croisette 2026 — photo 93",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
         "src": "uploads/croisette-2026-94.jpg",
         "alt": "La Croisette 2026 — photo 94",
         "caption": "",
@@ -1516,28 +1329,6 @@ window.BDE_GALLERIES = [
       {
         "src": "uploads/croisette-2026-95.jpg",
         "alt": "La Croisette 2026 — photo 95",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-96.jpg",
-        "alt": "La Croisette 2026 — photo 96",
-        "caption": "",
-        "captionI18n": {},
-        "tag": "Croisette · 2026",
-        "tagI18n": {
-          "fr": "Croisette · 2026",
-          "en": "Croisette · 2026"
-        }
-      },
-      {
-        "src": "uploads/croisette-2026-97.jpg",
-        "alt": "La Croisette 2026 — photo 97",
         "caption": "",
         "captionI18n": {},
         "tag": "Croisette · 2026",
