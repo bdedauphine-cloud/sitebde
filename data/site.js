@@ -1,6 +1,6 @@
 // =====================================================
 // FICHIER GLOBAL DU SITE
-// Généré automatiquement par sync.py le 16/09/2026 21:22
+// Généré automatiquement par sync.py le 16/09/2026 21:23
 // Modifier via csv/config.csv et csv/navigation.csv
 // ou directement dans ce fichier.
 // Ne pas renommer window.BDE_SITE.
