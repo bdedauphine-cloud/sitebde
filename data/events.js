@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 16/09/2026 21:33
+// Généré automatiquement par sync.py le 16/09/2026 21:48
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -281,8 +281,8 @@ window.BDE_EVENTS = [
     "affiche": {
       "mode": "AUTO",
       "image": "uploads/affiche-begins.jpg",
-      "alt": "Affiche de La Begins — jeudi 24 septembre, Club Haussmann, 14€",
-      "ratio": "1179/1162",
+      "alt": "Affiche de La Begins — jeudi 24 septembre, 23h-5h, Club Haussmann, avec HYZE, 14€",
+      "ratio": "5760/3240",
       "responsive": true,
       "daysBefore": 0,
       "title": {
@@ -290,8 +290,8 @@ window.BDE_EVENTS = [
         "en": ""
       },
       "text": {
-        "fr": "Jeudi 24 septembre · Club Haussmann · 14€",
-        "en": "Thursday, September 24 · Club Haussmann · €14"
+        "fr": "Jeudi 24 septembre · 23h-5h · Club Haussmann · 14€",
+        "en": "Thursday, September 24 · 11PM-5AM · Club Haussmann · €14"
       },
       "ctaLabel": {
         "fr": "",
