@@ -126,7 +126,12 @@
     const slug=el.dataset.gallerySlug;
     const g=(window.BDE_GALLERIES||[]).find(x=>x.slug===slug);
     if(!g) return;
-    el.innerHTML=(g.images||[]).map((im,i)=>{
+    const tagFilter=el.dataset.galleryTag;
+    const tagExclude=el.dataset.galleryTagExclude;
+    let images=g.images||[];
+    if(tagFilter) images=images.filter(im=>im.tag===tagFilter);
+    else if(tagExclude) images=images.filter(im=>im.tag!==tagExclude);
+    el.innerHTML=images.map((im,i)=>{
       const hasCaption=Boolean(im.tag||im.caption);
       const caption=hasCaption?`<div class="gallery-item-caption"><div class="caption-tag gallery-caption-tag"${attrI18n(im.tagI18n?.fr||im.tag,im.tagI18n?.en||'')}>${esc(im.tag)}</div><p class="gallery-caption-text"${attrI18n(im.captionI18n?.fr||im.caption,im.captionI18n?.en||'')}>${esc(im.caption)}</p></div>`:'';
       if(g.lightboxMode==='lightbox'){
