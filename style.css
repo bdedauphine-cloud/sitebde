@@ -450,7 +450,14 @@ body.affiche-open { overflow: hidden; }
 }
 .affiche-poster {
   position: relative;
-  height: min(74vh, 660px);
+  width: auto; height: auto;
+  max-height: min(74vh, 660px);
+  /* Contraint aussi la largeur : sans ça, une affiche au format paysage
+     (ratio > 1) prend toute sa largeur dérivée de aspect-ratio et déborde
+     du panneau à côté. Les deux max- ensemble laissent le navigateur
+     choisir la plus grande boîte qui respecte le ratio et les deux bornes,
+     quelle que soit l'orientation de l'affiche. */
+  max-width: min(50vw, 520px);
   border: 1px solid var(--border);
   overflow: hidden;
   background: #111;
