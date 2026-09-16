@@ -1,6 +1,6 @@
 // =====================================================
 // GALERIES ET ALBUMS GOOGLE PHOTOS
-// Généré automatiquement par sync.py le 16/09/2026 20:52
+// Généré automatiquement par sync.py le 16/09/2026 20:54
 // Modifier via csv/galleries.csv et csv/gallery_images.csv
 // ou directement dans ce fichier.
 // Ne pas renommer window.BDE_GALLERIES.
@@ -298,7 +298,7 @@ window.BDE_GALLERIES = [
     "page": "galerie-croisette.html",
     "eventSlug": "croisette",
     "coverImage": "uploads/croisette-2025-01.jpg",
-    "googlePhotosUrl": "https://photos.google.com/",
+    "googlePhotosUrl": "https://drive.google.com/drive/folders/11qF7SsDIse_l-UrHIHWTtJckUwONcUXf",
     "lightboxMode": "overlay",
     "active": true,
     "order": 2,
