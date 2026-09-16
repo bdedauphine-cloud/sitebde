@@ -1,6 +1,6 @@
 // =====================================================
 // GÉNÉRATIONS — mosaïque photo sur la page Notre histoire
-// Généré automatiquement par sync.py le 16/09/2026 22:13
+// Généré automatiquement par sync.py le 16/09/2026 22:26
 // Modifier via csv/generations.csv et csv/generation_images.csv
 // ou directement dans ce fichier.
 // Ne pas renommer window.BDE_GENERATIONS.

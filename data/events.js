@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 16/09/2026 22:13
+// Généré automatiquement par sync.py le 16/09/2026 22:26
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -21,8 +21,8 @@ window.BDE_EVENTS = [
       "en": "Tuesday, September 15, 2026"
     },
     "statusLabel": {
-      "fr": "",
-      "en": ""
+      "fr": "Passé",
+      "en": "Past"
     },
     "statusColor": "",
     "place": "Paris",
