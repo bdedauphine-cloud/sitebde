@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 14/09/2026 14:43
+// Généré automatiquement par sync.py le 16/09/2026 20:51
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -170,7 +170,7 @@ window.BDE_EVENTS = [
     },
     "statusColor": "",
     "place": "Paris",
-    "venue": "",
+    "venue": "Club Haussmann",
     "shortDescription": "Lancement d'année · Rencontres · Découverte de la vie dauphinoise",
     "homeDescriptionI18n": {
       "fr": "Lancement d'année · Rencontres · Découverte de la vie dauphinoise",
@@ -200,7 +200,7 @@ window.BDE_EVENTS = [
       "uploads/begins-2025-09.jpg"
     ],
     "alt": "Begins",
-    "ticketUrl": "",
+    "ticketUrl": "https://shotgun.live/fr/events/begins-2026",
     "ticketLabel": "Réserver",
     "dossierUrl": "",
     "dossierLabel": {
@@ -280,18 +280,18 @@ window.BDE_EVENTS = [
     "reverse": false,
     "affiche": {
       "mode": "AUTO",
-      "image": "",
-      "alt": "",
-      "ratio": "",
-      "responsive": false,
+      "image": "uploads/affiche-begins.jpg",
+      "alt": "Affiche de La Begins — jeudi 24 septembre, Club Haussmann, 14€",
+      "ratio": "1179/1162",
+      "responsive": true,
       "daysBefore": 0,
       "title": {
         "fr": "",
         "en": ""
       },
       "text": {
-        "fr": "",
-        "en": ""
+        "fr": "Jeudi 24 septembre · Club Haussmann · 14€",
+        "en": "Thursday, September 24 · Club Haussmann · €14"
       },
       "ctaLabel": {
         "fr": "",
