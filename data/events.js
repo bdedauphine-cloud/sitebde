@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 16/09/2026 21:56
+// Généré automatiquement par sync.py le 16/09/2026 21:59
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -670,14 +670,14 @@ window.BDE_EVENTS = [
       "en": "Annual · Club"
     },
     "longDescription": [
-      "La soirée emblématique du BDE. Depuis 6 ans, la How We Dau s'est imposée dans l'univers rap des soirées parisiennes avec des showcases exclusifs d'artistes de premier plan. Énergie unique — un format qui grandit chaque année."
+      "La soirée emblématique du BDE. Depuis 2015, la How We Dau s'est imposée dans l'univers rap des soirées parisiennes avec des showcases exclusifs d'artistes de premier plan. Énergie unique — un format qui grandit chaque année."
     ],
     "descriptionBlocks": [
       {
-        "text": "La soirée emblématique du BDE. Depuis 6 ans, la How We Dau s'est imposée dans l'univers rap des soirées parisiennes avec des showcases exclusifs d'artistes de premier plan. Énergie unique — un format qui grandit chaque année.",
+        "text": "La soirée emblématique du BDE. Depuis 2015, la How We Dau s'est imposée dans l'univers rap des soirées parisiennes avec des showcases exclusifs d'artistes de premier plan. Énergie unique — un format qui grandit chaque année.",
         "i18n": {
-          "fr": "La soirée emblématique du BDE. Depuis 6 ans, la How We Dau s'est imposée dans l'univers rap des soirées parisiennes avec des showcases exclusifs d'artistes de premier plan. Énergie unique — un format qui grandit chaque année.",
-          "en": "The BDE's iconic night. For 6 years, How We Dau has established itself in the Parisian rap scene with exclusive showcases from top-tier artists. Unmatched energy — a format that grows every year."
+          "fr": "La soirée emblématique du BDE. Depuis 2015, la How We Dau s'est imposée dans l'univers rap des soirées parisiennes avec des showcases exclusifs d'artistes de premier plan. Énergie unique — un format qui grandit chaque année.",
+          "en": "The BDE's iconic night. Since 2015, How We Dau has established itself in the Parisian rap scene with exclusive showcases from top-tier artists. Unmatched energy — a format that grows every year."
         }
       }
     ],
@@ -737,14 +737,14 @@ window.BDE_EVENTS = [
       },
       {
         "key": "Historique",
-        "value": "Depuis 6 ans",
+        "value": "Depuis 2015",
         "keyI18n": {
           "fr": "Historique",
           "en": "History"
         },
         "valueI18n": {
-          "fr": "Depuis 6 ans",
-          "en": "Running for 6 years"
+          "fr": "Depuis 2015",
+          "en": "Since 2015"
         }
       },
       {
@@ -778,7 +778,7 @@ window.BDE_EVENTS = [
         "highlight": false
       },
       {
-        "label": "Djadja & Dinaz",
+        "label": "Djadja & Dinaz (2024)",
         "highlight": false
       },
       {
