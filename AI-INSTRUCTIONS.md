@@ -32,7 +32,8 @@ synchronisation, pas une simple mise à jour de contenu.
 **Photos et images :**
 - Les photos physiques sont dans `uploads/` (ou `uploads/partners/` pour les logos sponsors)
 - Les chemins sont référencés dans `data/galleries.js` et `data/events.js`
-- Format recommandé : JPG, max 500 KB, max 1920px de large (compatibilité iPhone)
+- Format recommandé pour l'original : JPG, max 500 KB, max 1920px de large (compatibilité iPhone)
+- **Pour une galerie, le carrousel artistes ou la bande photo homepage, l'original ne suffit jamais** : ces pages affichent 20 à 100+ photos à la fois, et même à 500 KB chacune ça fait des dizaines de Mo d'un coup sur mobile — c'est ce qui a cassé la galerie La Croisette (103 photos, 29 Mo) et le carrousel artistes en septembre 2026. Une miniature WebP dédiée (`-thumb.webp`/`-card.webp`/`-hero.webp`/`-strip.webp` selon l'usage) est obligatoire en plus de l'original — recette et table complète en section 14.
 - Ne jamais inventer un chemin image — vérifier que le fichier est bien dans `uploads/` avant de le référencer
 - Pour reproduire une importation complète de photos, suivre la recette courte en section 14.
 
@@ -101,6 +102,9 @@ data/legal.js      → réserve future, non utilisée visuellement — ne pas to
 
 ```
 js/render.js       → moteur qui lit les données et génère les sections dynamiques
+                      (exception : la bande photo homepage n'est plus lue depuis
+                      data/galleries.js — c'est une sélection figée codée en dur,
+                      tableau HOME_GALLERY_STRIP_IMAGES, voir section 14)
 js/components.js   → composants communs : nav, footer, sponsors, modal billetterie
 js/main.js         → lance le rendu
 js/affiche.js      → comportement de l'affiche : ouverture, animation, mémoire de visite
@@ -213,6 +217,8 @@ Minuscules, sans accent, sans espace (utiliser des tirets). Uniques dans tout le
 
 ### Images
 Les images doivent déjà exister dans `uploads/` (ou `uploads/partners/` pour les sponsors) avant d'être référencées. Si ce n'est pas encore fait, signaler : "Pense à placer `[fichier]` dans `uploads/` avant de déployer."
+
+**Galeries, carrousel artistes, bande photo homepage : une miniature WebP est obligatoire en plus de la photo d'origine.** Ce n'est pas optionnel — sans elle, la page charge la photo pleine résolution à la place, multipliée par le nombre de photos affichées à la fois (20 à 100+), ce qui a déjà rendu la galerie La Croisette et la bande homepage illisibles sur mobile (écran noir, septembre 2026). Voir la recette complète et la table des suffixes (`-thumb.webp`, `-hero.webp`, `-card.webp`, `-strip.webp`) en section 14. Ne jamais ajouter une photo à `data/galleries.js` ou `data/artists.js` sans avoir généré sa miniature au préalable.
 
 ### Format de date
 Toujours `YYYY-MM-DD` pour le champ technique `date`. Les labels affichés (`dateLabel.fr`, `dateLabel.en`) sont du texte libre.
@@ -430,11 +436,16 @@ window.BDE_SITE = {
   "coverImage": "uploads/...",
   "googlePhotosUrl": "https://photos.app.goo.gl/...",
   "lightboxMode": "overlay",        // "overlay" ou "lightbox". Conserver la valeur existante.
-  "active": true,                   // false = masqué de la bande photos homepage.
+  "active": true,                   // false = galerie masquée (page + carte événement).
+                                     // N'affecte PLUS la bande photo homepage depuis
+                                     // sept. 2026 : celle-ci est une sélection figée à
+                                     // part, voir HOME_GALLERY_STRIP_IMAGES (section 14).
   "order": 1,
   "images": [
     {
-      "src": "uploads/photo.jpg",
+      "src": "uploads/photo.jpg",   // Photo pleine résolution. Nécessite un fichier
+                                     // "uploads/photo-thumb.webp" pour la grille — voir
+                                     // section 14 avant d'ajouter une entrée ici.
       "alt": "WEI 2026",
       "caption": "Légende FR",
       "captionI18n": { "fr": "Légende FR", "en": "English caption" },
@@ -470,7 +481,8 @@ window.BDE_ARTISTS = {
   "cards": [
     {
       "name": "Gazo",
-      "image": "uploads/...",
+      "image": "uploads/...-card.webp",  // Miniature dédiée, pas la photo d'origine —
+                                          // voir section 14 pour la générer.
       "alt": "Gazo",
       "yearEvent": "2026 · How We Dau",
       "eventText": "Showcase exclusif · Paris Dauphine",
@@ -673,7 +685,15 @@ Résultat affiché : `En vente · 18 septembre 2026`
 - Légende (FR) :
 - Tag (ex. "Gala · 2027") :
 
-**Étape 4 — Confirmer et livrer** `data/galleries.js` modifié.
+**Étape 4 — Générer la miniature `-thumb.webp` de chaque nouvelle photo**
+avant de toucher `data/galleries.js` (recette en section 14). Obligatoire :
+sans elle, la grille charge la photo pleine résolution à la place —
+c'est exactement ce qui a rendu la galerie La Croisette illisible sur
+mobile en septembre 2026.
+
+**Étape 5 — Confirmer et livrer** `data/galleries.js` modifié, en précisant
+dans la réponse quelles miniatures `-thumb.webp` ont été générées et
+livrées avec.
 
 ---
 
@@ -715,7 +735,12 @@ Résultat affiché : `En vente · 18 septembre 2026`
 > - Ajouter aussi dans le bandeau texte défilant ? oui/non :
 > - Ordre (le dernier actuel est [X]) :
 
-**Étape 2 — Confirmer et livrer** `data/artists.js` modifié.
+**Étape 2 — Générer la miniature `-card.webp` de la photo** (recette en
+section 14) et l'utiliser comme valeur du champ `image` — jamais la photo
+d'origine directement, elle est bien trop lourde pour 7+ cartes affichées
+(et doublées) en même temps sur mobile.
+
+**Étape 3 — Confirmer et livrer** `data/artists.js` modifié.
 
 ---
 
@@ -961,7 +986,7 @@ Il apparaît :
 - sur la homepage car `showOnHome: true` dans `data/events.js`
 - sur la page événements car `showOnEventsPage: true` dans `data/events.js`
 - en galerie via `galerie-begins.html` + `data/galleries.js`
-- dans la bande photos homepage car sa galerie est `active: true` dans `data/galleries.js`
+- dans la bande photos homepage seulement si des photos Begin's figurent dans la sélection figée `HOME_GALLERY_STRIP_IMAGES` de `js/render.js` (plus automatique depuis septembre 2026, voir section 14)
 
 Pour modifier Begin's : chercher `slug: "begins"` dans `data/events.js`.
 Pour modifier ses photos : chercher `slug: "begins"` dans `data/galleries.js`.
@@ -994,6 +1019,8 @@ Avant de rendre le fichier final, vérifier :
 - [ ] Les ordres (`order`) sont cohérents
 - [ ] Les champs `active`, `showOnHome`, `showOnEventsPage` correspondent à la demande
 - [ ] Les textes FR et EN sont cohérents et tous les deux renseignés
+- [ ] Chaque photo ajoutée à `data/galleries.js` a son `-thumb.webp` livré dans `uploads/` (section 14)
+- [ ] Chaque `image` ajoutée/modifiée dans `data/artists.js` pointe vers un `-card.webp`, pas la photo d'origine
 
 ### Fonctionnel
 - [ ] Un partenaire ajouté apparaît sur la homepage et `partenaires.html`
@@ -1021,6 +1048,8 @@ Avant de rendre le fichier final, vérifier :
 - Retirer l'affiche à la main après un événement — elle s'éteint seule le lendemain (WORKFLOW M)
 - Référencer une affiche sans avoir mis le fichier dans `uploads/` — sans image, rien ne s'affiche
 - Supprimer une ancienne affiche d'`uploads/` sans supprimer aussi ses 6 variantes `-640/-960/-1536`
+- Ajouter une photo à `data/galleries.js` ou `data/artists.js` sans avoir généré sa miniature (`-thumb.webp`/`-card.webp`) — c'est exactement ce qui a cassé la galerie La Croisette et le carrousel artistes sur mobile en septembre 2026 (section 14)
+- Supprimer une photo d'`uploads/` référencée quelque part sans supprimer aussi ses dérivés (`-thumb.webp`, `-card.webp`, `-hero.webp`, `-strip.webp`) — et inversement, ne jamais livrer un dérivé sans l'original correspondant
 
 ---
 
@@ -1074,9 +1103,31 @@ Si des fichiers techniques ont été modifiés, l'expliquer et justifier pourquo
 1. Partir du dernier `main` pour ne pas écraser les changements faits sur GitHub.
 2. Réutiliser les fichiers déjà présents dans `uploads/`, puis convertir uniquement les sources manquantes.
 3. Nommage utilisé : `begins-2025-*.jpg`, `croisette-2025-*.jpg`, `gala-2026-NUMERO.jpg`.
-4. Conversion : orientation EXIF, RGB, plus grand côté limité à 1920 px, JPG progressif/optimisé, qualité initiale 84 puis réduite jusqu’à environ 420 KB, toujours sous 500 KB.
-5. Ajouter chaque chemin une seule fois dans le tableau `images` correspondant de `data/galleries.js`.
-6. Pour ne rien afficher au survol, laisser `caption`, `tag` et leurs objets i18n vides.
-7. Ne pas modifier `coverImage`, `data/events.js`, les covers Événements ou le hero sans demande explicite.
-8. Dans `galerie-begins.html`, `galerie-croisette.html` et `galerie-gala.html`, conserver le titre « Éditions précédentes », mais laisser sa grille `.gallery-masonry` vide tant qu’aucune archive réelle n’existe.
-9. Vérifier : chemins uniques, fichiers présents, maximum 1920 px et 500 KB, `node --check data/galleries.js`, `git diff --check`, et aucun diff sur `data/events.js`.
+4. Conversion de l'original : orientation EXIF, RGB, plus grand côté limité à 1920 px, JPG progressif/optimisé, qualité initiale 84 puis réduite jusqu’à environ 420 KB, toujours sous 500 KB. Cette limite protège UNE photo isolée (lightbox, téléchargement) — elle ne suffit jamais pour la grille, voir étape 5.
+5. **Générer la miniature `-thumb.webp` de chaque photo — obligatoire, ne jamais sauter cette étape.** Une grille affiche 20 à 100+ photos à la fois ; même à 500 KB chacune, l'original seul met des dizaines de Mo sur mobile (c'est ce qui a cassé la galerie La Croisette — 103 photos, 29 Mo — en septembre 2026). Recette (Pillow, `pip install Pillow` si absent) :
+   ```python
+   from PIL import Image
+   def make_thumb(src, dst, target_width=700, quality=72):
+       with Image.open(src) as im:
+           im = im.convert('RGB')
+           w, h = im.size
+           ratio = target_width / w
+           im = im.resize((target_width, max(1, round(h*ratio))), Image.LANCZOS)
+           im.save(dst, 'WEBP', quality=quality, method=6)
+   # uploads/DSC07123-scaled.jpg -> uploads/DSC07123-scaled-thumb.webp
+   ```
+   Table complète des dérivés attendus selon l'usage (une même photo peut en avoir plusieurs) :
+
+   | Usage | Suffixe | Taille cible | Qualité |
+   |---|---|---|---|
+   | Grille masonry `galerie-*.html` (`data/galleries.js` → `images[].src`) | `-thumb.webp` | largeur 700px | 72 |
+   | Fond de hero `galerie-*.html` (CSS `background-image`, en dur dans chaque page) | `-hero.webp` | largeur 1600px | 76 |
+   | Carte carrousel artistes (`data/artists.js` / `csv/artists_cartes.csv` → `image`) | `-card.webp` | hauteur 840px | 76 |
+   | Bande photo homepage (sélection figée, voir étape 9) | `-strip.webp` | hauteur 720px | 72 |
+
+6. Ajouter chaque chemin (l'original, jamais la miniature) une seule fois dans le tableau `images` correspondant de `data/galleries.js`. `js/render.js` déduit lui-même le nom du `-thumb.webp` depuis `src` — si le fichier n'existe pas dans `uploads/`, l'image de la grille est cassée en silence.
+7. Pour ne rien afficher au survol, laisser `caption`, `tag` et leurs objets i18n vides.
+8. Ne pas modifier `coverImage`, `data/events.js`, les covers Événements ou le hero sans demande explicite. Si le hero change malgré tout, générer aussi son `-hero.webp` et éditer l'URL en dur dans le `<style>` de la page `galerie-*.html`.
+9. La bande photo homepage (`#galerie-band`) n'est **pas** mise à jour automatiquement par cette recette : c'est une sélection figée de 18 photos, codée en dur dans `js/render.js` (tableau `HOME_GALLERY_STRIP_IMAGES`, juste avant `homeGalleryStrip()`), pointant vers des `-strip.webp`. Ne la toucher que si la demande porte explicitement dessus — générer les `-strip.webp` nécessaires puis éditer ce tableau.
+10. Dans `galerie-begins.html`, `galerie-croisette.html` et `galerie-gala.html`, conserver le titre « Éditions précédentes », mais laisser sa grille `.gallery-masonry` vide tant qu’aucune archive réelle n’existe.
+11. Vérifier : chemins uniques, fichiers présents (original ET `-thumb.webp` pour chaque photo), original max 1920 px / 500 KB, miniature max ~150 KB, `node --check data/galleries.js`, `node --check js/render.js` si `HOME_GALLERY_STRIP_IMAGES` a été touché, `git diff --check`, et aucun diff sur `data/events.js`.

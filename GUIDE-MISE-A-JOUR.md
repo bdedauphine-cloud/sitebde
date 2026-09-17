@@ -31,6 +31,15 @@ Ouvrir dans Excel ou Google Sheets, modifier, sauvegarder, pousser sur GitHub �
 
 **Photos :** JPG uniquement, max 500 KB, max 1920 px. Les photos trop lourdes ne chargent pas sur iPhone.
 
+⚠️ Cette limite protège une photo isolée (l'affiche, une image d'événement).
+Elle ne suffit PAS pour une galerie, le carrousel artistes ou la bande photo
+homepage : là, ce n'est jamais une seule photo qui doit charger sur mobile,
+mais 20 à 100+ à la fois. Même à 500 KB chacune, ça fait des dizaines de Mo
+d'un coup — c'est ce qui a rendu la galerie La Croisette illisible sur
+mobile (103 photos, 29 Mo) en septembre 2026. Pour ces trois cas, une
+miniature WebP allégée est obligatoire en plus de la photo d'origine — voir
+« Miniatures WebP obligatoires » plus bas.
+
 ### Synchronisation automatique via GitHub Actions
 
 **Dès qu'un push arrive sur `main` :**
@@ -356,9 +365,15 @@ dernier) pour ne pas entrer en collision si on le réactive plus tard.
 # 8. Ajouter une galerie photo
 
 1. Créer ou conserver une page galerie HTML si elle existe.
-2. Placer les images dans `uploads/`.
-3. Ouvrir `data/galleries.js`.
-4. Ajouter une galerie ou modifier une galerie existante :
+2. Placer les images dans `uploads/` (JPG, max 1920 px, max 500 KB — c'est
+   la version pleine résolution, utilisée par le lightbox et le bouton
+   "Télécharger").
+3. **Générer la miniature WebP de chaque photo** — étape obligatoire, voir
+   « Miniatures WebP obligatoires » plus bas. Sans elle, la grille utilise
+   la photo pleine résolution à la place et la page redevient lourde comme
+   avant le correctif de septembre 2026.
+4. Ouvrir `data/galleries.js`.
+5. Ajouter une galerie ou modifier une galerie existante :
 
 ```js
 {
@@ -369,7 +384,7 @@ dernier) pour ne pas entrer en collision si on le réactive plus tard.
   active: true,
   images: [
     {
-      src: "uploads/photo-01.jpg",
+      src: "uploads/photo-01.jpg",        // photo pleine résolution
       alt: "Gala Dauphine",
       tag: "Gala · 2026",
       caption: "Description de la photo"
@@ -378,17 +393,23 @@ dernier) pour ne pas entrer en collision si on le réactive plus tard.
 }
 ```
 
-5. Sauvegarder.
-6. Ouvrir la page galerie concernée.
+   Ne référencer que `src` (la photo d'origine) dans `data/galleries.js` —
+   la miniature n'est PAS un champ séparé : `js/render.js` la déduit
+   automatiquement du nom de `src` (voir plus bas). Il suffit que le
+   fichier `-thumb.webp` correspondant existe dans `uploads/`.
+6. Sauvegarder.
+7. Ouvrir la page galerie concernée.
 
 ## Bouton "Télécharger" dans la visionneuse plein écran
 
 Chaque page `galerie-*.html` a son propre bouton de téléchargement dans sa
 visionneuse plein écran (le "lightbox"/"overlay" qui s'ouvre au clic sur une
-photo) : il pointe toujours vers exactement le même fichier que celui affiché
-(`uploads/...`), jamais une version réduite. Ce bouton n'existe que sur les
-pages `galerie-*.html` — pas sur le carrousel artistes ni sur la bande photo
-de la homepage.
+photo) : il pointe toujours vers la photo d'origine en pleine résolution
+(`uploads/nom.jpg`), jamais vers la miniature `-thumb.webp` affichée dans la
+grille — la visionneuse et le téléchargement lisent l'attribut `data-src` de
+la vignette, pas son `<img src>` (qui contient la miniature). Ce bouton
+n'existe que sur les pages `galerie-*.html` — pas sur le carrousel artistes
+ni sur la bande photo de la homepage.
 
 ⚠️ Chaque page `galerie-*.html` a sa propre copie du script de la visionneuse
 (pas de fichier partagé) et certaines pages n'utilisent pas exactement les
@@ -405,9 +426,17 @@ la quasi-totalité des `<img>` codées en dur dans les pages ont
 `loading="lazy" decoding="async"` : le navigateur ne télécharge/décode la
 photo que quand elle approche de l'écran. Sur mobile, charger d'un coup
 toutes les photos d'une page (carrousel + bande + galeries, souvent 20-30
-photos de plusieurs centaines de Ko chacune) peut dépasser la mémoire
-disponible pour décoder des images et en faire disparaître certaines
-silencieusement — c'est ce que corrige `loading="lazy"`.
+photos) peut dépasser la mémoire disponible pour décoder des images et en
+faire disparaître certaines silencieusement — c'est ce que corrige
+`loading="lazy"`.
+
+`loading="lazy"` ne règle que le *quand* (ne charger qu'à l'approche de
+l'écran), pas le *poids* de chaque photo. Une galerie de 100 photos à 500 Ko
+chacune reste 50 Mo à charger au fil du scroll, lazy-load ou pas — c'est
+justement ce qui rendait la galerie La Croisette illisible sur mobile en
+septembre 2026 (voir « Miniatures WebP obligatoires » ci-dessous). Les deux
+mécanismes sont complémentaires et doivent rester actifs ensemble : lazy-load
+pour le *quand*, miniature WebP pour le *poids*.
 
 Exceptions volontaires à ne pas "corriger" :
 - L'image `<img>` du fond de hero sur `nuits.html` et `howwedau.html` (elle
@@ -424,8 +453,89 @@ Exceptions volontaires à ne pas "corriger" :
 `make_affiche.py` ne traite qu'une seule image par événement : celle de
 l'AFFICHE (le pop-up qui apparaît avant la date de l'événement, colonnes
 `AFFICHE *` de `csv/events.csv`). Il ne touche pas aux photos des galeries,
-du carrousel artistes ou de la bande homepage — celles-ci restent de simples
-JPG/PNG, pas de AVIF/WebP à générer pour elles.
+du carrousel artistes ou de la bande homepage — ces trois-là suivent leur
+propre système de miniatures WebP, documenté juste en dessous (différent de
+celui de l'affiche : pas d'AVIF, pas de variantes responsives multiples,
+juste une seule miniature légère par photo).
+
+## Miniatures WebP obligatoires (galeries, carrousel artistes, bande homepage)
+
+Ajouté en septembre 2026 après que la galerie La Croisette (103 photos,
+29 Mo) et le carrousel homepage se soient affichés en écran noir sur mobile
+— trop de photos en pleine résolution chargées/décodées/animées à la fois.
+Depuis, toute photo qui apparaît dans une grille galerie, le carrousel
+artistes ou la bande photo homepage doit avoir une miniature WebP en plus
+de sa version pleine résolution dans `uploads/`.
+
+**Convention de nommage** — toujours `<nom-du-fichier-sans-extension>-<suffixe>.webp`,
+à côté de l'original, jamais dans un sous-dossier :
+
+| Usage | Suffixe | Taille cible | Qualité | Généré pour |
+|---|---|---|---|---|
+| Grille masonry d'une page `galerie-*.html` | `-thumb.webp` | 700 px de large | 72 | Chaque photo listée dans `data/galleries.js` |
+| Fond de hero d'une page `galerie-*.html` | `-hero.webp` | 1600 px de large | 76 | L'image de fond de chaque `galerie-*.html` |
+| Carte du carrousel artistes homepage | `-card.webp` | 840 px de haut | 76 | Chaque `image` de `data/artists.js` / `csv/artists_cartes.csv` |
+| Bande photo défilante homepage | `-strip.webp` | 720 px de haut | 72 | Uniquement les photos de la sélection figée ci-dessous |
+
+Exemple : `uploads/DSC05266-scaled.jpg` (photo d'origine) →
+`uploads/DSC05266-scaled-thumb.webp` (miniature grille) et/ou
+`uploads/DSC05266-scaled-card.webp` (carte artiste), selon où la photo est
+utilisée. Une même photo peut avoir plusieurs miniatures si elle sert à
+plusieurs endroits.
+
+**Comment générer une miniature** (nécessite Pillow — `pip install Pillow`) :
+
+```python
+from PIL import Image
+import os
+
+def make_derivative(src, dst, target_width=None, target_height=None, quality=72):
+    with Image.open(src) as im:
+        im = im.convert('RGB')
+        w, h = im.size
+        if target_width:
+            ratio = target_width / w
+            im = im.resize((target_width, max(1, round(h * ratio))), Image.LANCZOS)
+        elif target_height:
+            ratio = target_height / h
+            im = im.resize((max(1, round(w * ratio)), target_height), Image.LANCZOS)
+        im.save(dst, 'WEBP', quality=quality, method=6)
+
+# Miniature grille galerie
+make_derivative('uploads/DSC05266-scaled.jpg', 'uploads/DSC05266-scaled-thumb.webp', target_width=700, quality=72)
+# Carte carrousel artistes
+make_derivative('uploads/DSC05266-scaled.jpg', 'uploads/DSC05266-scaled-card.webp', target_height=840, quality=76)
+# Hero de page galerie
+make_derivative('uploads/DSC05266-scaled.jpg', 'uploads/DSC05266-scaled-hero.webp', target_width=1600, quality=76)
+```
+
+**Ce qui lit ces fichiers, côté code :**
+- `js/render.js` → `renderGallery()` déduit automatiquement le nom de la
+  miniature depuis `src` (fonction `thumbSrc()` : remplace `.jpg`/`.png` par
+  `-thumb.webp`) pour l'`<img>` affiché dans la grille — mais garde `src`
+  (l'original) dans l'attribut `data-src`, utilisé par le lightbox et le
+  bouton "Télécharger". **Si la miniature n'existe pas dans `uploads/`,
+  l'image de la grille est cassée** (le nom est déduit, pas vérifié) : ne
+  jamais ajouter une photo à `data/galleries.js` sans avoir généré son
+  `-thumb.webp` au préalable.
+- Chaque `galerie-*.html` référence son `-hero.webp` directement en dur dans
+  son `<style>` (`background-image:url('uploads/...-hero.webp')`) — pas de
+  déduction automatique ici, il faut éditer la page HTML à la main si le
+  hero change.
+- `csv/artists_cartes.csv` (colonne IMAGE) / `data/artists.js` référencent
+  directement le fichier `-card.webp` — pas l'original. Toujours écrire le
+  chemin de la miniature dans ce champ, jamais celui de la photo pleine
+  résolution.
+- La bande photo homepage (`#galerie-band`) **n'est plus générée
+  automatiquement depuis `data/galleries.js`** comme avant septembre 2026.
+  C'est désormais une sélection figée de 18 photos, codée en dur dans
+  `js/render.js` (tableau `HOME_GALLERY_STRIP_IMAGES`, juste avant la
+  fonction `homeGalleryStrip()`), qui pointe vers des fichiers `-strip.webp`.
+  Marquer une galerie `active: false`/`true` dans `data/galleries.js`
+  **n'a plus d'effet sur cette bande** — pour changer les photos qui y
+  apparaissent : générer les `-strip.webp` des nouvelles photos, puis
+  éditer directement le tableau `HOME_GALLERY_STRIP_IMAGES` dans
+  `js/render.js`.
 
 ---
 
@@ -554,7 +664,10 @@ L'événement `Begin's` a été ajouté sans modifier les contenus HTML principa
 - Accueil : automatiquement, car `showOnHome: true` dans `data/events.js`.
 - Page événements : automatiquement, car `showOnEventsPage: true` dans `data/events.js`.
 - Galerie photo : via `galerie-begins.html` + `data/galleries.js`.
-- Bande photo accueil : automatiquement, car sa galerie est `active: true` dans `data/galleries.js`.
+- Bande photo accueil : seulement si des photos Begin's ont été ajoutées à
+  la sélection figée `HOME_GALLERY_STRIP_IMAGES` dans `js/render.js` — ce
+  n'est plus automatique depuis septembre 2026, voir « Miniatures WebP
+  obligatoires » plus haut.
 
 ## Pour modifier Begin's plus tard
 
@@ -607,6 +720,9 @@ images
 ```
 
 La page `galerie-begins.html` lit automatiquement les images depuis ce bloc.
+Pour chaque nouvelle photo ajoutée dans `images`, générer d'abord sa
+miniature `-thumb.webp` (voir « Miniatures WebP obligatoires » plus haut) —
+sans elle, la grille affiche la photo pleine résolution à la place.
 
 ---
 

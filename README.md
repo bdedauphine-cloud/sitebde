@@ -175,6 +175,16 @@ Prérequis du script : `pip install pillow`.
 - Dossier : `uploads/` à la racine du projet
 - Sur iPhone, les photos trop lourdes ou trop grandes ne chargent pas
 
+Cette limite protège une photo isolée. Pour une galerie, le carrousel
+artistes ou la bande photo homepage — qui affichent 20 à 100+ photos à la
+fois — une miniature WebP dédiée est en plus **obligatoire** à côté de
+chaque original (`-thumb.webp`, `-card.webp`, `-hero.webp` ou `-strip.webp`
+selon l'usage). C'est ce qui manquait quand la galerie La Croisette (103
+photos, 29 Mo) s'est affichée en écran noir sur mobile en septembre 2026.
+Recette complète, table des suffixes et code concerné : voir « Miniatures
+WebP obligatoires » dans `GUIDE-MISE-A-JOUR.md`, ou la section 14 d'
+`AI-INSTRUCTIONS.md`.
+
 ---
 
 ## Utilisation avec une IA
