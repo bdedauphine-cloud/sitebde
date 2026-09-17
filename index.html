@@ -254,6 +254,12 @@
       .artists-carousel::-webkit-scrollbar { display: none; }
       .artists-carousel-track { animation: none !important; }
       .artist-card, .artist-card-featured { scroll-snap-align: start; }
+      /* Galerie bande : idem, scroll tactile au lieu du défilement JS
+         continu — sur mobile, animer 36 images en transform en continu
+         pousse certains iPhone à rendre des tuiles noires (mémoire GPU) */
+      #galerie-band { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
+      #galerie-band::-webkit-scrollbar { display: none; }
+      .galerie-strip-item { scroll-snap-align: start; }
     }
      
     @media (max-width: 768px) {
@@ -671,17 +677,23 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Gallery strip auto-scroll — ne démarre qu'à l'approche du bandeau
-    // à l'écran, pour laisser le temps aux images (lazy-load) de charger
-    // avant de les faire défiler.
+    // Gallery strip auto-scroll — desktop uniquement (mobile utilise le
+    // scroll tactile natif, voir CSS). Sur mobile, dupliquer le bandeau et
+    // le faire défiler en continu via transform pousse certains iPhone à
+    // rendre des tuiles noires (limite mémoire du compositeur GPU avec de
+    // nombreuses images animées simultanément) ; l'auto-scroll ne démarre
+    // aussi qu'à l'approche du bandeau à l'écran, pour laisser le temps
+    // aux images (lazy-load) de charger avant de les faire défiler.
     const strip = document.getElementById('galerieStrip');
-    let stripPos = 0;
-    strip.innerHTML += strip.innerHTML;
-    function scrollStrip() { stripPos += 0.6; const max = strip.scrollWidth / 2; if (stripPos >= max) stripPos = 0; strip.style.transform = `translateX(-${stripPos}px)`; requestAnimationFrame(scrollStrip); }
-    const stripObs = new IntersectionObserver(entries => {
-      if (entries.some(e => e.isIntersecting)) { stripObs.disconnect(); scrollStrip(); }
-    }, { rootMargin: '400px 0px' });
-    stripObs.observe(strip);
+    if (window.innerWidth > 768) {
+      let stripPos = 0;
+      strip.innerHTML += strip.innerHTML;
+      function scrollStrip() { stripPos += 0.6; const max = strip.scrollWidth / 2; if (stripPos >= max) stripPos = 0; strip.style.transform = `translateX(-${stripPos}px)`; requestAnimationFrame(scrollStrip); }
+      const stripObs = new IntersectionObserver(entries => {
+        if (entries.some(e => e.isIntersecting)) { stripObs.disconnect(); scrollStrip(); }
+      }, { rootMargin: '400px 0px' });
+      stripObs.observe(strip);
+    }
 
     // Sponsors marquee — duplicate for infinite loop
     const sTrack = document.getElementById('sponsorsTrack');
