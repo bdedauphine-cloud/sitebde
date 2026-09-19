@@ -99,28 +99,34 @@
   // dédiés à ce bandeau — les photos en pleine résolution des pages
   // galeries pesaient plusieurs Mo chacune et ne chargeaient pas de
   // façon fiable sur mobile.
+  // w/h = dimensions réelles du fichier -strip.webp (toutes générées à 720px
+  // de haut). Indispensable pour que le navigateur réserve la bonne largeur
+  // AVANT de charger l'image (loading="lazy") : sans ça, chaque vignette
+  // démarre à une largeur par défaut arbitraire tant que la photo n'a pas
+  // fini de charger, ce qui donnait des trous noirs entre les photos au fil
+  // du scroll tactile sur mobile.
   const HOME_GALLERY_STRIP_IMAGES=[
-    {src:'uploads/begins-2025-05-strip.webp',alt:'Begins'},
-    {src:'uploads/croisette-2025-01-strip.webp',alt:'La Croisette'},
-    {src:'uploads/gala-2026-259-strip.webp',alt:'Gala Dauphine'},
-    {src:'uploads/gala-2026-338-strip.webp',alt:'Gala Dauphine 2026 — photo 52'},
-    {src:'uploads/croisette-2026-71-strip.webp',alt:'La Croisette 2026 — photo 71'},
-    {src:'uploads/croisette-2025-extra-12-strip.webp',alt:'La Croisette 2025 — photo 12'},
-    {src:'uploads/croisette-2026-79-strip.webp',alt:'La Croisette 2026 — photo 79'},
-    {src:'uploads/gala-2026-4-strip.webp',alt:'Gala Dauphine 2026 — photo 2'},
-    {src:'uploads/begins-2025-extra-33-strip.webp',alt:'Begins 2025 — photo 33'},
-    {src:'uploads/croisette-2026-19-strip.webp',alt:'La Croisette 2026 — photo 19'},
-    {src:'uploads/croisette-2025-02-strip.webp',alt:'La Croisette 2025 — photo 2'},
-    {src:'uploads/gala-2026-236-strip.webp',alt:'Gala Dauphine 2026 — photo 42'},
-    {src:'uploads/croisette-2026-50-strip.webp',alt:'La Croisette 2026 — photo 50'},
-    {src:'uploads/begins-2025-extra-26-strip.webp',alt:'Begins 2025 — photo 26'},
-    {src:'uploads/begins-2025-extra-05-strip.webp',alt:'Begins 2025 — photo 5'},
-    {src:'uploads/croisette-2025-extra-03-strip.webp',alt:'La Croisette 2025 — photo 3'},
-    {src:'uploads/gala-2026-42-strip.webp',alt:'Gala Dauphine 2026 — photo 13'},
-    {src:'uploads/begins-2025-01-strip.webp',alt:'Begins 2025 — photo 3'}
+    {src:'uploads/begins-2025-05-strip.webp',alt:'Begins',w:1082,h:720},
+    {src:'uploads/croisette-2025-01-strip.webp',alt:'La Croisette',w:960,h:720},
+    {src:'uploads/gala-2026-259-strip.webp',alt:'Gala Dauphine',w:1080,h:720},
+    {src:'uploads/gala-2026-338-strip.webp',alt:'Gala Dauphine 2026 — photo 52',w:1080,h:720},
+    {src:'uploads/croisette-2026-71-strip.webp',alt:'La Croisette 2026 — photo 71',w:960,h:720},
+    {src:'uploads/croisette-2025-extra-12-strip.webp',alt:'La Croisette 2025 — photo 12',w:960,h:720},
+    {src:'uploads/croisette-2026-79-strip.webp',alt:'La Croisette 2026 — photo 79',w:960,h:720},
+    {src:'uploads/gala-2026-4-strip.webp',alt:'Gala Dauphine 2026 — photo 2',w:1080,h:720},
+    {src:'uploads/begins-2025-extra-33-strip.webp',alt:'Begins 2025 — photo 33',w:1082,h:720},
+    {src:'uploads/croisette-2026-19-strip.webp',alt:'La Croisette 2026 — photo 19',w:960,h:720},
+    {src:'uploads/croisette-2025-02-strip.webp',alt:'La Croisette 2025 — photo 2',w:960,h:720},
+    {src:'uploads/gala-2026-236-strip.webp',alt:'Gala Dauphine 2026 — photo 42',w:1080,h:720},
+    {src:'uploads/croisette-2026-50-strip.webp',alt:'La Croisette 2026 — photo 50',w:960,h:720},
+    {src:'uploads/begins-2025-extra-26-strip.webp',alt:'Begins 2025 — photo 26',w:1082,h:720},
+    {src:'uploads/begins-2025-extra-05-strip.webp',alt:'Begins 2025 — photo 5',w:1082,h:720},
+    {src:'uploads/croisette-2025-extra-03-strip.webp',alt:'La Croisette 2025 — photo 3',w:960,h:720},
+    {src:'uploads/gala-2026-42-strip.webp',alt:'Gala Dauphine 2026 — photo 13',w:1080,h:720},
+    {src:'uploads/begins-2025-01-strip.webp',alt:'Begins 2025 — photo 3',w:1082,h:720}
   ];
   function homeGalleryStrip(){
-    return HOME_GALLERY_STRIP_IMAGES.map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" loading="lazy" decoding="async" /></div>`).join('');
+    return HOME_GALLERY_STRIP_IMAGES.map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" width="${im.w}" height="${im.h}" loading="lazy" decoding="async" /></div>`).join('');
   }
   function renderGallery(el){
     const slug=el.dataset.gallerySlug;
