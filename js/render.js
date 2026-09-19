@@ -126,7 +126,15 @@
     {src:'uploads/begins-2025-01-strip.webp',alt:'Begins 2025 — photo 3',w:1082,h:720}
   ];
   function homeGalleryStrip(){
-    return HOME_GALLERY_STRIP_IMAGES.map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" width="${im.w}" height="${im.h}" loading="lazy" decoding="async" /></div>`).join('');
+    // Pas de loading="lazy" ici : contrairement aux vraies galeries (jusqu'à
+    // 100+ photos), cette sélection est fixe et pèse ~750 Ko pour les 18
+    // vignettes réunies — aussi léger qu'une seule photo de hero. En lazy,
+    // chaque vignette ne démarre son téléchargement qu'au moment où le
+    // scroll tactile l'approche, ce qui perd la course contre un swipe
+    // rapide sur mobile et donne un trou visible le temps que la photo
+    // arrive. En les chargeant toutes dès l'affichage de la page, elles
+    // sont déjà prêtes quand l'utilisateur atteint le bandeau.
+    return HOME_GALLERY_STRIP_IMAGES.map(im=>`<div class="galerie-strip-item"><img src="${esc(im.src)}" alt="${esc(im.alt||'')}" width="${im.w}" height="${im.h}" decoding="async" /></div>`).join('');
   }
   function renderGallery(el){
     const slug=el.dataset.gallerySlug;
