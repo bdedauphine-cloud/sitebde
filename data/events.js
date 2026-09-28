@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 16/09/2026 22:29
+// Généré automatiquement par sync.py le 28/09/2026 14:50
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -436,10 +436,10 @@ window.BDE_EVENTS = [
     "reverse": true,
     "affiche": {
       "mode": "AUTO",
-      "image": "uploads/DSC06115-scaled.jpg",
-      "alt": "Étudiants au WEI du BDE Dauphine",
-      "ratio": "2560/1707",
-      "responsive": false,
+      "image": "uploads/affiche-wei.jpg",
+      "alt": "Affiche WEI 2026 — thème Weistern, 9-11 octobre",
+      "ratio": "1055/1491",
+      "responsive": true,
       "daysBefore": 0,
       "title": {
         "fr": "WEI — Weekend d'Intégration",
