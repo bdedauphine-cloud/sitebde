@@ -1,6 +1,6 @@
 // =====================================================
 // SPONSORS / PARTENAIRES
-// Généré automatiquement par sync.py le 28/09/2026 14:51
+// Généré automatiquement par sync.py le 02/10/2026 10:41
 // Modifier via csv/sponsors.csv ou directement dans ce fichier.
 // Ne pas renommer window.BDE_SPONSORS.
 // =====================================================

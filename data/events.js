@@ -1,6 +1,6 @@
 // =====================================================
 // ÉVÉNEMENTS
-// Généré automatiquement par sync.py le 28/09/2026 14:51
+// Généré automatiquement par sync.py le 02/10/2026 10:41
 // Modifier via csv/events.csv, csv/event_descriptions.csv,
 // csv/event_meta.csv, csv/event_tags.csv, csv/event_artists.csv
 // ou directement dans ce fichier.
@@ -465,182 +465,6 @@ window.BDE_EVENTS = [
     }
   },
   {
-    "slug": "nuitdauphine",
-    "order": 5,
-    "number": "05",
-    "title": "Nuit Dauphine",
-    "subtitle": "Soirée électro-house · 30+ éditions · Clubs parisiens",
-    "category": "Label Les Nuits",
-    "date": "",
-    "dateLabel": {
-      "fr": "",
-      "en": ""
-    },
-    "statusLabel": {
-      "fr": "",
-      "en": ""
-    },
-    "statusColor": "",
-    "place": "Paris",
-    "venue": "",
-    "shortDescription": "Soirée électro-house · 30+ éditions · Clubs parisiens",
-    "homeDescriptionI18n": {
-      "fr": "Soirée électro-house · 30+ éditions · Clubs parisiens",
-      "en": "Electro-house party · 30+ editions · Parisian clubs"
-    },
-    "homePeriod": "Label Les Nuits",
-    "homePeriodI18n": {
-      "fr": "Label Les Nuits",
-      "en": "Les Nuits Label"
-    },
-    "longDescription": [
-      "L'événement vitrine de notre association et de notre Université. Chaque année, le BDE se délocalise dans les plus grands clubs parisiens pour offrir aux étudiants de la capitale une nuit rythmée par la musique des plus grands. La plus grande soirée étudiante de France hors campus."
-    ],
-    "descriptionBlocks": [
-      {
-        "text": "L'événement vitrine de notre association et de notre Université. Chaque année, le BDE se délocalise dans les plus grands clubs parisiens pour offrir aux étudiants de la capitale une nuit rythmée par la musique des plus grands. La plus grande soirée étudiante de France hors campus.",
-        "i18n": {
-          "fr": "L'événement vitrine de notre association et de notre Université. Chaque année, le BDE se délocalise dans les plus grands clubs parisiens pour offrir aux étudiants de la capitale une nuit rythmée par la musique des plus grands. La plus grande soirée étudiante de France hors campus.",
-          "en": "The flagship event of our association and university. Every year, the BDE takes over the best Parisian clubs to give students a night driven by the biggest names in music. The largest off-campus student party in France."
-        }
-      }
-    ],
-    "image": "uploads/DSC05851-scaled.jpg",
-    "images": [
-      "uploads/DSC05851-scaled.jpg",
-      "uploads/DSC05819-scaled.jpg",
-      "uploads/DSC05266-scaled.jpg"
-    ],
-    "alt": "Nuit Dauphine",
-    "ticketUrl": "",
-    "ticketLabel": "Réserver",
-    "dossierUrl": "",
-    "dossierLabel": {
-      "fr": "Dossier à remplir",
-      "en": "Form to complete"
-    },
-    "dossierDownload": true,
-    "googlePhotosUrl": "",
-    "galleryPage": "galerie-nuitdauphine.html",
-    "galleryLabel": "Galerie photos des éditions →",
-    "showOnHome": true,
-    "showOnEventsPage": true,
-    "showOnNuitsPage": true,
-    "featured": true,
-    "status": "current",
-    "tags": [
-      {
-        "label": "Label Les Nuits",
-        "red": true,
-        "i18n": {
-          "fr": "Label Les Nuits",
-          "en": ""
-        }
-      },
-      {
-        "label": "30+ éditions",
-        "red": false,
-        "i18n": {
-          "fr": "30+ éditions",
-          "en": ""
-        }
-      }
-    ],
-    "meta": [
-      {
-        "key": "Format",
-        "value": "Soirée électro-house",
-        "keyI18n": {
-          "fr": "Format",
-          "en": "Format"
-        },
-        "valueI18n": {
-          "fr": "Soirée électro-house",
-          "en": "Electro-house party"
-        }
-      },
-      {
-        "key": "Historique",
-        "value": "30+ éditions",
-        "keyI18n": {
-          "fr": "Historique",
-          "en": "History"
-        },
-        "valueI18n": {
-          "fr": "30+ éditions",
-          "en": "30+ editions"
-        }
-      },
-      {
-        "key": "Lieu",
-        "value": "Clubs parisiens premium",
-        "keyI18n": {
-          "fr": "Lieu",
-          "en": "Venue"
-        },
-        "valueI18n": {
-          "fr": "Clubs parisiens premium",
-          "en": "Premium Parisian clubs"
-        }
-      },
-      {
-        "key": "Artistes passés",
-        "value": "Emmanuel Jal, Ofenbach, Esposito…",
-        "keyI18n": {
-          "fr": "Artistes passés",
-          "en": "Past artists"
-        },
-        "valueI18n": {
-          "fr": "Emmanuel Jal, Ofenbach, Esposito…",
-          "en": "Emmanuel Jal, Ofenbach, Esposito…"
-        }
-      },
-      {
-        "key": "Édition 2026",
-        "value": "VANCO",
-        "keyI18n": {
-          "fr": "Édition 2026",
-          "en": "2026 Edition"
-        },
-        "valueI18n": {
-          "fr": "VANCO",
-          "en": "VANCO"
-        }
-      }
-    ],
-    "artists": [],
-    "reverse": false,
-    "affiche": {
-      "mode": "AUTO",
-      "image": "",
-      "alt": "",
-      "ratio": "",
-      "responsive": false,
-      "daysBefore": 0,
-      "title": {
-        "fr": "",
-        "en": ""
-      },
-      "text": {
-        "fr": "",
-        "en": ""
-      },
-      "ctaLabel": {
-        "fr": "",
-        "en": ""
-      },
-      "ctaUrl": "",
-      "dossierCtaLabel": {
-        "fr": "",
-        "en": ""
-      },
-      "eligibilityNote": {
-        "fr": "",
-        "en": ""
-      }
-    }
-  },
-  {
     "slug": "howwedau",
     "order": 4,
     "number": "04",
@@ -799,6 +623,182 @@ window.BDE_EVENTS = [
       }
     ],
     "reverse": true,
+    "affiche": {
+      "mode": "AUTO",
+      "image": "",
+      "alt": "",
+      "ratio": "",
+      "responsive": false,
+      "daysBefore": 0,
+      "title": {
+        "fr": "",
+        "en": ""
+      },
+      "text": {
+        "fr": "",
+        "en": ""
+      },
+      "ctaLabel": {
+        "fr": "",
+        "en": ""
+      },
+      "ctaUrl": "",
+      "dossierCtaLabel": {
+        "fr": "",
+        "en": ""
+      },
+      "eligibilityNote": {
+        "fr": "",
+        "en": ""
+      }
+    }
+  },
+  {
+    "slug": "nuitdauphine",
+    "order": 5,
+    "number": "05",
+    "title": "Nuit Dauphine",
+    "subtitle": "Soirée électro-house · 30+ éditions · Clubs parisiens",
+    "category": "Label Les Nuits",
+    "date": "",
+    "dateLabel": {
+      "fr": "",
+      "en": ""
+    },
+    "statusLabel": {
+      "fr": "",
+      "en": ""
+    },
+    "statusColor": "",
+    "place": "Paris",
+    "venue": "",
+    "shortDescription": "Soirée électro-house · 30+ éditions · Clubs parisiens",
+    "homeDescriptionI18n": {
+      "fr": "Soirée électro-house · 30+ éditions · Clubs parisiens",
+      "en": "Electro-house party · 30+ editions · Parisian clubs"
+    },
+    "homePeriod": "Label Les Nuits",
+    "homePeriodI18n": {
+      "fr": "Label Les Nuits",
+      "en": "Les Nuits Label"
+    },
+    "longDescription": [
+      "L'événement vitrine de notre association et de notre Université. Chaque année, le BDE se délocalise dans les plus grands clubs parisiens pour offrir aux étudiants de la capitale une nuit rythmée par la musique des plus grands. La plus grande soirée étudiante de France hors campus."
+    ],
+    "descriptionBlocks": [
+      {
+        "text": "L'événement vitrine de notre association et de notre Université. Chaque année, le BDE se délocalise dans les plus grands clubs parisiens pour offrir aux étudiants de la capitale une nuit rythmée par la musique des plus grands. La plus grande soirée étudiante de France hors campus.",
+        "i18n": {
+          "fr": "L'événement vitrine de notre association et de notre Université. Chaque année, le BDE se délocalise dans les plus grands clubs parisiens pour offrir aux étudiants de la capitale une nuit rythmée par la musique des plus grands. La plus grande soirée étudiante de France hors campus.",
+          "en": "The flagship event of our association and university. Every year, the BDE takes over the best Parisian clubs to give students a night driven by the biggest names in music. The largest off-campus student party in France."
+        }
+      }
+    ],
+    "image": "uploads/DSC05851-scaled.jpg",
+    "images": [
+      "uploads/DSC05851-scaled.jpg",
+      "uploads/DSC05819-scaled.jpg",
+      "uploads/DSC05266-scaled.jpg"
+    ],
+    "alt": "Nuit Dauphine",
+    "ticketUrl": "",
+    "ticketLabel": "Réserver",
+    "dossierUrl": "",
+    "dossierLabel": {
+      "fr": "Dossier à remplir",
+      "en": "Form to complete"
+    },
+    "dossierDownload": true,
+    "googlePhotosUrl": "",
+    "galleryPage": "galerie-nuitdauphine.html",
+    "galleryLabel": "Galerie photos des éditions →",
+    "showOnHome": true,
+    "showOnEventsPage": true,
+    "showOnNuitsPage": true,
+    "featured": true,
+    "status": "current",
+    "tags": [
+      {
+        "label": "Label Les Nuits",
+        "red": true,
+        "i18n": {
+          "fr": "Label Les Nuits",
+          "en": ""
+        }
+      },
+      {
+        "label": "30+ éditions",
+        "red": false,
+        "i18n": {
+          "fr": "30+ éditions",
+          "en": ""
+        }
+      }
+    ],
+    "meta": [
+      {
+        "key": "Format",
+        "value": "Soirée électro-house",
+        "keyI18n": {
+          "fr": "Format",
+          "en": "Format"
+        },
+        "valueI18n": {
+          "fr": "Soirée électro-house",
+          "en": "Electro-house party"
+        }
+      },
+      {
+        "key": "Historique",
+        "value": "30+ éditions",
+        "keyI18n": {
+          "fr": "Historique",
+          "en": "History"
+        },
+        "valueI18n": {
+          "fr": "30+ éditions",
+          "en": "30+ editions"
+        }
+      },
+      {
+        "key": "Lieu",
+        "value": "Clubs parisiens premium",
+        "keyI18n": {
+          "fr": "Lieu",
+          "en": "Venue"
+        },
+        "valueI18n": {
+          "fr": "Clubs parisiens premium",
+          "en": "Premium Parisian clubs"
+        }
+      },
+      {
+        "key": "Artistes passés",
+        "value": "Emmanuel Jal, Ofenbach, Esposito…",
+        "keyI18n": {
+          "fr": "Artistes passés",
+          "en": "Past artists"
+        },
+        "valueI18n": {
+          "fr": "Emmanuel Jal, Ofenbach, Esposito…",
+          "en": "Emmanuel Jal, Ofenbach, Esposito…"
+        }
+      },
+      {
+        "key": "Édition 2026",
+        "value": "VANCO",
+        "keyI18n": {
+          "fr": "Édition 2026",
+          "en": "2026 Edition"
+        },
+        "valueI18n": {
+          "fr": "VANCO",
+          "en": "VANCO"
+        }
+      }
+    ],
+    "artists": [],
+    "reverse": false,
     "affiche": {
       "mode": "AUTO",
       "image": "",
