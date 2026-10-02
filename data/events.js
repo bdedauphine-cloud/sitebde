@@ -466,8 +466,8 @@ window.BDE_EVENTS = [
   },
   {
     "slug": "nuitdauphine",
-    "order": 4,
-    "number": "04",
+    "order": 5,
+    "number": "05",
     "title": "Nuit Dauphine",
     "subtitle": "Soirée électro-house · 30+ éditions · Clubs parisiens",
     "category": "Label Les Nuits",
@@ -642,8 +642,8 @@ window.BDE_EVENTS = [
   },
   {
     "slug": "howwedau",
-    "order": 5,
-    "number": "05",
+    "order": 4,
+    "number": "04",
     "title": "How We Dau",
     "subtitle": "Showcases rap · Gazo, Gims, SCH, Laylow, PLK…",
     "category": "Annuel · Club",

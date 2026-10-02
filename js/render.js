@@ -23,7 +23,19 @@
     if(Number.isNaN(d.getTime())) return date;
     return new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }).format(d);
   }
+  // Un événement dont la date (AAAA-MM-JJ) est dépassée et sans statut manuel passe automatiquement en « Passé ».
+  function autoPast(e){
+    if(!e.date || !/^\d{4}-\d{2}-\d{2}$/.test(e.date)) return false;
+    const s=i18nObj(e.statusLabel);
+    if(s.fr || s.en) return false;
+    const d=new Date(`${e.date}T23:59:59`);
+    return !Number.isNaN(d.getTime()) && d.getTime() < Date.now();
+  }
+  function withAutoStatus(e){
+    return autoPast(e) ? Object.assign({}, e, { statusLabel:{ fr:'Passé', en:'Past' } }) : e;
+  }
   function eventDateText(e,lang){
+    e=withAutoStatus(e);
     const status=i18nObj(e.statusLabel);
     const label=i18nObj(e.dateLabel);
     const readableDate = label[lang] || (e.date ? formatEventDate(e.date,lang) : '');
@@ -34,10 +46,12 @@
     return lang === 'en' ? 'Coming soon' : 'À venir';
   }
   function isPastStatus(e){
+    e=withAutoStatus(e);
     const status=i18nObj(e.statusLabel);
     return ['passé','past'].includes(String(status.fr || '').toLowerCase()) || ['passé','past'].includes(String(status.en || '').toLowerCase());
   }
   function eventDateMarkup(e,mode){
+    e=withAutoStatus(e);
     const status=i18nObj(e.statusLabel);
     const label=i18nObj(e.dateLabel);
     const hasCustomDateOrStatus=Boolean(status.fr || status.en || label.fr || label.en || e.date);
