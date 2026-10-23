@@ -2193,6 +2193,70 @@ window.BDE_GALLERIES = [
         "captionI18n": {},
         "tag": "",
         "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-16.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-17.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-18.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-19.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-20.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-21.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-22.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-23.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
       }
     ]
   }
