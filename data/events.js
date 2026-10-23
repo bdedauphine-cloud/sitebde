@@ -471,10 +471,10 @@ window.BDE_EVENTS = [
     "title": "How We Dau",
     "subtitle": "Showcases rap · Gazo, Gims, SCH, Laylow, PLK…",
     "category": "Annuel · Club",
-    "date": "",
+    "date": "2026-11-13",
     "dateLabel": {
-      "fr": "",
-      "en": ""
+      "fr": "Vendredi 13 novembre 2026",
+      "en": "Friday, November 13, 2026"
     },
     "statusLabel": {
       "fr": "",
@@ -512,7 +512,7 @@ window.BDE_EVENTS = [
       "uploads/cap-144920.png"
     ],
     "alt": "How We Dau",
-    "ticketUrl": "",
+    "ticketUrl": "https://shotgun.live/en/events/record-x-hwd-x-versus-leto-live-performance-13-10",
     "ticketLabel": "Réserver",
     "dossierUrl": "",
     "dossierLabel": {
@@ -625,10 +625,10 @@ window.BDE_EVENTS = [
     "reverse": true,
     "affiche": {
       "mode": "AUTO",
-      "image": "",
-      "alt": "",
-      "ratio": "",
-      "responsive": false,
+      "image": "uploads/affiche-howwedau.jpg",
+      "alt": "Affiche How We Dau — Leto, exclusive showcase, vendredi 13 novembre",
+      "ratio": "1170/1533",
+      "responsive": true,
       "daysBefore": 0,
       "title": {
         "fr": "",
