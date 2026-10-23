@@ -349,11 +349,11 @@ window.BDE_EVENTS = [
         }
       }
     ],
-    "image": "uploads/DSC06115-scaled.jpg",
+    "image": "uploads/wei-2026-01.jpg",
     "images": [
-      "uploads/DSC06115-scaled.jpg",
-      "uploads/DSC06186-scaled.jpg",
-      "uploads/DSC05637-scaled.jpg"
+      "uploads/wei-2026-01.jpg",
+      "uploads/wei-2026-02.jpg",
+      "uploads/wei-2026-03.jpg"
     ],
     "alt": "WEI — Weekend d'Intégration",
     "ticketUrl": "",

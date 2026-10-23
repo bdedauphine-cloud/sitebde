@@ -2068,58 +2068,130 @@ window.BDE_GALLERIES = [
     "title": "WEI",
     "page": "galerie-wei.html",
     "eventSlug": "wei",
-    "coverImage": "uploads/DSC04545-scaled.jpg",
+    "coverImage": "uploads/wei-2026-01.jpg",
     "googlePhotosUrl": "https://photos.google.com/",
     "lightboxMode": "overlay",
     "active": true,
     "order": 8,
     "images": [
       {
-        "src": "uploads/DSC04545-scaled.jpg",
+        "src": "uploads/wei-2026-01.jpg",
         "alt": "WEI 2026",
-        "caption": "Arrivée sur le site",
+        "caption": "",
         "captionI18n": {},
-        "tag": "WEI · 2026",
+        "tag": "",
         "tagI18n": {}
       },
       {
-        "src": "uploads/DSC04479-scaled.jpg",
+        "src": "uploads/wei-2026-02.jpg",
         "alt": "WEI 2026",
-        "caption": "Les activités du jour",
+        "caption": "",
         "captionI18n": {},
-        "tag": "WEI · 2026",
+        "tag": "",
         "tagI18n": {}
       },
       {
-        "src": "uploads/DSC04433-scaled.jpg",
+        "src": "uploads/wei-2026-03.jpg",
         "alt": "WEI 2026",
-        "caption": "Soirée du vendredi",
+        "caption": "",
         "captionI18n": {},
-        "tag": "WEI · 2026",
+        "tag": "",
         "tagI18n": {}
       },
       {
-        "src": "uploads/DSC04400-scaled.jpg",
+        "src": "uploads/wei-2026-04.jpg",
         "alt": "WEI 2026",
-        "caption": "Ambiance 3h du matin",
+        "caption": "",
         "captionI18n": {},
-        "tag": "WEI · 2026",
+        "tag": "",
         "tagI18n": {}
       },
       {
-        "src": "uploads/DSC04346-scaled.jpg",
+        "src": "uploads/wei-2026-05.jpg",
         "alt": "WEI 2026",
-        "caption": "Photo de promo",
+        "caption": "",
         "captionI18n": {},
-        "tag": "WEI · 2026",
+        "tag": "",
         "tagI18n": {}
       },
       {
-        "src": "uploads/DSC04314-scaled.jpg",
+        "src": "uploads/wei-2026-06.jpg",
         "alt": "WEI 2026",
-        "caption": "Le retour à Paris",
+        "caption": "",
         "captionI18n": {},
-        "tag": "WEI · 2026",
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-07.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-08.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-09.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-10.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-11.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-12.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-13.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-14.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
+        "tagI18n": {}
+      },
+      {
+        "src": "uploads/wei-2026-15.jpg",
+        "alt": "WEI 2026",
+        "caption": "",
+        "captionI18n": {},
+        "tag": "",
         "tagI18n": {}
       }
     ]
