@@ -629,7 +629,7 @@ window.BDE_EVENTS = [
       "alt": "Affiche How We Dau — Leto, exclusive showcase, vendredi 13 novembre",
       "ratio": "1170/1533",
       "responsive": true,
-      "daysBefore": 0,
+      "daysBefore": 30,
       "title": {
         "fr": "",
         "en": ""
