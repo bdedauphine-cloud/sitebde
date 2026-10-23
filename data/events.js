@@ -352,8 +352,8 @@ window.BDE_EVENTS = [
     "image": "uploads/wei-2026-07.jpg",
     "images": [
       "uploads/wei-2026-07.jpg",
-      "uploads/wei-2026-09.jpg",
-      "uploads/wei-2026-01.jpg"
+      "uploads/wei-2026-10-event.jpg",
+      "uploads/wei-2026-14.jpg"
     ],
     "alt": "WEI — Weekend d'Intégration",
     "ticketUrl": "",
