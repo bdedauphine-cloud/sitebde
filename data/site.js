@@ -29,9 +29,9 @@ window.BDE_SITE = {
   "copyrightText": "© 2026 BDE Dauphine · Paris Dauphine-PSL · Association loi 1901",
   "ticket": {
     "eventName": "How We Dau 2026",
-    "eventSub": "Paris Dauphine-PSL · Prochainement",
-    "eventSubEn": "Paris Dauphine-PSL · Coming soon",
-    "url": "https://shotgun.live/fr/venues/nuits-dauphine",
+    "eventSub": "Vendredi 13 novembre 2026 · Paris",
+    "eventSubEn": "Friday, November 13, 2026 · Paris",
+    "url": "https://shotgun.live/en/events/record-x-hwd-x-versus-leto-live-performance-13-10",
     "buttonLabel": "Réserver sur Shotgun",
     "buttonLabelEn": "Book on Shotgun",
     "description": "Billetterie officielle",
